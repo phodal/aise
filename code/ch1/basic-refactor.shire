@@ -1,0 +1,18 @@
+请你这段代码建议适当的重构。提高代码的可读性、质量，使代码更加有组织和易懂。
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 10;
+        int c = a + b;
+        System.out.println("Sum: " + c);
+        int d = a - b;
+        System.out.println("Difference: " + d);
+        int e = a * b;
+        System.out.println("Product: " + e);
+        int f = b / a;
+        System.out.println("Quotient: " + f);
+    }
+}
+```
