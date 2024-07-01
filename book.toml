@@ -1,0 +1,6 @@
+[book]
+authors = ["Phodal Huang"]
+language = "en"
+multilingual = false
+src = "src"
+title = "AI 辅助软件 IDE 插件与 AI 智能体示例"
