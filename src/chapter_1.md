@@ -27,43 +27,6 @@
 
 随后，便是 AI 生成的结果：
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        int a = 5;
-        int b = 10;
-
-        int sum = add(a, b);
-        System.out.println("Sum: " + sum);
-
-        int difference = subtract(a, b);
-        System.out.println("Difference: " + difference);
-
-        int product = multiply(a, b);
-        System.out.println("Product: " + product);
-
-        int quotient = divide(b, a);
-        System.out.println("Quotient: " + quotient);
-    }
-
-    public static int add(int a, int b) {
-        return a + b;
-    }
-
-    public static int subtract(int a, int b) {
-        return a - b;
-    }
-
-    public static int multiply(int a, int b) {
-        return a * b;
-    }
-
-    public static int divide(int a, int b) {
-        return a / b;
-    }
-}
-```
-
 在这次重构中，AI 将原始代码中的计算逻辑提取到了独立的方法中，提高了代码的可读性和可维护性。而在这个简单的示例中，由于产生了更多的方法、行数，代码的复杂度也有所增加。
 
 ### 转变为变量方式
