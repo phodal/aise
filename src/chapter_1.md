@@ -88,3 +88,8 @@ $selection
 ### 丰富上下文
 
 
+这里有一些相关的  Code Smell
+
+// - Method 'updatePost(java.lang.Long, com.phodal.shire.demo.entity.BlogPost)' is never used
+// - String can be replaced with text block
+
