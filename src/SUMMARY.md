@@ -20,6 +20,7 @@
         - [架构设计生成](./gen_arch.md)
 - [AI Agent 辅助软件工程](./gen_ai_agent.md)
     - [理解 RAG 的应用](./gen_rag.md)
+    - [Copilot Chat 是如何工作的](./gen_copilot_chat.md)
     - [重构 AI 测试生成](./gen_ai_test.md)
 - [AI 自动化编程](./auto_flow.md)
     - [理解 AI 自动化编程](./understanding_auto.md)
