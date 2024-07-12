@@ -2,7 +2,7 @@
 
 - [环境准备](./chapter_0.md)
 - [理解生成式 AI 在软件工程的应用](./ai4se.md)
-    - [梳理软件生命周期](./aise_lifecycle.md)
+    - [梳理软件生命周期机会点](./aise_lifecycle.md)
     - [重构代码示例](./aise_refactor_code.md)
 - [AI IDE 辅助软件工程](./aise_overview.md)
     - [AI 辅助开发](./aise_dev.md)
