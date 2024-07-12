@@ -1,5 +1,6 @@
 # Summary
 
+- [简介](./README.md)
 - [环境准备](./chapter_0.md)
 - [理解生成式 AI 在软件工程的应用](./ai4se.md)
     - [梳理软件生命周期机会点](./aise_lifecycle.md)
