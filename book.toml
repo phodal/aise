@@ -6,8 +6,8 @@ src = "src"
 title = "AI 辅助软件 IDE 插件与 AI 智能体示例"
 
 [output.html]
-git-repository-url = "https://github.com/phodal/ai4se"
+git-repository-url = "https://github.com/phodal/aise"
 git-repository-icon = "fa-github"
-edit-url-template = "https://github.com/phodal/ai4se/edit/master/{path}"
+edit-url-template = "https://github.com/phodal/aise/edit/master/{path}"
 site-url = "/"
-cname = "ai4se.phodal.com"
+cname = "aise.phodal.com"
