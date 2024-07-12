@@ -10,6 +10,7 @@
         - [代码注释生成](./aise_gen_comment.md)
         - [代码片段生成](./aise_gen_snippet.md)
         - [代码文档生成](./aise_gen_doc.md)
+        - [CLI 命令生成](./aise_gen_cli.md)
     - [AI 辅助测试](./gen_ai_for_testing.md)
         - [测试用例生成](./gen_test_case.md)
         - [单元测试生成](./gen_test_code.md)
