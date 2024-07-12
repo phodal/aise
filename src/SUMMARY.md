@@ -1,4 +1,16 @@
 # Summary
 
-- [Chapter 0](./chapter_0.md)
-- [Chapter 1](./chapter_1.md)
+- [环境准备](./chapter_0.md)
+- [理解生成式 AI 在软件工程的应用](./chapter_1.md)
+    - [梳理软件生命周期](./chapter_ai4se.md)
+    - [重构代码示例](./chapter_1_refactor.md)
+- [AI IDE 辅助软件工程](./gen_ai_for_code.md)
+    - [AI 辅助开发](./gen_ai_for_dev.md)
+    - [AI 辅助测试](./gen_ai_for_testing.md)
+    - [AI 辅助架构设计](./gen_ai_for_arch.md)
+- [AI Agent  辅助软件工程](./gen_ai_agent.md)
+    - [理解 RAG 的应用](./gen_rag.md)
+    - [重构 AI 测试生成](./gen_ai_test.md)
+- [AI 自动化编程](./gen_ai_auto.md)
+    - [理解 AI 自动化编程](./gen_ai_auto_intro.md)
+    - [AI 自动化编程示例](./gen_ai_auto_example.md)
