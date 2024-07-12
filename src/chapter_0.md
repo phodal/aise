@@ -39,7 +39,7 @@ Hello, World!
 
 根据你的配置，Shire 将会调用模型对话，来生成内容。 如下图所示，红框区域是 OpenAI 地返回的结果：`Hello! How can I assist you today?`。
 
-![Shire Run Result](images/run-shire-result.png)
+![Shire Run Result](images/shire-run-result.png)
 
 当完成这些步骤后，我们就可以开始使用 Shire 构建我们的 AI IDE 了。
 
