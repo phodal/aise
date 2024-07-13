@@ -1,5 +1,9 @@
 # AI Commit Message 生成
 
+## 理解
+
+## 合理的提交信息
+
 ```shire
 ---
 name: "Commit message"
