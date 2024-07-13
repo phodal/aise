@@ -1,7 +1,7 @@
 # Summary
 
 - [简介](./README.md)
-- [环境准备](./env_setup)
+- [环境准备](./env_setup.md)
 - [生成式 AI 在软件工程的 2024 趋势](./ai4se.md)
     - [梳理软件生命周期机会点](./aise_lifecycle.md)
 - [AI4SE 设计原则](./aise_design_principle.md)
@@ -32,6 +32,9 @@
         - [CI/CD 流水线生成](./gen_cicd.md)
     - [AI 辅助架构设计](./gen_ai_for_arch.md)
         - [架构设计生成](./gen_arch.md)
+    - [AI 运维](./gen_ai_for_ops.md)
+        - [运维监控生成](./gen_monitor.md)
+        - [根因分析生成](./gen_root_cause.md)
 - [AI Agent 辅助软件工程](./gen_ai_agent.md)
     - [远程 AI 智能体](./remote_ai_agent.md)
         - [重构 AI 测试生成](./gen_ai_test.md)

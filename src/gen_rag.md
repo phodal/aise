@@ -1,5 +1,11 @@
 # 理解 RAG 的应用
 
+## 分词
+
+- WordNet, [Chinese WordNet](https://github.com/lopentu/CwnGraph)
+- Jieba
+- TF-IDF
+
 ## RAG 示例
 
 ```shire
