@@ -11,6 +11,7 @@
     - [示例：重构代码](./aise_refactor_code.md)
 - [AI IDE 辅助软件工程](./aise_overview.md)
     - [研发数字化](./aise_digital.md)
+        - [知识管理](./aise_knowledge.md) 
         - [关联的提交信息](./aise_gen_commit.md)
         - [需求智能化](./aise_gen_requirement.md)
     - [AI 辅助开发](./aise_dev.md)
