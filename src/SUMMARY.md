@@ -23,7 +23,6 @@
     - [AI 辅助软件质量](./aise_quality.md)
         - [代码质量检查](./aise_code_check.md)
         - [代码检视](./aise_code_review.md)
-        - [代码审查生成](./aise_gen_review.md)
         - [问题修复](./aise_fix_issue.md)
     - [AI 辅助测试](./gen_ai_for_testing.md)
         - [测试用例生成](./gen_test_case.md)
