@@ -1,7 +1,7 @@
 # Summary
 
 - [简介](./README.md)
-- [环境准备](./chapter_0.md)
+- [环境准备](./env_setup)
 - [生成式 AI 在软件工程的 2024 趋势](./ai4se.md)
     - [梳理软件生命周期机会点](./aise_lifecycle.md)
 - [AI4SE 设计原则](./aise_design_principle.md)
