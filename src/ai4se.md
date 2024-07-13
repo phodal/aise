@@ -1,10 +1,10 @@
-# 理解生成式 AI 在软件工程的应用
+# 生成式 AI 在软件工程的 2024 趋势
 
 从 2024 年的视角回顾，与 2023 年相比，AI 在软件工程中的应用已经变得更加广泛和深入。这一趋势体现在AI编程工具的进化上，主要体现在以下几个方面：
 
 1. 全面探索：从辅助开发人员到全生命周期
 2. 演进路径：个体、团队、组织。
-3. 形态变化：从 IDE 插件到智能 IDE
+3. 形态变化：从 AI IDE 到智能驱动的开发环境
 
 站在全球来看，在不同的国家、区域人们的关注点是不一样的，比如在中国，人们更关注于如何提高软件工程师的工作效率，而在其它一些区域，人们更关注于如何
 提高软件工程的质量、如何辅助进行遗留系统的迁移。 除了各自所处的数字化阶段、水平不同，还存在一些技术人才数量、质量、分布等方面的差异。
@@ -83,6 +83,17 @@ AI 和生成 AI，
 
 ### 可扩展 IDE 插件示例：AutoDev
 
+AI 编程工具应该怎么设计才能提效？ 对于多数团队来说，它们所需要的是：
+
+![](images/autodev-landscape.png)
+
+在新的思考下 
+
+- 将 AI 工具融入自己的开发流程中
+- 融入内部的一系列规范
+- 结合内部知识库，进行知识共享
+- 构建自己的场景化能力
+
 ### 团队 AI 助手示例：Haiven
 
 [Haiven™ 团队助手](https://github.com/tw-haiven/haiven) 是由 Thoughtworks 开发的一款 AI 驱动工具，旨在增强软件开发流程。它与现有的
@@ -103,11 +114,40 @@ AI 编码助手集成，并提供可插拔的知识包，帮助团队完成开�
 
 在另外一方面，我们也会有大量的 Chatbot 在不同的研发团队中使用。
 
-## 形态变化：从 IDE 插件到智能 IDE
+## 形态变化：从 AI IDE 到智能驱动的开发环境
 
-### 智能 IDE
+### 端、云端 AI IDE 插件
 
-### 云端 AI IDE
+### AI 增强的低代码平台
+
+[ScreenAI](https://research.google/blog/screenai-a-visual-language-model-for-ui-and-visually-situated-language-understanding/)
+
+![](images/screen-ai-schema.png)
+
+```markdown
+You only speak JSON. Do not write text that isn’t JSON.
+You are given the following mobile screenshot, described in words. Can you generate 5 questions regarding the content of the screenshot as well as the corresponding short answers to them?
+
+The answer should be as short as possible, containing only the necessary information. Your answer should be structured as follows:
+questions: [
+{{question: the question,
+answer: the answer
+}},
+...
+]
+
+{THE SCREEN SCHEMA}
+```
+
+当然了，为构建这样的语料，你还需要生成大量的数据
+
+![](images/ocr-screen-ai.png)
+
+### 智能开发环境
+
+在云 ☁️ 时代，人们构建云
+
+诸如于 v0.dev、MarsCode
 
 ## 其它
 
