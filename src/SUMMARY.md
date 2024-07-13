@@ -31,3 +31,5 @@
 - [AI 自动化编程](./auto_flow.md)
     - [理解 AI 自动化编程](./understanding_auto.md)
     - [自动化 CRUD](./autocrud.md)
+- [未来展望](./future.md)
+- [参考资料](./reference.md)
