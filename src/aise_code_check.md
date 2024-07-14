@@ -125,11 +125,3 @@ Aroma在创建代码推荐的过程中分为三个主要阶段：
 3. **交集：创建代码推荐**：
     - 以第一个代码片段为基准，逐步与聚类中的其他方法进行修剪，保留所有方法共有的代码。
     - 经过修剪过程后的代码作为代码推荐返回，确保推荐内容在不同聚类之间有显著差异，让工程师可以学习多种编码模式。
-
-### Google 示例：DIIDACT
-
-https://research.google/blog/large-sequence-models-for-software-development-activities/
-
-方法论：Dynamic Integrated Developer ACTivity
-
-![DIDACT](images/google-didact.png)
