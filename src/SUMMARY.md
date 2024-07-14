@@ -15,6 +15,7 @@
         - [关联的提交信息](./practise-aise-commit-message.md)
         - [需求智能化](./practise-aise-requirement.md)
     - [AI 辅助开发](./practise-aise-dev.md)
+        - [代码补全](./aise_code_completion.md)
         - [代码注释生成](./aise_gen_comment.md)
         - [代码片段生成](./aise_gen_snippet.md)
         - [代码文档生成](./aise_gen_doc.md)
