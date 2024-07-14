@@ -1,7 +1,7 @@
 # Summary
 
 - [简介](./README.md)
-- [前言：生成式 AI 在软件工程的 2024 趋势](./ai4se.md)
+- [前言：AI4SE 的 2024 趋势](./ai4se.md)
 - [章节 0：练习环境准备](./env_setup.md)
 - [软件生命周期驱动的 AI4SE](./aise_lifecycle.md)
     - [DevOps 驱动的 AI4SE](./aise_devops.md)
