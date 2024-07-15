@@ -1,6 +1,8 @@
 # AI 辅助开发
 
-## IDE 插件构建
+
+
+### 跨 IDE 设计
 
 [The Self-Driving IDE is Coming](https://sourcegraph.com/blog/the-self-driving-ide-is-coming)
 
@@ -15,9 +17,12 @@
 | Custom prompts      |         |           |        |       |       |                |   |
 | …                   |         |           |        |       |       |                |   |
 
+### 示例：Cody 的 IDE 架构总结
+
+CCB 架构如下：
+
 ![Cody 架构示例](images/cody-client-backend.png)
 
-### Cody 的 IDE 架构总结
 
 在 Sourcegraph，我们的目标是构建一个通用的解决方案，将 Cody 编码助手集成到各种 IDE
 中，这涉及到一套战略性的架构设计，以减轻通常与此类工作相关的复杂性和成本。关键组件和策略如下：

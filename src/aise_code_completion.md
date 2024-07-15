@@ -1,8 +1,23 @@
 # 代码补全
 
-## Codey  示例
+## 示例
 
-[The lifecycle of a code AI completion](https://sourcegraph.com/blog/the-lifecycle-of-a-code-ai-completion)
+### 补全插件示例：GitHub Copilot
+
+- 《[花了大半个月，我终于逆向分析了Github Copilot](https://github.com/mengjian-github/copilot-analysis)》
+- 《[再次揭秘Copilot：sourcemap逆向分析](https://github.com/mengjian-github/copilot-analysis-new)》
+
+![](images/github-copilot-arch.webp)
+
+- 对于编辑器输入的边界判断，包括太少、太多、取消等等很多场景齐全的考虑
+- 缓存思想，利用多级缓存策略保护后台，模型运算本身就是一件昂贵的事情
+- prompt的设计，不仅仅包含了上下文代码，在文件解析、编辑器打开的相关代码上还做了很多
+- 利用简单的Jaccard算法计算分词后的文本相似度，能够快速决策出当前上下文相关的snippet
+- 实验特性，在Copilot中，大量的参数、优先级、设置字段都是通过实验来控制的，有一套完整的监控上报体系，帮助Copilot去调整这些参数，以达到更好的效果
+
+### 补全插件示例：Codey
+
+结合《[The lifecycle of a code AI completion](https://sourcegraph.com/blog/the-lifecycle-of-a-code-ai-completion)》
 
 每个Cody补全都经过以下四个步骤：
 
