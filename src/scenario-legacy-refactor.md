@@ -2,6 +2,48 @@
 
 ## 示例
 
+### Bloop
+
+[State of Mainframe Modernization](https://www.kyndryl.com/us/en/campaign/state-of-mainframe-modernization)
+
+#### 转换 HumanEval 数据集
+
+构建评估工具：[COBOLEval](https://github.com/BloopAI/cobolEval)
+
+```cobol
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HAS-CLOSE-ELEMENTS.
+
+       ENVIRONMENT DIVISION.
+
+       INPUT-OUTPUT SECTION.
+
+       DATA DIVISION.
+
+       LINKAGE SECTION.
+
+       01 LINKED-ITEMS.
+           05 L-NUMBERS OCCURS 100 TIMES INDEXED BY NI COMP-2.
+           05 L-THRESHOLD COMP-2.
+           05 RESULT PIC 9.
+
+      * Check if in given list of numbers, are any two numbers closer to each other than
+      * given threshold.
+      * >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+      * False
+      * >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+      * True
+      *
+
+      * Complete the WORKING-STORAGE SECTION and the PROCEDURE DIVISION
+      * Store the result in the RESULT variable and mark the end of your program with END PROGRAM
+
+       WORKING-STORAGE SECTION.
+```
+
+- [Evaluating LLMs on COBOL](https://bloop.ai/blog/evaluating-llms-on-cobol)
+- [GnuCOBOL](https://gnucobol.sourceforge.io/)
+
 ### SourceGraph Cody示例
 
 资料来源：[A simpler way to understand legacy code](https://sourcegraph.com/blog/a-simpler-way-to-understand-legacy-code)
