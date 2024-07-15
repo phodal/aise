@@ -1,8 +1,16 @@
 # 代码问答 Agent 示例
 
+## 问答策略
+
+### 全局 vs. 局部上下文
+
+### 远程 vs. 本地相关上下文
+
+### 业务导向还是技术逻辑导向
+
 ## 示例
 
-### Sweep：issue-to-pull-request
+### Sweep：issue-to-pull-request 功能
 
 ![Sweep](images/sweep-dev-core-algorithm.svg)
 
@@ -130,14 +138,15 @@ aider 的最新版本会随每个修改请求向 GPT 发送一个仓库映射。
 当然，对于大型代码库，即使仅仅映射可能也太大了以至于超出上下文窗口的能力。然而，这种映射方法扩展了与 GPT-4
 在比以往更大的代码库上合作的能力。它还减少了手动选择要添加到对话上下文中的文件的需要，使 GPT 能够自主识别与当前任务相关的文件。
 
-#### ：Ctags 到  TreeSitter
+#### 从 Ctags 到  TreeSitter
 
 [Improving GPT-4’s codebase understanding with ctags](https://aider.chat/docs/ctags.html)
 
 tree-sitter 仓库映射取代了 aider 最初使用的基于 ctags 的映射。从 ctags 切换到 tree-sitter 带来了许多好处：
 
 - 映射更丰富，直接显示源文件中的完整函数调用签名和其他详细信息。
-- 借助 py-tree-sitter-languages，我们通过一个 python 包获得了对许多编程语言的全面支持，该包在正常的 pip 安装 aider-chat 的过程中自动安装。
+- 借助 py-tree-sitter-languages，我们通过一个 python 包获得了对许多编程语言的全面支持，该包在正常的 pip 安装 aider-chat
+  的过程中自动安装。
 - 我们消除了用户通过某些外部工具或软件包管理器（如 brew、apt、choco 等）手动安装 universal-ctags 的要求。
 - Tree-sitter 集成是实现 aider 未来工作和能力的关键基础。
 
@@ -151,3 +160,21 @@ tree-sitter 仓库映射取代了 aider 最初使用的基于 ctags 的映射。
 一个关键目标是优先选择语言无关或可以轻松部署到大多数流行编程语言的解决方案。ctags 解决方案具有这种优势，因为它预先支持大多数流行语言。我怀疑语言服务器协议可能比
 ctags 更适合这个问题。但是，对于广泛的语言，它的部署可能更为繁琐。用户可能需要为他们感兴趣的特定语言搭建一个 LSP 服务器。
 
+## 其它相关论文
+
+### [CodePlan: Repository-level Coding using LLMs and Planning](https://arxiv.org/abs/2309.12499)
+
+软件工程活动，如软件包迁移、修复静态分析或测试中的错误报告，以及向代码库添加类型注解或其他规范，涉及广泛编辑整个代码库。
+我们将这些活动称为代码库级别的编码任务。像 GitHub Copilot
+这样的最近工具，由大型语言模型（LLMs）驱动，已成功地为局部编码问题提供了高质量的解决方案。代码库级别的编码任务更为复杂，不能直接使用
+LLMs 解决，因为代码库内部相互依赖，并且整个代码库可能太大而无法适应输入。我们将代码库级别的编码视为一个规划问题，并提出了一个与任务无关的神经
+符号框架CodePlan来解决它。CodePlan 综合了多步骤的编辑链（计划），其中每一步都会调用LLM处理来自整个代码库、先前代码更改和任务特定指令的上下文信息。
+
+CodePlan 基于增量依赖分析、变更影响分析和自适应规划算法（符号组件）与神经 LLMs 的创新结合。我们评估了 CodePlan
+在两个代码库级别任务上的有效性： 软件包迁移（C#）和时间相关的代码编辑（Python）。每个任务在多个代码库上进行评估，
+每个代码库都需要对许多文件进行相互依赖的更改（2 至 97 个文件之间）。 以往没有使用 LLMs
+自动化处理这种复杂程度的编码任务。我们的结果显示，与基准相比，CodePlan
+与实际情况更匹配。CodePlan 能够使 5/7 个代码库通过有效性检查（即无错误地构建并进行正确的代码编辑），而基准（没有规划但具有与
+CodePlan 相同类型的上下文信息）则无法使任何一个代码库通过检查 。
+
+我们在https://github.com/microsoft/codeplan 提供了我们的（非专有）数据、评估脚本和补充材料。
