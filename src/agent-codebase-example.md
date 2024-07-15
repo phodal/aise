@@ -1,12 +1,50 @@
 # 代码问答 Agent 示例
 
 ## 示例
+                                       
+### Sweep：issue-to-pull-request
+
+![Sweep](images/sweep-dev-core-algorithm.svg)
+
+Sweep 的核心算法可以总结为以下四个主要阶段：
+
+1. **搜索**：
+    - **目的**：检索相关的代码片段和上下文。
+    - **过程**：根据问题描述查询代码库，获取顶级代码片段。使用 [MPNet](https://huggingface.co/sentence-transformers/all-mpnet-base-v2) 向量化和 DeepLake 向量存储。
+    - **步骤**：
+        - 根据问题上下文搜索代码片段。
+        - 重排。基于提交计数和最新提交时间的启发式方法对片段进行重新排序
+        - 去重和合并代码片段。
+        - 使用 [ctag 总结生成仓库摘要](https://docs.sweep.dev/blogs/understanding-codebase-with-ctags)。
+
+2. **规划**：
+    - **目的**：确定修改和新创建的文件。
+    - **过程**：分析问题的根本原因并规划变更。
+    - **步骤**：
+        - 使用自然语言规划实现方案。
+        - 指定要修改或创建的文件。
+        - 根据需要验证和调整修改方案。
+
+3. **执行**：
+    - **目的**：在代码库中实施规划的变更。
+    - **过程**：
+        - 创建新文件或修改现有文件。
+        - 辨识并描述具体变更及其涉及的行号。
+        - 使用搜索和替换对进行修改。
+        - 对于大文件使用流式方法处理。
+
+4. **验证**：
+    - **目的**：确保实施变更的正确性。
+    - **过程**：
+        - 使用基于LLM和程序的验证检查代码错误和功能。
+        - 进行自我审查，必要时进行迭代。
+        - 利用GitHub Actions进行额外的验证。
+
+从搜索代码片段到验证变更的每个阶段都确保了一种系统化的方法，通过自动化流程和GPT-4驱动的类人推理来进行代码修改和创建。
 
 ### Cody
 
 [How Cody understands your codebase](https://sourcegraph.com/blog/how-cody-understands-your-codebase)
-
-### 提示词组成
 
 #### 如何在提示中使用上下文
 

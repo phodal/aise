@@ -39,6 +39,7 @@
 - [第 3 部分：面向场景构建](./scenario-aise.md)
     - [遗留系统重构](./scenario-legacy-refactor.md)
 - [第 4 部分：AI Agent 辅助软件工程](./agent-for-aise.md)
+    - [编码智能体基础设施](./agent-infrastructure.md)
     - [远程 AI 智能体](./agent-remote.md)
         - [重构 AI 测试生成](./agent-refactoring-test.md)
     - [本地 AI 智能体](./agent-in-local-design.md)
