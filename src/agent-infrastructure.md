@@ -40,3 +40,16 @@ JetBrains 在进行 IDE  搜索时支持 LocalEmbeddingIndexFileManager 的方�
 
 - 该方法速度较慢（每个查询大约1秒），但满足他们的需求。
 - 系统在超过 100 万个嵌入向量时扩展性不佳，但符合他们当前的需求（通常每个代码库文件少于30k）。
+
+### 示例：通义灵码 + RocksDB
+
+```bash
+/Users/phodal/.lingma/tmp/cache/v3.3
+├── 000001.vlog
+├── 00001.mem
+├── DISCARD
+├── KEYREGISTRY
+├── LOCK
+└── MANIFEST
+```
+
