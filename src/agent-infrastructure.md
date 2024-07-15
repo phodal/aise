@@ -6,7 +6,19 @@
 
 BM25 是一种基于概率的信息检索算法，用于评估文档与查询之间的相关性。BM25 算法的核心思想是通过计算文档中的关键词与查询中的关键词之间的匹配程度，来评估文档与查询之间的相关性。
 
-Elasticsearch ？
+[Elasticsearch 默认](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-similarity.html)
+
+TF/IDF 基于相似性，具有内置的 tf 归一化，适用于短字段（如姓名）。详见 [Okapi_BM25](https://en.wikipedia.org/wiki/Okapi_BM25)。
+此相似性具有以下选项：
+
+| 选项                  | 描述                                                           |
+|---------------------|--------------------------------------------------------------|
+| `k1`                | 控制非线性词频归一化（饱和）。默认值为 `1.2`。                                   |
+| `b`                 | 控制文档长度在多大程度上归一化 tf 值。默认值为 `0.75`。                            |
+| `discount_overlaps` | 确定在计算规范时是否忽略重叠标记（位置增量为 0 的标记）。默认情况下，此值为 true，即在计算规范时不计算重叠标记。 |
+
+类型名称：`BM25`
+
 
 ### jaccard相似度
 
