@@ -2,6 +2,11 @@
 
 ## 示例
 
+### watsonx Code Assistant for Z
+
+https://www.ibm.com/products/watsonx-code-assistant-z
+
+
 ### Bloop
 
 [State of Mainframe Modernization](https://www.kyndryl.com/us/en/campaign/state-of-mainframe-modernization)
