@@ -30,7 +30,7 @@
         - [API 测试生成](./gen_api_test.md)
     - [AI 辅助流水线](./gen_ai_for_pipeline.md)
         - [流水线生成](./gen_pipeline.md)
-        - [CI/CD 流水线生成](./gen_cicd.md)
+        - [CI/CD 流水线](./gen_cicd.md)
     - [AI 辅助架构设计](./gen_ai_for_arch.md)
         - [架构设计生成](./gen_arch.md)
     - [AI 运维](./gen_ai_for_ops.md)
