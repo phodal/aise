@@ -2,10 +2,11 @@
 
 ## Google DIIDACT 框架：动态集成开发人员活动
 
+文章：[AI in software engineering at Google: Progress and the path ahead](https://research.google/blog/ai-in-software-engineering-at-google-progress-and-the-path-ahead/)
+
 Google
 在内部探索了[LLM for Dev Activity](https://research.google/blog/large-sequence-models-for-software-development-activities/)
-方式，
-以提升开发人员效率：
+方式， 以提升开发人员效率：
 
 > DIDACT (Dynamic Integrated Developer ACTivity) 是一种用于训练大规模机器学习（ML）模型的软件开发方法。与传统只使用完成代码的方式不同，DIDACT
 > 创新的地方在于，它使用软件开发过程本身作为模型的训练数据来源。这意味着模型不仅能看到开发者在工作时所见的上下文，还能学习他们所采取的行动，从而更好地理解软件开发的动态过程，并与开发者的实际工作方式对齐。
@@ -51,13 +52,6 @@ Paper：[AI-Assisted Assessment of Coding Practices in Modern Code Review](https
 机器学习的最新进展，特别是大型语言模型（LLMs）的能力，表明LLMs适合于代码审查自动化（例如（Tufano等人，2024年，2022年；Hong等人，2022年；Li等人，2022b，a；Thongtanunam等人，2022年））。然而，在规模化部署端到端系统的软件工程挑战仍未被探索。同样，缺乏对这些系统整体效力和用户接受度的外部评估。
 
 本文探讨了部分自动化代码审查流程的可能性，特别是检测最佳实践违规，从而为代码作者提供及时反馈，使审阅员能够专注于整体功能。具体而言，本文报告了我们在Google工业环境中开发、部署和评估AutoCommenter——一种自动化代码审查助手的经验，目前每天由数万名开发人员使用。
-
-总之，本文的贡献包括：
-
-- 基于LLM的代码审查助手系统的总体架构（第3节）。
-- 工具校准和部署描述，覆盖数万名开发人员（第4节）。
-- 系统的评估（第5节）。
-- 总结和讨论所学到的经验（第6节）。
 
 ### DIIDACT 框架：[Build Repair](https://research.google/blog/safely-repairing-broken-builds-with-ml/)
 
