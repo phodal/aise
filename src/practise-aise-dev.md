@@ -14,6 +14,14 @@
 利用大序列模型的最新进展——例如DIDACT，该进展使代码审查、构建修复等工具成为可能——Smart Paste 简化了代码修订过程中的复制粘贴流程。
 在一项涵盖约 4 万名采用该功能的工程师的使用研究中，我们发现 6.9% 的 IDE 粘贴操作使用了 Smart Paste，并且有 42.5% 的接受率，这显著简化了用户的工作流程。
 
+### JetBrains 报告
+
+[Developers save up to 8 hours per week with JetBrains AI Assistant](https://blog.jetbrains.com/ai/2024/04/developers-save-up-to-8-hours-per-week-with-jetbrains-ai-assistant/)
+
+JetBrains Top 5 Features:
+
+![](images/JetBrains-top-5-features.png)
+
 ## 架构
 
 ### 跨 IDE 设计

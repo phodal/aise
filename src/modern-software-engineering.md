@@ -6,6 +6,8 @@
 
 [GitHub AI 驱动的开发者平台](https://github.blog/2023-11-08-universe-2023-copilot-transforms-github-into-the-ai-powered-developer-platform/)
 
+### 工具、平台驱动
+
 
 
 ### [AI 增强的安全左移](https://github.blog/2023-11-08-ai-powered-appsec/)
@@ -15,6 +17,11 @@
 - 自动修复（autofix）静态代码问题 (结合 CodeQL 静态代码分析）
 - 密码扫描检测泄露的密码
 - 生成自定义模式 - 正则表达式
+
+相关文章：
+
+- [CodeQL team uses AI to power vulnerability detection in code](https://github.blog/2023-09-12-codeql-team-uses-ai-to-power-vulnerability-detection-in-code/)
+- [Multi-repository variant analysis: a powerful new way to perform security research across GitHub](https://github.blog/2023-03-09-multi-repository-variant-analysis-a-powerful-new-way-to-perform-security-research-across-github/)
 
 ### AI 辅助研发决策框架
 
@@ -56,7 +63,7 @@
 
 ## 示例：微软
 
-https://www.microsoft.com/insidetrack/blog/transforming-modern-engineering-at-microsoft/
+文章：[Transforming modern engineering at Microsoft](https://www.microsoft.com/insidetrack/blog/transforming-modern-engineering-at-microsoft/)
 
 ### 核心观点总结
 
