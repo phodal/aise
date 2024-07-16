@@ -224,6 +224,17 @@ JetBrains 在进行 IDE 搜索时支持 DiskSynchronizedEmbedding 的方式，�
 
 ### 示例：通义灵码 + RocksDB
 
+RocksDB 是一个开源的嵌入式键值存储引擎，由 Facebook 开发并开源。它在许多方面有着显著的优势：
+
+1. **高性能**：RocksDB 被优化用于快速的随机读/写操作，适合需要高吞吐量和低延迟的应用场景。它支持并发操作，能够有效地处理大量的并发读写请求。
+2. **可调优性**：RocksDB 提供了多种调优选项，允许用户根据具体的应用需求进行配置。例如，可以调整内存使用、写入策略、压缩算法等，以最大化性能和资源利用率。
+3. **持久性**：RocksDB 具备持久化特性，即数据写入后可靠保存。这使得它非常适合作为后端存储引擎，支持需要持久化存储的应用程序。
+4. **可扩展性**：RocksDB 的设计支持数据的水平扩展。它可以在多个节点上部署，通过分区和复制来实现数据的高可用性和可扩展性。
+5. **内存效率**：RocksDB 能够有效地管理内存，尤其是对于大型数据集。它通过有效的缓存策略和紧凑的数据结构，降低了内存占用并提高了整体的效率。
+6. **灵活性**：RocksDB 支持多种数据模型，包括键值对、列族存储等。这种灵活性使得它可以应用于各种不同类型的存储需求，从简单的键值存储到更复杂的列存储系统。
+
+总体来说，RocksDB 在性能、可靠性和灵活性方面都表现出色，使其成为许多大型互联网公司和应用程序的首选存储引擎之一。
+
 ```bash
 /Users/phodal/.lingma/tmp/cache/v3.3
 ├── 000001.vlog
@@ -232,6 +243,25 @@ JetBrains 在进行 IDE 搜索时支持 DiskSynchronizedEmbedding 的方式，�
 ├── KEYREGISTRY
 ├── LOCK
 └── MANIFEST
+```
+
+RocksDB 体积：
+
+```bash
+-rw-r--r--    1 phodal  staff    13M 13 Jul 11:04 librocksdbjni-linux-aarch64-musl.so
+-rw-r--r--    1 phodal  staff    13M 13 Jul 11:02 librocksdbjni-linux-aarch64.so
+-rw-r--r--    1 phodal  staff    16M 13 Jul 11:00 librocksdbjni-linux-ppc64le-musl.so
+-rw-r--r--    1 phodal  staff    17M 13 Jul 11:00 librocksdbjni-linux-ppc64le.so
+-rw-r--r--    1 phodal  staff    13M 13 Jul 11:09 librocksdbjni-linux-riscv64.so
+-rw-r--r--    1 phodal  staff    15M 13 Jul 11:05 librocksdbjni-linux-s390x-musl.so
+-rw-r--r--    1 phodal  staff    15M 13 Jul 11:05 librocksdbjni-linux-s390x.so
+-rw-r--r--    1 phodal  staff    14M 13 Jul 05:39 librocksdbjni-linux32-musl.so
+-rw-r--r--    1 phodal  staff    14M 13 Jul 04:49 librocksdbjni-linux32.so
+-rw-r--r--    1 phodal  staff    14M 13 Jul 06:06 librocksdbjni-linux64-musl.so
+-rw-r--r--    1 phodal  staff    14M 13 Jul 05:11 librocksdbjni-linux64.so
+-rw-r--r--    1 phodal  staff   8.5M 13 Jul 04:28 librocksdbjni-osx-arm64.jnilib
+-rw-r--r--    1 phodal  staff   9.9M 13 Jul 04:12 librocksdbjni-osx-x86_64.jnilib
+-rw-r--r--    1 phodal  staff   8.0M 13 Jul 11:10 librocksdbjni-win64.dll
 ```
 
 ## 相关资源
