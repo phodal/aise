@@ -2,9 +2,11 @@
 
 ## 查询算法
 
-### BM25算法
+### BM25 算法
 
 BM25 是一种基于概率的信息检索算法，用于评估文档与查询之间的相关性。BM25 算法的核心思想是通过计算文档中的关键词与查询中的关键词之间的匹配程度，来评估文档与查询之间的相关性。
+
+![BM25](images/bm25.png)
 
 [Elasticsearch 默认](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-similarity.html)
 
