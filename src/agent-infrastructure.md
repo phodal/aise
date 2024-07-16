@@ -19,14 +19,72 @@ TF/IDF 基于相似性，具有内置的 tf 归一化，适用于短字段（如
 
 类型名称：`BM25`
 
-
-### jaccard相似度
+### Jaccard 相似度
 
 Jaccard 相似度是一种用于计算两个集合之间相似度的方法，它是通过计算两个集合的交集与并集之间的比例来评估它们之间的相似度。
 
-###  TF-IDF
+![Jaccard Similarity](images/calculate-jaccard-similarity.png)
+
+Jaccard 相似度的计算公式如下：
+
+```
+J(A, B) = |A ∩ B| / |A ∪ B|
+```
+
+Kotlin 实现：
+
+```kotlin
+fun similarityScore(set1: Set<String>, set2: Set<String>): Double {
+    val intersectionSize = set1.intersect(set2).size
+    val unionSize = set1.union(set2).size
+    return intersectionSize.toDouble() / unionSize
+}
+```
+
+TypeScript 实现：
+
+```typescript
+function similarityScore(set1: Set<string>, set2: Set<string>): number {
+    const intersectionSize: number = [...set1].filter(x => set2.has(x)).length;
+    const unionSize: number = new Set([...set1, ...set2]).size;
+    return intersectionSize / unionSize;
+}
+```
+
+### TF-IDF
 
 TF-IDF 是一种用于评估文档中关键词重要性的方法，它通过计算关键词在文档中的频率和在整个文档集合中的逆文档频率来评估关键词的重要性。
+
+#### 变体：c-TF-IDF
+
+https://maartengr.github.io/BERTopic/getting_started/ctfidf/ctfidf.html
+
+c-TF-IDF 和传统的 TF-IDF 之间的关键区别在于它们的应用和分析层次：
+
+### 传统的 TF-IDF
+
+- **文档级分析**：TF-IDF 代表词频-逆文档频率。它是一种统计度量，用于评估单词在文档中的重要性相对于整个文档集（语料库）。
+- **计算**：
+    - **词频（TF）**：测量一个术语 \( t \) 在文档 \( d \) 中出现的频率。
+    - **逆文档频率（IDF）**：测量一个术语在所有文档中的重要性。计算公式是 \( \log \left( \frac{N}{n_t} \right) \)，其中 \(
+      N \) 是文档总数，\( n_t \) 是包含术语 \( t \) 的文档数。
+    - **TF-IDF 得分**：TF 和 IDF 的乘积。这个得分随着单词在文档中出现次数的增加而增加，但会被该单词在语料库中频率的增长所抵消。
+
+### c-TF-IDF
+
+- **簇/主题级分析**：c-TF-IDF 将 TF-IDF 调整为在簇或类别层面上工作，而不是单个文档层面。这种方法在主题建模中特别有用，例如在
+  BERTopic 中。
+- **计算**：
+    - **基于类别的词频（c-TF）**：每个簇（或类别）被视为单个文档。词频是基于这个合并文档中单词的频率计算的，并且针对主题大小的差异进行标准化。
+    - **基于类别的逆文档频率（c-IDF）**：调整以考虑每个类别的平均单词数。计算公式是 \( \log \left( 1 + \frac{A}{f_x} \right)
+      \)，其中 \( A \) 是每个类别的平均单词数，\( f_x \) 是单词 \( x \) 在所有类别中的频率。
+    - **c-TF-IDF 得分**：c-TF 和 c-IDF 的乘积，给出一个单词在特定簇中的重要性相对于其他簇的得分。
+
+### c-TF-IDF 的优势
+
+- **更好的主题表示**：通过关注文档的簇，c-TF-IDF 强调了一个簇中的文档与其他簇的文档之间的区别。
+- **定制和模块化**：BERTopic 中的 c-TF-IDF 模型可以进行调优和定制，例如，应用不同的加权方案或减少频繁出现的词。
+- **增强的鲁棒性**：像 bm25_weighting 和 reduce_frequent_words 这样的选项提供了对通常不会被过滤掉的常见词的额外鲁棒性。
 
 ## 向量数据存储
 
