@@ -1,7 +1,12 @@
 # AI4SE 体系设计
 
-设计适合自己公司的AI4SE（Artificial Intelligence for Software
-Engineering，人工智能用于软件工程）体系是一个复杂且多层次的过程，需要结合公司具体情况、业务需求和现有资源。以下是一些关键步骤和建议，帮助您设计适合自己公司的AI4SE体系：
+设计适合自己公司的 AI4SE（Artificial Intelligence for Software
+Engineering，人工智能用于软件工程）体系是一个复杂且多层次的过程，需要结合公司具体情况、业务需求和现有资源。
+
+- Google
+- Microsoft
+- GitHub Copilot ?
+
 
 ### AI4SE 体系设计的关键点
 
