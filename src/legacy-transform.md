@@ -1,13 +1,7 @@
 # 系统迁移
 
-## 示例：Amazon Q [迁移 Agent](https://aws.amazon.com/cn/q/developer/code-transformation/)
+### 遗留基础设施改造
 
-- [Upgrading language versions with the Amazon Q Developer Agent for code transformation](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/code-transformation.html)
-- [Modernize your Java application with Amazon Q Developer](https://aws.amazon.com/cn/blogs/devops/modernize-your-java-application-with-amazon-q-developer/)
-
-### 遗留基础设施改造过程总结
-
-**引言**
 许多组织面临维护关键遗留Java应用程序的挑战，这些应用程序由于框架过时、代码无文档和安全漏洞而变得难以维护。现代化这些应用程序是必要且具有挑战性的任务。Amazon
 Q Developer简化并加速了这一过程。
 
