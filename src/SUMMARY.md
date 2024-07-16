@@ -4,6 +4,7 @@
 - [前言：AI4SE 的 2024 趋势](./ai4se.md)
 - [第 0 部分：软件生命周期驱动的 AI4SE](./aise-lifecycle.md)
     - [DevOps 驱动的 AI4SE](./devops-driven-aise.md)
+    - [开发者活动驱动](./dev-activity-driven.md)
     - [现代软件工程转型](./modern-software-engineering.md)
 - [第 1 部分：AI4SE 体系设计](./design-aise.md)
     - [AI4SE 体系设计原则](./design-aise-principle.md)
