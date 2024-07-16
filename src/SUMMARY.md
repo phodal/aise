@@ -38,6 +38,7 @@
     - [AI 运维](./gen_ai_for_ops.md)
         - [运维监控生成](./gen_monitor.md)
         - [根因分析生成](./gen_root_cause.md)
+    - [系统迁移](./legacy-transform.md)
 - [第 3 部分：面向场景构建](./scenario-aise.md)
     - [遗留系统重构](./scenario-legacy-refactor.md)
 - [第 4 部分：AI Agent 辅助软件工程](./agent-for-aise.md)
