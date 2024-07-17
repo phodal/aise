@@ -88,6 +88,86 @@ Sweep 的核心算法可以总结为以下四个主要阶段：
 
 这个完整的提示，包括所有三部分内容，然后被发送到LLM。LLM根据提示中包含的信息以及其基线模型中的信息进行工作。任何有关用户代码库的问题，只有在上下文（作为提示的一部分发送）提供了足够的信息时，LLM才能回答。
 
+#### 问答示例
+
+例如，用户可能会询问：`How it auto generate test for Java?`
+
+Retrieval-based QA：
+
+```bash
+
+Searched entire codebase for relevant files
+
+java/src/test/kotlin/cc/unitmesh/idea/java/JavaAutoProcessorTest.kt
+java/src/test/kotlin/cc/unitmesh/idea/java/JavaCodeProcessorTest.kt
+java/src/test/kotlin/cc/unitmesh/idea/java/JavaSpringCodeCreatorTest.kt
+java/src/test/kotlin/cc/unitmesh/idea/java/JavaParseUtilTest.kt
+java/src/test/kotlin/cc/unitmesh/idea/provider/JvmAutoDevFlowTest.kt
+src/main/resources/intentionDescriptions/DefaultDocumentationIntention/description.html
+java/src/test/kotlin/cc/unitmesh/idea/provider/JvmPromptStrategyTest.kt
+java/src/test/kotlin/cc/unitmesh/idea/java/SpringLayerCharacteristicTest.kt
+java/src/main/kotlin/cc/unitmesh/idea/provider/JavaTestDataBuilder.kt
+java/src/main/kotlin/cc/unitmesh/idea/context/JavaCodeModifier.kt
+webstorm/src/main/kotlin/cc/unitmesh/ide/webstorm/provider/testing/JavaScriptTestCodeModifier.kt
+java/src/test/kotlin/cc/unitmesh/idea/context/JavaContextCollectionUtilsKtTest.kt
+docs/features/auto-dev.md
+README.md
+docs/index.md
+```
+
+Here are some ways AutoDev can auto generate tests for Java code:
+
+- When you create a new Java class or method, AutoDev provides an intention action to generate a test stub. This creates
+  a skeleton test class and methods in the test folder.
+- When you make changes to existing code, AutoDev analyzes the changes and suggests relevant tests to add or update via
+  intention actions. For example, adding a new method would suggest creating a test method.
+- AutoDev can generate test data models based on method parameters and return types. It analyzes the code structures and
+  provides sample test data.
+- For common architectures like Spring MVC, AutoDev has predefined templates to generate component tests for layers like
+  Controllers, Services etc.
+- AutoDev integrates with test runners like JUnit. It can auto-run tests and if there are failures, provide quick fixes
+  and suggestions to update tests.
+- The test generation works both for unit tests and integration tests. AutoDev looks at package names, configs and
+  contexts to determine which type of tests to create.
+
+In summary, AutoDev aims to reduce manual test writing by auto generating skeletons and suggestions, analyzing contexts
+and architectures, and integrating with testing workflows. Let me know if you have any other questions!
+
+中文：`AutoDev 是如何实现自动生成 Java 测试代码的？`
+
+```bash
+Searched entire codebase for relevant files
+
+java/src/test/kotlin/cc/unitmesh/idea/provider/JvmAutoDevFlowTest.kt
+src/main/resources/prompts/openai/update_service_method.vm
+src/main/resources/intentionDescriptions/AutoDevIntentionHelper/description.html
+src/main/resources/intentionDescriptions/AutoDevIntention/description.html
+src/main/resources/prompts/openai/create_service_and_repository.vm
+plugin/description.html
+src/main/resources/intentionDescriptions/DefaultDocumentationIntention/description.html
+java/src/test/kotlin/cc/unitmesh/idea/java/JavaCodeProcessorTest.kt
+java/src/test/kotlin/cc/unitmesh/idea/java/JavaParseUtilTest.kt
+java/src/test/kotlin/cc/unitmesh/idea/java/JavaAutoProcessorTest.kt
+java/src/main/kotlin/cc/unitmesh/idea/flow/JvmAutoDevFlow.kt
+src/main/resources/prompts/openai/create_controller.vm
+README.md
+docs/features/auto-dev.md
+docs/index.md
+```
+
+根据 AutoDev 的代码,它实现自动生成 Java 测试代码的主要方式是:
+
+1. 提供一个创建测试的 Intention 动作。当在 Java 代码中调用这个 Intention 时,会触发自动生成测试代码的逻辑。
+2. 在后台使用 OpenAI Codex 模型自动生成测试代码。主要流程是:
+   - 收集当前需要测试的 Java 代码作为 Prompt。
+   - 向 OpenAI 提交生成测试代码的请求。
+   - 获取 OpenAI 返回的测试代码。
+   - 处理测试代码,插入到项目中合适的测试类或测试方法中。
+3. 生成的测试代码会包含基本的单元测试框架代码,以及针对主代码的一些典型测试用例。
+4. 生成后的测试代码还会尝试自动运行,如果测试失败,会再次请求 OpenAI 生成修复测试代码的建议。
+
+所以整体上,AutoDev 主要通过 UI 操作触发,配合 OpenAI 自动生成代码的能力,来实现自动化测试代码的生成。
+
 #### 问答数据流
 
 ![Cody Chat Dataflow](images/cody-chat-dataflow.png)
