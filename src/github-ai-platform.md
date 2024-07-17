@@ -25,7 +25,7 @@
 
 [A developer’s second brain: Reducing complexity through partnership with AI](https://github.blog/2024-01-17-a-developers-second-brain-reducing-complexity-through-partnership-with-ai/)
 
-- 发现 1：认知负担确实存在，开发人员通过两种方式体验它。（太乏味了和这伤害了我的大脑”）
+- 发现 1：认知负担确实存在，开发人员通过两种方式体验它。（太乏味了和这伤害了我的大脑"）
 - 发现 2：开发者渴望 AI 协助完成复杂任务，但我们必须把握好界限
 - 发现 3：复杂任务由四个部分组成：理解（建构感知）、决策、行动计划、执行
 - 发现 4：开发者对于在理解和制定行动计划方面，接受 AI 的协助。

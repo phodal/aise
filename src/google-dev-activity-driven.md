@@ -38,7 +38,7 @@ Google
 
 Paper：[AI-Assisted Assessment of Coding Practices in Modern Code Review](https://arxiv.org/abs/2405.13565)
 
-现代代码审查（Sadowski等人，2018年；Rigby和Bird，2013年）（与整体代码审查（Fagan，1976年）相比）多年来在开源和工业环境中有机地发展壮大。已经形成了一组常见的同行评审标准（Rigby和Bird，2013年；Rigby等，2012年；Bacchelli和Bird，2013年），其中包括编码最佳实践。许多公司、项目甚至编程语言都正式定义了这些标准，以“样式指南”的形式（goo，2024；lin，2024；pyt，2024；rus，2024），通常涵盖以下方面：
+现代代码审查（Sadowski等人，2018年；Rigby和Bird，2013年）（与整体代码审查（Fagan，1976年）相比）多年来在开源和工业环境中有机地发展壮大。已经形成了一组常见的同行评审标准（Rigby和Bird，2013年；Rigby等，2012年；Bacchelli和Bird，2013年），其中包括编码最佳实践。许多公司、项目甚至编程语言都正式定义了这些标准，以"样式指南"的形式（goo，2024；lin，2024；pyt，2024；rus，2024），通常涵盖以下方面：
 
 - 格式化：行限制、空格和缩进的使用、括号和大括号的放置等；
 - 命名：大写、简洁、描述性等；
