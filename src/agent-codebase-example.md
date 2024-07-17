@@ -12,6 +12,8 @@
 
 ### Sweep：issue-to-pull-request 功能
 
+相关文章：[Sweep's Core Algorithm - Using Retrieval Augmented Generation (RAG) to clear your GitHub Backlog](https://docs.sweep.dev/blogs/sweeps-core-algo)
+
 ![Sweep](images/sweep-dev-core-algorithm.svg)
 
 Sweep 的核心算法可以总结为以下四个主要阶段：
@@ -52,6 +54,44 @@ Sweep 的核心算法可以总结为以下四个主要阶段：
 
 从搜索代码片段到验证变更的每个阶段都确保了一种系统化的方法，通过自动化流程和GPT-4驱动的类人推理来进行代码修改和创建。
 
+Sweep 开始搜索相关代码片段的步骤如下：
+
+1. 使用 MPNet 嵌入和 DeepLake 向量存储，通过标题和描述在代码片段上下文中查询，并检索前 100 个片段。我们提前使用基于 CST 的自定义分块器对文件进行分块。更多关于我们的搜索基础设施的详细介绍请参见 [https://docs.sweep.dev/blogs/search-infra](https://docs.sweep.dev/blogs/search-infra) 和 [https://docs.sweep.dev/blogs/building-code-search](https://docs.sweep.dev/blogs/building-code-search)。
+2. 使用基于提交次数和最新提交时间的启发式方法重新排序片段，并选取前 4 个。假设最新提交且提交次数最多的文件更有可能再次被编辑。在这一点上，我们还会添加任何直接提到的文件。
+3. 对片段进行去重和融合。例如，如果获取到的片段是 main.py:0-50 和 main.py:51-100，则它们会被融合为 main.py:0-100。然后我们在每个方向上扩展每个片段 25 行，因此 main.py:25-75 变为 main.py:0-100。
+4. 使用 ctag 摘要生成仓库的摘要。摘要包含重新排序后前 10 个文件的变量名和函数声明。这以目录树的形式呈现：从根目录开始一直到文件以及文件中的类、方法和变量。只有前 10 个文件的同级文件会被包含在内。
+
+此时的最终上下文大致如下：
+
+```bash
+<relevant_snippets>
+<snippet file_path="main.py" start_line="1" end_line="56">
+import numpy as np
+...
+</snippet>
+<snippet file_path="test.py" start_line="1" end_line="32">
+import pytest
+...
+</snippet>
+...
+</relevant_snippets>
+ 
+<repo_tree>
+.gitignore
+jp-app/
+|- App.xaml
+|- App.xaml.cs
+|   |- namespace jp_app
+|   |- class App
+|   |- method App (ISystemLanguageService systemLanguageService)
+|   |- method OnStart ()
+</repo_tree>
+ 
+Repo name: sweepai/sweep: an AI junior dev
+Username: kevinlu1248
+Query: Sweep: Use os agnostic temp directory for windows
+```
+
 ### Cody
 
 [How Cody understands your codebase](https://sourcegraph.com/blog/how-cody-understands-your-codebase)
@@ -61,7 +101,7 @@ Sweep 的核心算法可以总结为以下四个主要阶段：
 当用户通过聊天消息或命令向 Cody 查询时，Cody 首先会编译一个 prompt。Cody 将用户的输入整理成一个提示词，以便从大型语言模型（LLM）中获取最佳响应。
 提示分为三部分：
 
-1. **前缀（Prefix）**。描述所需输出的可选说明。Cody经常使用前缀，例如，当开发人员触发一个命令时，这个命令是预定义的任务，旨在返回特定的输出格式。例如，对于“Test”命令，Cody会使用前缀来定义输出格式为单元测试。
+1. **前缀（Prefix）**。描述所需输出的可选说明。Cody经常使用前缀，例如，当开发人员触发一个命令时，这个命令是预定义的任务，旨在返回特定的输出格式。例如，对于“Test"命令，Cody会使用前缀来定义输出格式为单元测试。
 2. **用户输入（User input）**。用户提供的查询。
 3. **上下文（Context）**。Cody查找并检索的附加信息，以帮助LLM提供相关答案。
 
@@ -69,7 +109,7 @@ Sweep 的核心算法可以总结为以下四个主要阶段：
 
 #### 示例说明
 
-例如，当用户触发 Cody 的 “Explain” 命令时，Cody生成的提示可能如下所示：
+例如，当用户触发 Cody 的 “Explain" 命令时，Cody生成的提示可能如下所示：
 
 - **前缀**：
   ```
@@ -242,7 +282,7 @@ tree-sitter 仓库映射取代了 aider 最初使用的基于 ctags 的映射。
 
 一些可能减少映射数据量的方法包括：
 
-- 精简全局映射，优先考虑重要符号并丢弃“内部”或其他全局不相关的标识符。可能可以借助 gpt-3.5-turbo 在灵活且与语言无关的方式中进行这种精简。
+- 精简全局映射，优先考虑重要符号并丢弃“内部"或其他全局不相关的标识符。可能可以借助 gpt-3.5-turbo 在灵活且与语言无关的方式中进行这种精简。
 - 提供机制让 GPT 从精简的全局映射子集开始，并允许它要求查看其感觉与当前编码任务相关的子树或关键词的更多细节。
 - 尝试分析用户给出的自然语言编码任务，并预测什么样的仓库映射子集是相关的。在特定的仓库内进行先前编码对话的分析可能有助于此工作。针对
   chat history、仓库映射或代码库的向量和关键字搜索可能有所帮助。
