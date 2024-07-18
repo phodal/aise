@@ -60,8 +60,6 @@ TF/IDF 基于相似性，具有内置的 tf 归一化，适用于短字段（如
 
 [介绍 Elasticsearch Relevance Engine™ — 为 AI 变革提供高级搜索能力](https://www.elastic.co/cn/blog/may-2023-launch-announcement)
 
-
-
 ### Jaccard 相似度
 
 Jaccard 相似度是一种用于计算两个集合之间相似度的方法，它是通过计算两个集合的交集与并集之间的比例来评估它们之间的相似度。
@@ -263,6 +261,29 @@ RocksDB 体积：
 -rw-r--r--    1 phodal  staff   9.9M 13 Jul 04:12 librocksdbjni-osx-x86_64.jnilib
 -rw-r--r--    1 phodal  staff   8.0M 13 Jul 11:10 librocksdbjni-win64.dll
 ```
+
+### 示例：Tabnine + [Qdrant](https://docs.tabnine.com/main/welcome/readme/personalization/tabnines-personalization-in-depth
+
+RAG 是一种常见的人工智能框架，通过添加信息检索组件来提高LLM生成答案的准确性，该组件为模型的每个查询添加数据和上下文。 RAG
+的实现包括两个组成部分：
+
+- 索引建立：Tabnine 构建了 RAG 索引，以便快速有效地检索相关数据。这些索引用于代码完成和聊天，可以基于本地代码或全局代码，依赖于
+  IDE 工作空间或组织的全局代码库中的所有代码。
+- 查询：对于 Tabnine 收到的每个用户查询（无论是显式还是隐式的），Tabnine 会从 RAG
+  索引中检索相关的代码上下文，并将其作为上下文添加到AI模型的提示中。结果是 Tabnine 提供了更准确的代码建议，更符合用户代码库的需求。
+
+当涉及到 RAG 索引的内容时，可以按照以下目录进行总结：
+
+1. **索引类型**：代码补全索引和聊天索引
+2. **索引范围**：本地索引：基于每个开发者的IDE工作空间、全局索引：基于整个组织的代码库
+3. **被索引的文件类型**：符合特定文件扩展名的文件、未列在 .ignore 或 .gitignore 中的文件、不包括特定扩展名的文件："md", "
+   yaml", "yml", "json", "lock", "xml", "gradle", "bash", "sh", "txt", "csv"
+4. **索引生命周期**：本地代码补全和聊天上下文索引的创建和增量更新、连接到组织代码库的索引的定期更新
+5. **索引过程**：向量嵌入应用于每个代码块、代码补全索引计算在开发者的本地机器上运行、聊天索引计算需要 GPU，在 Tabnine 服务器上执行
+6. **索引位置和持久化**：持久化在最终用户本地机器上的向量数据库（qdrant）
+7. **与组织代码库连接的集成**：与 GitHub、GitLab 或 Bitbucket 等主要 Git 托管平台的集成、保持现有权限模型，只允许用户访问其有权限的存储库
+
+这些总结点可以帮助理解 RAG 索引的不同方面和实现方式。
 
 ## 相关资源
 
