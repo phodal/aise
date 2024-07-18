@@ -30,3 +30,19 @@ Diff：
 
 $currentChanges
 ```
+
+### JetBrains 示例
+
+提交信息：
+
+    Your task is to generate a well-read summary of changes made in the project.
+    The paragraph should have less than 10 sentences and less than 300 words. Summarize the following commit messages.
+
+    Given the below code differences (diffs), please generate a concise, clear, and straight-to-the-point commit message.
+    Make sure to prioritize the main action.
+    Avoid overly verbose descriptions or unnecessary details.
+    Start with a short sentence in imperative form, no more than 50 characters long.
+    Then leave an empty line and continue with a more detailed explanation.
+    Write only one sentence for the first part, and two or three sentences at most for the detailed explanation.
+
+
