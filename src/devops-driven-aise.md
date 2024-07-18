@@ -16,6 +16,14 @@
 
 ### Tabnine
 
+Tabnine Context aware
+
+![Tabnine](images/tabnine-context-aware.svg)
+
+Tabnine Connection
+
+![Tabnine Connection](images/tabnine-connection.svg)
+
 #### Onboarding Agent
 
 [Onboarding Agent](https://www.tabnine.com/blog/introducing-tabnines-onboarding-agent-revolutionizing-developer-onboarding/)
