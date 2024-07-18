@@ -5,7 +5,7 @@
 - [第 0 部分：软件生命周期驱动的 AI4SE](./aise-lifecycle.md)
 - [第 1 部分：AI4SE 体系设计](./design-aise.md)
     - [AI4SE 体系设计原则](./design-aise-principle.md)
-    - [Tabnine：AI 工具与 DevOps 驱动的 AI4SE](./tabnine-devops-driven-aise)
+    - [Tabnine：AI 工具与 DevOps 驱动的 AI4SE](./tabnine-devops-driven-aise.md)
     - [Google：开发者活动驱动](./google-dev-activity-driven.md)
     - [GitHub：AI 平台工程赋能开发者](./github-ai-platform.md)
 - [第 2 部分：AI IDE 辅助软件工程](./practise-aise-landscape.md)

@@ -1,20 +1,60 @@
-# DevOps 驱动的 AI4SE
+# Tabnine DevOps 驱动的 AI4SE
 
-工具示例：
+尽管 Tabnine 的一些观点和产品示例是虚构的，但是他们的技术博客和产品展示给我们提供了一些有趣的想法，可以帮助我们更好地理解 AI4SE 的未来。
 
-| 环节        | 头部                  | 工具                                           | 特点                                                                                | 典型工具                                                          |
-|-----------|---------------------|----------------------------------------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------|
-| 需求/项目管理   | Atlassian           | Jira AI Assistant, Atlassian Intelligence    | 构建交互式 AI 需求编辑器，提升需求编写效率。扩大生成式 AI 使用触点，提供 AI 跨工具链能力。                               | Jira AI Assistant, Atlassian Intelligence                     |
-| 代码与 CI/CD | GitHub              | GitHub Copilot, Copilot X, Copilot Workspace | 围绕代码开发、协作、构建为核心，以开发者体验作为度量体系；                                                     | GitHub Copilot, Copilot X, Copilot Workspace, Dynatrace Davis |
-| 测试        |                     | Testim Copilot                               | 生成式 AI 测试工具，提供测试用例生成、自动化测试、测试报告等功能。                                               | Testim                                                        |
-| 文档与协作     | Atlassian           | Atlassian Rovo                               | 通过生成式 AI 解锁企业知识的工具，内建和自定义知识管理智能体。                                                 | Atlassian Rovo                                                |
-| 基础设施      | AWS/Sysdig          | Amazon Q, Sysdig Sag                         | 在云平台上，关注在 AI 重新定义"安全左迁"。结合生成式 AI 与传统 AI 工具，进行云基础设施排错、问答、网络诊断等。结合云平台，提供对应 AI 辅助能力。 | Amazon Q, Sysdig Sag                                          |
-| 可观测性      | New Relic/Dynatrace | NewRelic Grok, Dynatrace Davis               | 结合传统判别式 AI 工具，无缝辅助问题定位和修复，与问题回顾。围绕新兴 AI 技术栈构建 AI 应用可观测性。                          | NewRelic Grok                                                 |
-| 开发者工具     | JetBrains           | AI Assistant, Grazie                         | 围绕开发人员日常活动，构建全面的 AI 辅助；在 IDE 构建精确的上下文，以获得高质量生成内容。                                 | AI Assistant, Grazie                                          |
+一些相关的文章：
 
-## 示例
+- 2022 年的：[From CI to AI: The AI layer in your organization](https://www.tabnine.com/blog/from-ci-to-ai-the-ai-layer-in-your-organization/)
+- 2024 年的：[How AI code assistants speed up and simplify the SDLC](https://www.tabnine.com/blog/how-ai-code-assistants-speed-up-and-simplify-the-sdlc/)
 
-### Tabnine
+人工智能（AI），特别是生成式AI，正在变革和简化软件开发生命周期（SDLC）。以下是 AI 如何在每个阶段辅助 SDLC 的总结：
+
+1. **规划:**
+   - 像 Tabnine 这样的 AI 工具帮助开发人员快速查找和理解项目中的现有代码。
+   - 它们减少了搜索信息所花的时间，直接根据本地和全球代码库的上下文提供编码问题的答案。
+
+2. **创建:**
+   - AI 协助代码补全和生成。开发人员可以依赖自动补全或使用自然语言描述需求并生成代码。
+   - 这加速了低复杂度任务（例如创建简单类）并支持高复杂度任务（例如解析数据数组）。
+
+3. **测试:**
+   - AI 自动创建单元测试，改善代码覆盖率并减少开发人员编写测试所花的时间。
+   - 它生成测试用例和断言，符合项目现有的测试框架。
+
+4. **修复错误:**
+   - AI 直接在 IDE 中建议修复已识别的错误，帮助开发人员迅速解决问题，而无需进行大量手动调查。
+   - 它基于错误的具体上下文提供个性化解决方案。
+
+5. **文档编写:**
+   - AI 为代码生成全面且标准化的文档，包括API指南、注释和内联文档。
+   - 这提高了代码可读性，简化了维护和新员工的培训过程。
+
+6. **维护:**
+   - AI 通过提供现有代码的概述和解释，辅助代码维护。
+   - 它帮助重构和修改代码，提供上下文相关的建议，简化新开发人员的入职过程。
+
+### AI在SDLC中的优势：
+
+- **效率和生产力:**
+   - AI 显著减少了开发人员的任务时间，例如，代码重构时间减少 30%，代码生成时间减少 45%，文档编写时间减少 50%。
+   - 它将高复杂度任务的完成率提高了 30%。
+
+- **开发人员满意度:**
+   - AI 工具提高了开发人员专注于有意义工作的能力，使满意度从45%提高到88%。
+
+- **采用和集成:**
+   - AI 无缝集成到主要 IDE 中，并支持多种编程语言和框架。
+   - 可定制模型可以在特定数据上进行训练，以提高输出质量。
+
+### 软件开发中AI的未来：
+
+- AI将全面了解组织的整个工作区，导致全面的测试覆盖率和文档编写。
+- 它将显著减少代码维护所花的时间，使团队能够专注于创新。
+- 像Tabnine这样的AI工具提供安全、可定制且上下文相关的解决方案，满足企业需求，确保知识产权的控制和法律标准的合规。
+
+通过解决这些关键领域，AI帮助软件开发团队克服了高工作量、复杂需求、技术债务和人才保留等挑战，最终提高了SDLC的整体效率和效果。
+
+![CI to AI](images/tabnine-ci-to-ai.png)
 
 Tabnine Context aware
 
@@ -24,7 +64,9 @@ Tabnine Connection
 
 ![Tabnine Connection](images/tabnine-connection.svg)
 
-#### Onboarding Agent
+## Tabnine 功能实现示例
+
+### Onboarding Agent
 
 [Onboarding Agent](https://www.tabnine.com/blog/introducing-tabnines-onboarding-agent-revolutionizing-developer-onboarding/)
 
@@ -58,7 +100,7 @@ Onboarding Agent 是 Tabnine Chat 中的一项新功能，专为开发人员在�
 
 Onboarding Agent 代表了开发工具领域的重要进展，旨在提升开发效率，加速项目启动时间，为组织带来更高的创新能力和竞争力。
 
-#### Tabnine + Jira：Jira-to-code
+### Tabnine + Jira：Jira-to-code
 
 [Tabnine + Atlassian Jira](https://www.tabnine.com/blog/unveiling-tabnines-vision-for-the-future-the-atlassian-jira-to-code-ai-agent/)
 
@@ -96,7 +138,7 @@ AI智能体目前还处于早期阶段，但我们对它如何真正改变软件
 
 Tabnine的Jira-to-code AI智能体仍在开发中，我们正在内部进行实验，以改进其支持上述挑战的能力。我们将逐步发布能够根据来自Jira的信息对所有Tabnine智能体进行上下文化的能力。敬请关注。
 
-#### Tabnine + Bitbucket
+### Tabnine + Bitbucket
 
 [Tabnine + Atlassian Bitbucket](https://www.tabnine.com/blog/tabnine-atlassian-ai-enabled-software-development-built-around-you/)
 
