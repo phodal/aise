@@ -1,7 +1,46 @@
 # 本地 AI 智能体
 
 
-## 示例：AutoDev for VSCode
+### JetBrains
+
+#### Function Calling
+
+    The function presented serves as a comprehensive search utility within JetBrains IDEs,
+    It behaves like exact_search.
+    The only difference is that this function allows not exact queries, as search is embedding-based in this case
+    Use this function, IF YOU DO NOT KNOW THE **EXACT** NAME the named entity you are looking for OR if exact_search failed.",
+    
+    ```json
+    {
+        "type": "object",
+        "properties": {
+            "searchType": {
+                "type": "string",
+                "enum": ["actions", "symbols", "classes", "files"]
+            },
+            "query": {
+                "type": "string",
+                "description": "Query in textual form for searching by entity names."
+            }
+        },
+        "required": ["searchType", "query"]
+    }
+    ```
+
+exact_search:
+
+```markdown
+This function serves as a robust search tool in JetBrains IDEs, allowing you to find  IDE actions (like \"save file\", \"open file\"),
+symbols (functions, classes, methods), specific classes, and files containing project info like README.md. 
+The search is based on the exact names of these entities, not their content, so craft your search queries accordingly.
+
+Use this function if the exact name of what you're searching for is available, and fallback to semantic_search if unsure or unsuccessful.
+In general PREFER this function over semantic_search, as the second one is more expensive. (for example if user specifies the exact class name like \"what does class <CLASS_NAME> do\")
+
+It provides a list of search results and their IDs and could return content for short results. Avoid mentioning IDs in the response.
+```
+
+### 示例：AutoDev for VSCode
 
 
 
