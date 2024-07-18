@@ -92,3 +92,11 @@ $selection
 // - Method 'updatePost(java.lang.Long, com.phodal.shire.demo.entity.BlogPost)' is never used
 // - String can be replaced with text block
 
+
+## 其它
+
+### 相关资源
+
+[AI code refactoring: 7 ways Tabnine transforms refactoring](https://www.tabnine.com/blog/ai-code-refactoring-7-ways-tabnine-transforms-refactoring/)
+
+
