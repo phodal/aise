@@ -8,6 +8,7 @@
     - [Tabnine：AI 工具与 DevOps 驱动的 AI4SE](./tabnine-devops-driven-aise.md)
     - [Google：开发者活动驱动](./google-dev-activity-driven.md)
     - [GitHub：AI 平台工程赋能开发者](./github-ai-platform.md)
+    - [Gitlab：赋能开发者的 AI4SE](./gitlab-ai4se.md)
 - [第 2 部分：AI IDE 辅助软件工程](./practise-aise-landscape.md)
     - [章节 0：练习环境准备](./practise-env-setup.md)
         - [基于示例展示：重构代码](./design-example-refactor.md)

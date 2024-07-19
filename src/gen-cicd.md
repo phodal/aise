@@ -2,6 +2,27 @@
 
 ## 示例
 
+### Gitlab Build 修复
+      
+[Developing GitLab Duo: Blending AI and Root Cause Analysis to fix CI/CD pipelines](https://about.gitlab.com/blog/2024/06/06/developing-gitlab-duo-blending-ai-and-root-cause-analysis-to-fix-ci-cd/)
+
+示例场景：
+
+- Analyze a Python dependency error
+- Analyze missing Go runtime
+
+Scene:
+
+- When you are running into Kubernetes deployment errors or timeouts.
+- With OpenTofu or Terraform IaC pipelines failing to provision your cloud resources.
+- When the Ansible playbook fails with a cryptic permission error in CI/CD.
+- When the Java stack trace is 10 pages long.
+- With a shell script highlighting an execution error.
+- When a Perl script fails in a single line, which is the only line in the script.
+- When the CI/CD job times out and it is unclear which section would cause this.
+- When a network connection timeout is reached, and you think it cannot be DNS.
+
+
 ### Google Build 修复
 
 [Safely repairing broken builds with ML](https://research.google/blog/safely-repairing-broken-builds-with-ml/)
