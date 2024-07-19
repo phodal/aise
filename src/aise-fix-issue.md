@@ -13,7 +13,7 @@
 ### 方法论
 
 1. **数据收集**：
-    - 收集表示代码更改的操作转换（OTs， Operational Transformations ）。
+    - 收集表示代码更改的操作转换（[OTs](https://web.archive.org/web/20200406135608/http://www.codecommit.com/blog/java/understanding-and-applying-operational-transformation)）。
     - 记录会话事件，包括 LSP 诊断、CodeMirror 操作、包安装、代码执行和 shell 命令。
 
 2. **数据重建**：
