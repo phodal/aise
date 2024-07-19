@@ -2,8 +2,8 @@
 
 - [简介](./README.md)
 - [前言：AI4SE 的 2024 趋势](./ai4se.md)
-- [第 0 部分：软件生命周期驱动的 AI4SE](./aise-lifecycle.md)
 - [第 1 部分：AI4SE 体系设计](./design-aise.md)
+    - [软件生命周期驱动的 AI4SE](./aise-lifecycle.md)
     - [AI4SE 体系设计原则](./design-aise-principle.md)
     - [Tabnine：AI 工具与 DevOps 驱动的 AI4SE](./tabnine-devops-driven-aise.md)
     - [Google：开发者活动驱动](./google-dev-activity-driven.md)
