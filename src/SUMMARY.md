@@ -15,7 +15,7 @@
     - [章节 1：研发数字化](./aise-digital-engineering.md)
         - [知识管理](./aise-knowledge-management.md)
         - [关联的提交信息](./aise-commit-message.md)
-        - [需求智能化](./aise-requirement)
+        - [需求智能化](./aise-requirement.md)
     - [AI 辅助开发](./aise-dev.md)
         - [代码补全](./aise-code-completion.md)
         - [代码注释生成](./aise-gen-comment.md)
