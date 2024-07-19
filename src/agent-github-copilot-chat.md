@@ -1,4 +1,4 @@
-# Copilot Chat 是如何工作的
+# 编码智能体：Copilot Chat 是如何工作的
 
 ```markdown
 1. Deciding which workspace information to collect

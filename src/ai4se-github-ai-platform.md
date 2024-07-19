@@ -1,4 +1,4 @@
-# GitHub：AI 平台工程赋能开发者
+# AI 辅助软件工程：GitHub 的 AI 平台工程赋能开发者
 
 ## 示例：GitHub
 

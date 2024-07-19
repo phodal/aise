@@ -1,4 +1,4 @@
-# Tabnine DevOps 驱动的 AI4SE
+# AI 辅助软件工程：Tabnine DevOps 驱动的 AI4SE
 
 尽管 Tabnine 的一些观点和产品示例是虚构的，但是他们的技术博客和产品展示给我们提供了一些有趣的想法，可以帮助我们更好地理解 AI4SE 的未来。
 

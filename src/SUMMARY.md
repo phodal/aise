@@ -9,7 +9,7 @@
     - [Google：开发者活动驱动](./ai4se-google-dev-activity-driven.md)
     - [GitHub：AI 平台工程赋能开发者](./ai4se-github-ai-platform.md)
     - [Gitlab：赋能开发者的 AI4SE](./ai4se-gitlab.md)
-- [第 2 部分：AI IDE 辅助软件工程](./practise-ai4se-landscape.md)
+- [第 2 部分：AI 辅助软件工程](./practise-ai4se-landscape.md)
     - [章节 0：练习环境准备](./practise-ai4se-env-setup.md)
         - [基于示例展示：重构代码](./design-example-refactor.md)
     - [章节 1：研发数字化](./aise-digital-engineering.md)

@@ -1,4 +1,4 @@
-# Gitlab：赋能开发者的 AI4SE
+# AI 辅助软件工程：Gitlab 赋能开发者的 AI4SE
 
 [Developing GitLab Duo : How we are dogfooding our AI features](https://about.gitlab.com/blog/2024/05/20/developing-gitlab-duo-how-we-are-dogfooding-our-ai-features/)
 
