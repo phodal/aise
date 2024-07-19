@@ -285,6 +285,31 @@ RAG 是一种常见的人工智能框架，通过添加信息检索组件来提�
 
 这些总结点可以帮助理解 RAG 索引的不同方面和实现方式。
 
+### 示例：Neon serverless Postgres + pgvector 
+
+[pgvector: 30x Faster Index Build for your Vector Embeddings](https://neon.tech/blog/pgvector-30x-faster-index-build-for-your-vector-embeddings)
+
+**pgvector**是Postgres中最受欢迎的向量相似性搜索扩展。向量搜索在语义搜索和检索增强生成（RAG）应用中变得越来越重要，增强了大型语言模型（LLMs）的长期记忆能力。
+
+在语义搜索和RAG应用中，数据库包含LLM未训练过的知识库，被分成一系列文本或块。每个文本保存在一行，并与一个由嵌入模型（如OpenAI的ada-embedding-002或Mistral-AI的mistral-embed）生成的向量相关联。
+
+向量搜索用于找到与查询向量最相似的文本。这通过将查询向量与数据库中的每一行进行比较来实现，这使得向量搜索难以扩展。因此，pgvector实现了近似最近邻（ANN）算法（或索引），通过对数据库的一个子集进行向量搜索以避免冗长的顺序扫描。
+
+**Hierarchical Navigable Small World（HNSW）**索引是最有效的ANN算法之一。其基于图的多层结构设计用于数十亿行的向量搜索，使HNSW在大规模上极为快速和高效，因此成为向量存储市场中最受欢迎的索引之一。
+
+#### HNSW的两个主要缺点
+
+1. **内存**：HNSW索引比其他索引（如倒排文件索引IVFFlat）需要更多的内存。这个问题可以通过使用更大的数据库实例解决，但对于使用AWS RDS等独立Postgres的用户来说，可能会遇到因为索引构建而需要过度配置的问题。利用Neon的扩展能力，可以在构建HNSW索引时扩展，之后再缩减以节省成本。
+
+2. **构建时间**：HNSW索引对于百万行数据集可能需要数小时的构建时间，这主要是由于计算向量间距离所花费的时间。pgvector 0.6.0通过引入并行索引构建解决了这一问题，使得索引构建速度提高了30倍。
+
+#### 并行索引构建的必要性
+
+虽然HNSW索引支持更新，但在以下两种情况下需要重新创建HNSW索引：
+
+1. 希望加快查询速度并优化向量搜索时。
+2. 已有HNSW索引，但表中删除了向量时，可能会导致索引搜索返回假阳性，从而影响LLM响应质量和AI应用的整体性能。
+
 ## 相关资源
 
 ### BERTopic
@@ -335,3 +360,4 @@ topic_model = BERTopic(
   representation_model=representation_model # Step 6 - (Optional) Fine-tune topic represenations
 )
 ```
+
