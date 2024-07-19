@@ -42,6 +42,13 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build with mdBook
         run: mdbook build
+
+      - name: Generate sitemap
+        run: |
+          cd book
+          npm i -g static-sitemap-cli
+          npx sscli --no-clean --base https://aise.phodal.com        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
