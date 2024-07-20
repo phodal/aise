@@ -22,11 +22,28 @@ AI
 
 这些重构手法是开发人员在日常工作中经常使用的，它们有助于改善代码的质量、可维护性和可读性。
 
-如下是 AutoDev 中 Rename 的示例：
+### 重命名建议
+
+如下是 AutoDev 中重命名建议的示例：
 
 ![AutoDev Rename](https://unitmesh.cc/auto-dev/autodev-rename.png)
 
+它可以把当前代码作为上下文，发给 AI 模型，然后返回重命名的建议。
 
+### 重新组织示例
+
+当你使用 AI 重构时，会发现因为 AI 做了重命名等操作，没有修改 ref 导致代码无法运行。因此，你无法直接应用 AI 的重构建议。 基于此， 
+AutoDev 通过提供 DevIns AI Agent 语言，使得你可以直接执行重构代码：
+
+```shire
+/refactor:rename crtBlog to CreateBlog
+```
+
+如下图所示：
+
+![AutoDev Refactor](images/autodev-devin-rename.png)
+
+它使得你可以直接执行重构代码，而不需要手动修改代码。
 
 ## AI 重构依赖的上下文
 
@@ -204,12 +221,23 @@ interaction: ReplaceSelection
 $selection
 ```
 
-### 丰富上下文
+而在某些情况下，我们实际上可以从 IDE 及其插件中拿到更多的上下文，诸如于代码坏味道、代码依赖关系、代码结构等
 
+### 步骤 4. 添加代码坏味道
+
+在 Shire 中可以通过
+
+```shire
+$codeSmell
+```
+
+
+```shire
 这里有一些相关的 Code Smell
 
 // - Method 'updatePost(java.lang.Long, com.phodal.shire.demo.entity.BlogPost)' is never used
 // - String can be replaced with text block
+```
 
 ## 其它
 
