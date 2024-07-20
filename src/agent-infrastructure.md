@@ -443,6 +443,25 @@ RAG 是一种常见的人工智能框架，通过添加信息检索组件来提�
 1. 希望加快查询速度并优化向量搜索时。
 2. 已有HNSW索引，但表中删除了向量时，可能会导致索引搜索返回假阳性，从而影响LLM响应质量和AI应用的整体性能。
 
+## 向量模型
+
+Massive Text Embedding Benchmark (MTEB) Leaderboard. [排名](https://huggingface.co/spaces/mteb/leaderboard)
+
+### FlagEmbedding
+
+[FlagEmbedding](https://github.com/FlagOpen/FlagEmbedding) 
+
+### [BAAI/bge-small-zh-v1.5](https://huggingface.co/BAAI/bge-small-zh-v1.5)
+
+
+
+### 相关库
+
+- [FastEmbed](https://github.com/qdrant/fastembed) is a lightweight, fast, Python library built for embedding generation.
+- [ONNX Runtime](https://onnxruntime.ai/)  is a cross-platform inference and training machine-learning accelerator.
+
+[ONNX Runtime 语言支持](https://onnxruntime.ai/docs/get-started/)
+
 ## 相关资源
 
 ### BERTopic
