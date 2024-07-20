@@ -1,5 +1,24 @@
 # AI 辅助软件工程：重构代码示例
 
+在软件开发过程中，重构是一种常见的实践，旨在改善代码的质量、可维护性和可读性。AI 辅助重构工具可以帮助开发人员自动识别和执行重构操作，从而提高开发效率和代码质量。
+
+> AI 重构是指利用人工智能技术来识别和执行代码重构操作的过程。AI 重构工具通常基于大型语言模型（LLM）和机器学习算法，能够分析代码库中的模式和结构，并生成重构建议。
+
+在现有情况下，适合的 AI 重构场景应该具备以下特点：
+
+- 可读性重构，即重构的目标是提高代码的可读性和可维护性。
+- 意图驱动的重构，即用户应该提供明确的重构目标和意图，以便 AI 工具能够生成准确的重构建议。
+- 代码坏味道修复，借助传统工具或者 AI 工具识别代码中的坏味道，并提供相应的重构建议。
+- 模式识别和重构，借助三方工具识别到设计问题，并提供相应的重构建议。
+
+在复杂上下文下，如大量继承关系、复杂的代码结构等，AI 重构工具的效果可能会受到限制。因此，开发人员需要在使用 AI 重构工具时，提供足够的上下文信息，以确保生成的重构建议准确和可靠。
+
+## AI 重构
+
+> AI 重构是指利用人工智能技术来识别和执行代码重构操作的过程。AI 重构工具通常基于大型语言模型（LLM）和机器学习算法，能够分析代码库中的模式和结构，并生成重构建议。
+
+### AI 重构的优势
+
 AI
 代码重构的优势如下：（[Tabnine 总结](https://www.tabnine.com/blog/ai-code-refactoring-7-ways-tabnine-transforms-refactoring/)）
 
@@ -10,47 +29,18 @@ AI
 5. **代码库的一致性**：AI驱动的重构工具可以在大型项目的不同部分或组织内的多个项目中强制执行一致的编码风格和实践。
 6. **节约成本**：通过减少代码维护所需的时间和精力，AI重构工具可以带来显著的成本节约。这使公司能够更有效地分配开发资源，将资源从维护转向创新。
 
-## 重构的功能选择
+但是往往在实际使用中，我们发现 AI 重构工具的效果并不如人工重构那么好。这是因为 AI
+重构工具缺乏足够的上下文信息，无法理解代码的意图和结构，导致生成的重构建议不够准确和可靠。
 
-对于习惯使用重构来改善既有代码可读性的开发人员来说，经常使用的重构手法有：
+### AI 重构的瓶颈：依赖于有效上下文
 
-- **提取方法**：将重复的代码片段提取到单独的方法中，提高代码的可重用性和可读性。
-- **重命名**：为变量、方法、类等提供更有意义的名称，使代码更易于理解。
-- **内联方法**：将方法调用替换为方法体，减少不必要的方法调用。
-- **移动方法**：将方法从一个类移动到另一个类，以更好地组织代码。
-- **提取变量**：将复杂的表达式提取为一个变量，提高代码的可读性。
+如果你探索过使用 AI 来构建代码时，你会发现：AI 懂的重构手法你都懂，但是看别人使用 AI 重构似乎非常顺手。这是为什么呢？
+重构通常依赖于好的上下文， 即需要开发人员拥有大量的先验经验。
 
-这些重构手法是开发人员在日常工作中经常使用的，它们有助于改善代码的质量、可维护性和可读性。
+#### 意图驱动的重构
 
-### 重命名建议
-
-如下是 AutoDev 中重命名建议的示例：
-
-![AutoDev Rename](https://unitmesh.cc/auto-dev/autodev-rename.png)
-
-它可以把当前代码作为上下文，发给 AI 模型，然后返回重命名的建议。
-
-### 重新组织示例
-
-当你使用 AI 重构时，会发现因为 AI 做了重命名等操作，没有修改 ref 导致代码无法运行。因此，你无法直接应用 AI 的重构建议。 基于此， 
-AutoDev 通过提供 DevIns AI Agent 语言，使得你可以直接执行重构代码：
-
-```shire
-/refactor:rename crtBlog to CreateBlog
-```
-
-如下图所示：
-
-![AutoDev Refactor](images/autodev-devin-rename.png)
-
-它使得你可以直接执行重构代码，而不需要手动修改代码。
-
-## AI 重构依赖的上下文
-
-如果你探索过使用 AI 来构建代码时，你会发现：AI 懂的重构手法你都懂，但是看别人使用 AI 重构似乎非常顺手。这是为什么呢？ 重构通常依赖于好的上下文，
-即需要开发人员拥有大量的先验经验。简单来说就是：表达意图与构建意图所有的上下文。
-
-简单来说，当你缺少一个代码改进的方向时，无法给 AI 一个明确的意图，剩下的就要靠 AI 随机了 —— 因此，大部分情况下，AI 只是进行简单的重命名、方法提取之类基本的重构手法。而：
+简单来说，当你缺少一个代码改进的方向时，无法给 AI 一个明确的意图，剩下的就要靠 AI 随机了 —— 因此，大部分情况下，AI
+只是进行简单的重命名、方法提取之类基本的重构手法。而：
 
 - 如果你告诉 AI，你要重构多个 if 到策略模式，那么它就会给你生成策略模式的代码。
 - 如果你给了 AI 对应的继承关系，那么它就会考虑到继承关系。
@@ -58,7 +48,7 @@ AutoDev 通过提供 DevIns AI Agent 语言，使得你可以直接执行重构�
 
 理解这一点，在工具上实现辅助重构就变得非常简单了。
 
-### 基于聊天的重构上下文
+#### 基于聊天的重构上下文
 
 如下是 Tabnine 通过聊天提供的上下文：
 
@@ -84,7 +74,42 @@ AutoDev 通过提供 DevIns AI Agent 语言，使得你可以直接执行重构�
 
 总之，就是尽可能提供关键有效的上下文信息，以便 AI 能够更好地理解你的意图。
 
-## 编写 AI IDE 重构： Shire 示例
+## AI 重构功能设计
+
+对于习惯使用重构来改善既有代码可读性的开发人员来说，经常使用的重构手法有：
+
+- **提取方法**：将重复的代码片段提取到单独的方法中，提高代码的可重用性和可读性。
+- **重命名**：为变量、方法、类等提供更有意义的名称，使代码更易于理解。
+- **内联方法**：将方法调用替换为方法体，减少不必要的方法调用。
+- **移动方法**：将方法从一个类移动到另一个类，以更好地组织代码。
+- **提取变量**：将复杂的表达式提取为一个变量，提高代码的可读性。
+
+这些重构手法是开发人员在日常工作中经常使用的，它们有助于改善代码的质量、可维护性和可读性。
+
+### 重命名建议
+
+如下是 AutoDev 中重命名建议的示例：
+
+![AutoDev Rename](https://unitmesh.cc/auto-dev/autodev-rename.png)
+
+它可以把当前代码作为上下文，发给 AI 模型，然后返回重命名的建议。
+
+### 重新组织示例
+
+当你使用 AI 重构时，会发现因为 AI 做了重命名等操作，没有修改 ref 导致代码无法运行。因此，你无法直接应用 AI 的重构建议。 基于此，
+AutoDev 通过提供 DevIns AI Agent 语言，使得你可以直接执行重构代码：
+
+```shire
+/refactor:rename crtBlog to CreateBlog
+```
+
+如下图所示：
+
+![AutoDev Refactor](images/autodev-devin-rename.png)
+
+它使得你可以直接执行重构代码，而不需要手动修改代码。
+
+## AI 重构功能实现： Shire 示例
 
 在这里我们依旧使用 Shire 作为我们的 AI IDE 重构工具。Shire 语言提供了一种简便 AI
 编码智能体语言，能够让大型语言模型（LLM）与控制集成开发环境（IDE）之间自由对话，以实现自动化编程。
@@ -225,39 +250,30 @@ $selection
 
 ### 步骤 4. 添加代码坏味道
 
-在 Shire 中可以通过
+在 Shire 中可以通过 `$codeSmell` 变量来获取相关代码的坏味道信息，如下：
 
 ```shire
+这里有一些相关的 Code Smell
+
 $codeSmell
 ```
 
+当代码中有一些坏味道时，我们可以通过这种方式来提示 AI 重构工具。
 
-```shire
+```markdown
 这里有一些相关的 Code Smell
 
 // - Method 'updatePost(java.lang.Long, com.phodal.shire.demo.entity.BlogPost)' is never used
 // - String can be replaced with text block
 ```
 
+有了上述的信息之后，AI 就能给我们更好地重构建议。
+
+Shire 的相关代码实现，依赖于 IDE 的接口。因此，你也可以安装一些插件来做 lint，以提供更多的上下文信息。
+
 ## 其它
 
-## 示例
-
-### Tabnine 示例
-
-[AI code refactoring: 7 ways Tabnine transforms refactoring](https://www.tabnine.com/blog/ai-code-refactoring-7-ways-tabnine-transforms-refactoring/)
-
-1. **自动重构代码**：Tabnine可以根据需要自动重构代码，例如更换技术方法、简化复杂函数或处理错误。
-2. **解释现有代码以规划重构**：Tabnine可以解释代码，并根据解释提供的上下文进行准确的重构建议。
-3. **复杂项目的高层次概述**：通过Tabnine Onboarding Agent，可以快速获得项目的总体结构和关键依赖，减少上手时间。
-4. **个性化的AI重构建议**：Tabnine利用本地工作区的信息提供个性化的重构建议，包括以前的问题、当前文件中的代码块、运行时错误、导入的库等。
-5. **安全的重构建议**：Tabnine Protected Model只训练于许可开源库，确保重构建议不包含专有代码，保护组织免受知识产权风险。
-6. **支持多种编程语言和IDE**：Tabnine支持80多种编程语言和框架，以及多种流行的IDE，提供全面的本地上下文感知和其他功能。
-7. **使用首选的大语言模型进行AI重构**：Tabnine支持在多个大语言模型之间实时切换，用户可以根据项目需求选择不同的模型，以获得最佳的隐私保护和性能。
-
-通过结合AI代码重构的优势和Tabnine的变革性功能，开发团队能够显著提升工作效率和代码质量，同时降低成本和错误率。
-
-### JetBrains 示例
+### JetBrains 重构的提示词示例
 
     You should suggest appropriate refactorings for the code. Improve code readability, code quality, make the code more organized and understandable. 
     Answer should contain refactoring description and ONE code snippet with resulting refactoring.  
@@ -274,3 +290,5 @@ $codeSmell
     Do not generate mock surrounding classes, methods. Do not mock missing dependencies. 
     Provided code is incorporated into correct and compilable code, don't surround it with additional classes. 
     Refactor the following code:
+
+PS：AutoDev 基于 JetBrains 的 AI Assistant 这个提示词来编写重构功能。   
