@@ -1,5 +1,11 @@
 # 编码智能体辅助软件工程
 
+![https://www.factory.ai/ 示例](images/factory-ai.svg)
+
+Simlify
+
+![Simlify](images/simplify-factory-ai.svg)
+
 ## 概念
 
 ### Shadow Workspace
