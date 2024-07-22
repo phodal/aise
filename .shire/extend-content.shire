@@ -9,9 +9,7 @@ actionLocation: ContextMenu
 
 文章的大纲如下:
 
-```shire
-$toc
-```
+$structure
 
 待修改的内容如下：
 
