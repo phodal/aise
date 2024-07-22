@@ -1,14 +1,20 @@
 # 编码智能体辅助软件工程
 
+## 示例
+
+### Factory.ai：化繁为简
+
+软件开发包含一系列的任务及子任务，诸如于：
+
+- 依赖编码规范、框架知识、架构设计、安全指标等进行代码编写
+
 ![https://www.factory.ai/ 示例](images/factory-ai.svg)
 
-Simlify
+如何结合 AI 更好进行知识管理，简化为项目、编码、测试、检视、文档等步骤，实现从想法到产品的快速迭代？
 
-![Simlify](images/simplify-factory-ai.svg)
+![简化](images/simplify-factory-ai.svg)
 
-## 概念
-
-### Shadow Workspace
+### Cursor：Shadow Workspace
 
 [Shadow Workspace: Iterating on Code in the Background](https://www.cursor.com/blog/shadow-workspace)
 
@@ -26,11 +32,11 @@ Shadow Workspace 设计标准。我们希望 Shadow Workspace 能实现以下目
 5. 可维护性：代码应尽可能少且易于隔离。
 6. 速度：任何地方都不应有分钟级的延迟，并且应有足够的吞吐量以支持数百个 AI 分支。
 
-其中许多反映了为超过十万用户构建代码编辑器的现实情况。我们确实不希望对任何人的编码体验产生负面影响。
+其中许多反映了为超过十万用户构建代码编辑器的现实情况，我们确实不希望对任何人的编码体验产生负面影响。
 
 问题：
 
-![](images/cursor-lints-example2.webp)
+![问题](images/cursor-lints-example2.webp)
 
 实现：
 
@@ -41,7 +47,7 @@ Shadow Workspace 设计标准。我们希望 Shadow Workspace 能实现以下目
 3. 编辑在 Shadow window 中应用， Shadow window是隐藏且独立于用户的，所有 lint 提示都以相同的方式发送回来。
 4. AI 接收到 lint 提示，并决定如何进行迭代。
 
-####  shadow_workspace.proto
+#### shadow_workspace.proto
 
 https://gist.github.com/arvid220u/b976c87c7ec9f6f66595dc0ebc0f07d6
 
