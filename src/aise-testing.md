@@ -1,5 +1,10 @@
 # AI 辅助软件工程：AI 辅助测试
 
+## 示例来源
+
+[Key Trends in Automation Testing for 2024 and Beyond](https://www.codium.ai/blog/key-trends-in-automation-testing-for-2024-and-beyond/)
+
+
 
 ## 工具分析：Testim
 

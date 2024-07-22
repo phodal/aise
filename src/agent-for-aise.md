@@ -2,6 +2,28 @@
 
 ## 示例
 
+### Codium: Cover-Agent && PR-Agent
+
+[CodiumAI Cover Agent](https://github.com/Codium-ai/cover-agent) aims to help efficiently increasing code coverage, by
+automatically generating qualified tests to enhance existing test suites.
+
+Below is the roadmap of planned features, with the current implementation status:
+
+* Automatically generates unit tests for your software projects, utilizing advanced AI models to ensure comprehensive
+  test coverage and quality assurance. (similar to Meta)
+    * Being able to generate tests for different programming languages
+    * Being able to deal with a large variety of testing scenarios
+    * Generate a behavior analysis for the code under test, and generate tests accordingly
+    * Check test flakiness, e.g. by running 5 times as suggested by TestGen-LLM
+* Cover more test generation pains
+    * Generate new tests that are focused on the PR changeset
+    * Run over an entire repo/code-base and attempt to enhance all existing test suites
+* Improve usability
+    * Connectors for GitHub Actions, Jenkins, CircleCI, Travis CI, and more
+    * Integrate into databases, APIs, OpenTelemetry and other sources of data to extract relevant i/o for the test
+      generation
+    * Add a setting file
+
 ### Factory.ai：化繁为简
 
 软件开发包含一系列的任务及子任务，诸如于：

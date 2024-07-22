@@ -120,3 +120,8 @@ Netflix 相关研究：[Is Cosine-Similarity of Embeddings Really About Similari
 
 >
 余弦相似度是两个向量之间夹角的余弦值，等价于它们归一化后的点积。一个常见的应用是通过将余弦相似度应用于学习得到的低维特征嵌入，来量化高维对象之间的语义相似性。在实践中，这种方法有时比未归一化的嵌入向量之间的点积效果更好，但有时也可能更差。为了深入理解这一经验观察，我们研究了基于正则化线性模型导出的嵌入，闭式解法有助于进行分析。我们从理论上推导了余弦相似度如何可能产生任意的、因此无意义的"相似性"。对于某些线性模型而言，这些相似性甚至不是唯一的，而对于其他模型，则受正则化的隐式控制。我们讨论了超出线性模型的影响：在学习深度模型时结合了不同的正则化技术；当对结果嵌入进行余弦相似度计算时，这些技术具有隐含的、非预期的影响，使结果变得难以理解且可能是任意的。基于这些见解，我们警告不要盲目使用余弦相似度，并概述了一些替代方法。
+
+## 业内案例
+
+- Codium: [RAG for a Codebase with 10k Repos](https://www.codium.ai/blog/rag-for-large-scale-code-repos/)
+- Sweep AI: [Chunking 2M+ files a day for Code Search using Syntax Trees](https://docs.sweep.dev/blogs/chunking-2m-files)
