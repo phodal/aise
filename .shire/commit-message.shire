@@ -1,0 +1,27 @@
+---
+name: "Commit message"
+interaction: AppendCursor
+actionLocation: CommitMenu
+---
+
+请为给定的变更（Diff）编写一个连贯但具有描述性的代码提交信息。
+
+背景信息：我现在使用 Git 编写一本开源电子书《AI 辅助软件工程：AI IDE 插件与编程智能体示例》，我需要为每个提交编写一个简洁但具有描述性的提交信息。
+
+要求：
+
+- 确保包含修改了什么以及为什么。
+- 以不超过 50 个字符的祈使句形式开头。
+- 然后留下一个空行，如有必要，继续详细说明。
+- 如果变更是一个 .shire 文件，说明我添加了一个新的示例。
+
+遵循常规提交规范，例如：
+
+- fix(authentication): 修复密码正则表达式模式问题
+- feat(storage): 添加对S3存储的支持
+- test(java): 修复用户控制器的测试用例
+- docs(architecture): 在主页添加架构图
+
+Diff：
+
+$currentChanges
