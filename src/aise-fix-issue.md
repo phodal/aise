@@ -2,34 +2,34 @@
 
 ## 示例
 
-### Replit
+### Replit：构建用于代码修复的大型语言模型
 
-[Building LLMs for Code Repair](https://blog.replit.com/code-repair/)
+[构建用于代码修复的大型语言模型（LLMs）](https://blog.replit.com/code-repair/)
 
 ![](images/replit-code-repair.webp)
 
-以下是方法论、数据和核心步骤的中文总结：
+以下是对构建代码修复 LLM 的方法论、数据来源以及关键步骤的中文概述：
 
 ### 方法论
 
 1. **数据收集**：
-    - 收集表示代码更改的操作转换（[OTs](https://web.archive.org/web/20200406135608/http://www.codecommit.com/blog/java/understanding-and-applying-operational-transformation)）。
-    - 记录会话事件，包括 LSP 诊断、CodeMirror 操作、包安装、代码执行和 shell 命令。
+    - **操作转换（OTs）的收集**：搜集反映代码变更的操作转换数据（[OTs](https://web.archive.org/web/20200406135608/http://www.codecommit.com/blog/java/understanding-and-applying-operational-transformation)）。
+    - **会话事件的记录**：详细记录包括语言服务器协议（LSP）诊断、CodeMirror编辑器操作、包管理安装、代码运行以及 shell 命令在内的用户会话事件。
 
 2. **数据重建**：
-    - 使用 OTs 重建项目在每次 LSP 诊断时的文件系统。
-    - 与存储在 GCS 中的快照进行验证。
+    - **文件系统的重建**：使用 OTs 重建项目在每次 LSP 诊断时的文件系统。
+    - **快照验证**：与存储在Google Cloud Storage（GCS）中的快照进行比对验证。
 
-3. **流水线实现**：
-    - 排除具有确定性解决方案和风格规则的诊断。
-    - 使用 PySpark 在 Databricks 上实现可扩展性。
-    - 通过使用 LLM 生成和验证合成差异来生成（代码，诊断）对的数据集。
+3. **数据处理流水线**：
+   - **确定性诊断的排除**：移除那些已有确定解决方案或风格规则的问题诊断。
+   - **可扩展性实现**：在Databricks平台上使用PySpark技术构建可扩展的数据处理流程。
+   - **数据集生成**：通过LLM生成和验证代码差异，构建包含（代码，诊断）对的训练数据集。
 
-4. **差异合成与验证**：
-    - 使用预训练的代码 LLM 合成差异。
-    - 使用编号的行差异以确保一致性和准确性。
-    - 验证生成的差异的正确性和可适用性。
-    - 使用正则表达式和 LLM 过滤出不正确或格式错误的差异。
+4. **代码差异的合成与验证**：
+   - **差异合成**：应用预训练的代码LLM生成代码差异。
+   - **差异编号**：对行差异进行编号，确保一致性和精确性。
+   - **差异验证**：检查生成差异的正确性和适用性。
+   - **错误过滤**：利用正则表达式和LLM筛选出错误或不规范的差异。
 
 #### OT 算法 vs CRDT
 
