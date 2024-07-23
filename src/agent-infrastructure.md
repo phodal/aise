@@ -395,7 +395,7 @@ RocksDB 体积：
 -rw-r--r--    1 phodal  staff   8.0M 13 Jul 11:10 librocksdbjni-win64.dll
 ```
 
-### 示例：Tabnine + [Qdrant](https://docs.tabnine.com/main/welcome/readme/personalization/tabnines-personalization-in-depth
+### 示例：Tabnine + [Qdrant](https://docs.tabnine.com/main/welcome/readme/personalization/tabnines-personalization-in-depth)
 
 RAG 是一种常见的人工智能框架，通过添加信息检索组件来提高LLM生成答案的准确性，该组件为模型的每个查询添加数据和上下文。 RAG
 的实现包括两个组成部分：
