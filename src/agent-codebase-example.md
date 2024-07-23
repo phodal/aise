@@ -129,6 +129,10 @@ Query: Sweep: Use os agnostic temp directory for windows
 这个完整的提示，包括所有三部分内容，然后被发送到 LLM。LLM 根据提示中包含的信息以及其基线模型中的信息进行工作。任何有关用户代码库的问题，
 只有在上下文（作为提示的一部分发送）提供了足够的信息时，LLM 才能回答。
 
+#### SourceGraph Cody  示例
+
+![Sourcegraph Cloud](images/enterprise-architecture-cloud-v2.png)
+
 #### 问答示例
 
 1. **广泛的上下文检索**：对于聊天和命令，Cody 需要覆盖用户可能询问的整个代码库的广泛上下文。
