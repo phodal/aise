@@ -42,6 +42,25 @@ https://wiki.mutable.ai/
 
 ## 示例
 
+### Builder.io
+
+[Introducing Micro Agent: An (Actually Reliable) AI Coding Agent](https://www.builder.io/blog/micro-agent)
+
+![Micro Agent](images/micro-agent.webp)
+
+**Micro Agent** 是一种生成式 AI 工具，通过聚焦于特定任务并通过单元测试提供清晰的确定性反馈来创建代码。以下是其工作流程的细分：
+
+1. **描述你的函数**：你提供一个关于所需函数的自然语言描述。
+2. **AI 生成测试**：基于你的描述，Micro Agent 创建定义函数预期行为的单元测试，包括多个输入输出场景。
+3. **AI 编写代码**：使用大型语言模型（LLMs）的能力，Micro Agent 编写代码（支持 JavaScript、TypeScript、Python 或其他语言）以通过生成的测试。
+4. **自动迭代**：如果初始代码未能通过任何测试，Micro Agent 会反复编辑源代码并重新运行测试，直到所有测试都通过。这确保了最终代码符合指定要求。
+
+### 主要优势
+
+- **更高的保证**：生成的代码更可靠，能够满足指定的要求，因为它通过了确定性的测试。
+- **简化的开发过程**：自动化的迭代过程有助于高效地创建高质量代码，节省时间并提高结果的信心。
+
+
 ### Codium: Cover-Agent && PR-Agent
 
 [CodiumAI Cover Agent](https://github.com/Codium-ai/cover-agent) aims to help efficiently increasing code coverage, by
