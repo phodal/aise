@@ -2,20 +2,22 @@
 
 ## 示例
 
-### Checksum
+### Checksum: 模拟行为生成测试
 
-[ Why We Built A System of AI Agents to Automate E2E Testing ](https://checksum.ai/blog/the-engineering-of-an-llm-agent-system)
+[Why We Built A System of AI Agents to Automate E2E Testing](https://checksum.ai/blog/the-engineering-of-an-llm-agent-system)
 
-客户将一个 JavaScript SDK 集成到他们的 HTM 中，Checksum 收集匿名的使用模式数据。然后我们用这些数据训练一个模型，它可以很好地完成三件事：
+![](images/llm-system-for-autotest-.webp)
 
-- 根据真实使用模式检测测试流程，包括理想路径和边缘情况。
-- 在实时环境中执行测试流程并生成 Playwright/Cypress 代码。
-- 在运行测试时维护这些测试，因此随着软件的变化，测试套件不断更新。
+客户将一个 JavaScript SDK 集成到他们的 HTML 中，Checksum 会收集匿名的使用模式数据。然后，我们利用这些数据训练一个模型，该模型能够高效完成以下三个任务：
 
-LLM 智能体理是连接到不同功能并可以执行代码的 LLM，它们相对成熟。但我们的洞察力更深一步。
+- 检测测试流程，包括标准路径和边缘情况，以匹配真实使用模式。
+- 在实时环境中执行测试流程，并生成 Playwright 或 Cypress 代码。
+- 在测试运行过程中维护这些测试，确保随着软件的更新，测试套件也能持续更新。
 
-在 Checksum，我们并不训练一个生成完整测试的单一 LLM 模型。我们的解决方案是将多个模型组成一个系统，目标是在线上执行流程并将其转换为端到端测试代码。
-整个系统由我们的主 Checksum LLM 协调，这个模型是系统中最重要的一个。
+LLM 智能体是连接到不同功能并能够执行代码的 LLM，它们已经相对成熟。然而，我们的洞察力更进一步。在 Checksum，我们并没有训练一个单独的
+LLM 模型来生成完整的测试。我们的解决方案是将多个模型集成在一起，构成一个系统，旨在在线上执行流程并将其转换为端到端的测试代码。
+
+整个系统由我们的主 Checksum LLM 进行协调，这个模型在系统中扮演着最为关键的角色。
 
 相关文章：
 
