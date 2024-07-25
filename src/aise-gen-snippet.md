@@ -10,33 +10,24 @@
 
 **Visual Copilot：重新定义从 Figma 到代码的转换**
 
-最近的一项调查显示，79% 的前端开发人员将 Figma 设计转换为网页需要超过一天的时间。为了解决这个问题，新推出的 Visual Copilot 显著减少了这一时间，将转换时间减少了 50-80%，能够立即将设计转化为干净的代码。
+最近的一项调查显示，79% 的前端开发人员将 Figma 设计转换为网页需要超过一天的时间。为了解决这个问题，新推出的 Visual Copilot 显著减少了这一时间
+，将转换时间缩短了 50-80%，能立即将设计转化为整洁的代码。
 
 **Visual Copilot 的主要特点：**
-
-1. **实时代码转换**：一键将 Figma 设计转换为 React、Vue、Svelte、Angular、Qwik、Solid 或 HTML 代码，支持各种样式库（plain CSS、Tailwind、Emotion、Styled Components）。
-
+1. **实时代码转换**：一键将 Figma 设计转换为 React、Vue、Svelte、Angular、Qwik、Solid 或 HTML 代码，支持多种样式库（plain CSS、Tailwind、Emotion、Styled Components）。
 2. **AI 驱动的干净代码**：利用训练了超过 200 万数据点的 AI 模型生成高性能、响应迅速的代码，无需更改 Figma 设计文件即可匹配您的风格。
-
 3. **自动响应设计**：确保设计适应所有屏幕尺寸，即使设计不严格遵循 Figma 的自动布局规范。
-
-4. **可自定义且对开发者友好**：允许根据团队偏好来结构生成的代码，并无缝集成到现有代码库，支持多种框架和库。
-
+4. **可自定义且对开发者友好**：允许根据团队偏好来结构化生成的代码，并能无缝集成到现有代码库，支持多种框架和库。
 5. **简化的工作流程**：允许将设计直接发布到实时生产站点，步骤最少，通过强大的发布 API 实时更新。
-
-6. **轻松导入设计**：便于将设计从 Figma 复制并粘贴到 Builder，在设计迭代期间保持顺畅的工作流程。
+6. **轻松导入设计**：便于将设计从 Figma 复制并粘贴到 Builder，保持设计迭代期间的顺畅工作流程。
 
 **即将推出的增强功能：**
-
 1. **AI 集成组件**：在私测阶段，此功能将 Figma 中的可重用组件映射到代码库，使用现有组件生成代码。
-
-2. **自动同步**：也是在私测阶段，此功能允许从 Figma 到 Builder 的自动更新，简化设计到开发的流程。
-
-**立即试用 Visual Copilot**：目前在测试阶段免费，Visual Copilot 提供了一种快速高效地将 Figma 设计转换为实时交互代码的变革性方法。
+2. **自动同步**：同样在私测阶段，此功能允许从 Figma 到 Builder 的自动更新，简化设计到开发的流程。
 
 ## JetBrains 自带
 
-### SQL 
+### SQL
 
 ```markdown
 
@@ -48,13 +39,13 @@
     |Here's the script API you can use and an example.
     |%s
     |Now the user will provide the extractor description they need.
-    
+
 ```
 
 ### Jupyter
 
 SUGGEST_EDIT_REQUEST_FORMAT：
-    
+
     Given a Jupyter Notebook using Kotlin, with cells in the format:
     #%% - separator of cells
     #%% md - markdown cell
@@ -105,9 +96,9 @@ SUGGEST_EDIT_REQUEST_FORMAT：
     
     A:
     - Modify the function to use the correct formula for the area of a triangle which is (1/2) * side * height; check for inputs
-    
+
 CODE_GENERATION_FORMAT:
-    
+
     Given a Jupyter Notebook using Kotlin, with cells in the format:
     #%% - separator of cells
     #%% md - markdown cell
@@ -121,9 +112,9 @@ CODE_GENERATION_FORMAT:
     * The code needs to accomplish the following task:
     
     {1}
-    
+
 AUTOPILOT_NEW_CELL_SUGGESTION_FORMAT
-           
+
     Given Jupyter Notebook with Kotlin Language, cells in format:
     #%% - separator of cells
     #%% md - markdown cell
@@ -157,17 +148,17 @@ AUTOPILOT_NEW_CELL_SUGGESTION_FORMAT
      - Check linearizability for case of several writers, several readers
     - Refer to 'lincheck' 
 
-
 OTHERS:
 
-  Given Jupyter Notebook cells in format:
-  #%% - separator of cells
-  #%% md - markdown cell
+Given Jupyter Notebook cells in format:
+#%% - separator of cells
+#%% md - markdown cell
 
-  Generate a concise code snippet in Python language without any additional text before or after code snippet, description, or commentary
-  * Generate python code WITHOUT #%% #%% i.e. generate code of ONLY ONE CELL code without cell separators
-  * The code needs to accomplish the following task:
+Generate a concise code snippet in Python language without any additional text before or after code snippet,
+description, or commentary
 
+* Generate python code WITHOUT #%% #%% i.e. generate code of ONLY ONE CELL code without cell separators
+* The code needs to accomplish the following task:
 
 ### Semantic Search
 
