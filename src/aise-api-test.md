@@ -19,6 +19,8 @@ LLM 模型来生成完整的测试。我们的解决方案是将多个模型集�
 
 整个系统由我们的主 Checksum LLM 进行协调，这个模型在系统中扮演着最为关键的角色。
 
+代码：https://github.com/checksum-ai/checksum-ai-runtime
+
 相关文章：
 
 * [Pix2Struct](https://arxiv.org/abs/2210.03347)
