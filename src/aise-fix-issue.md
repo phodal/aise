@@ -35,7 +35,7 @@
 
 #### OT 算法 vs CRDT
 
-Operational Transformation (OT)
+操作转换（Operational Transformation，简称OT）
 是一种乐观并发控制机制，旨在解决多个用户同时编辑共享文档时的冲突问题。它允许多个编辑器同时对同一文档的相同部分进行修改，并通过一套变换机制来解决这些冲突，从而避免用户干预或锁定操作。
 
 OT 的基本构件是操作 (operations)。操作是对文档执行的动作，例如插入字符、删除字符、打开或关闭 XML
