@@ -2,6 +2,7 @@
 name: "Commit message"
 interaction: AppendCursor
 actionLocation: CommitMenu
+onStreamingEnd: { parseCode | updateEditor }
 ---
 
 请为给定的变更（Diff）编写一个连贯但具有描述性的代码提交信息。
