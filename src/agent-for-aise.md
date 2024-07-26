@@ -39,6 +39,21 @@ https://wiki.mutable.ai/
 [Auto Wiki v2](https://blog.mutable.ai/p/auto-wiki-v2)
 
 
+### CrawAI
+
+https://github.com/crewAIInc/crewAI
+
+
+- 基于角色的智能体设计：可定制具有特定角色、目标和工具的智能体。
+- 自主智能体间委托：智能体能够自主地委托任务并在彼此间进行询问，从而提高问题解决效率。
+- 灵活的任务管理：定义任务并使用可定制工具，动态分配给智能体。
+- 流程驱动：目前支持顺序任务执行和分层流程，正在开发更复杂的流程，如共识和自主流程。
+- 将输出保存为文件：可以保存单个任务的输出为文件，以便后续使用。
+- 输出解析为 Pydantic 或 JSON：如需，可将单个任务的输出解析为 Pydantic 模型或 JSON。
+- 兼容开源模型：可使用 Open AI 或开源模型运行您的团队。参考“连接 crewAI 到 LLMs”页面，了解如何配置智能体与模型之间的连接，甚至包括本地运行的模型！
+
+![](images/crewAI-mindmap.png)
+
 
 ## 示例
 

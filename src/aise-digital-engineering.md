@@ -2,6 +2,12 @@
 
 ## 示例
 
+### Haiven
+
+https://www.thoughtworks.com/en-sg/what-we-do/ai/ai-first-software-delivery/Haiven_team_assistant
+
+### Replit Teams 
+
 ### [Unblocked](https://getunblocked.com/)
 
 Usecase:
