@@ -125,3 +125,15 @@ Netflix 相关研究：[Is Cosine-Similarity of Embeddings Really About Similari
 
 - Codium: [RAG for a Codebase with 10k Repos](https://www.codium.ai/blog/rag-for-large-scale-code-repos/)
 - Sweep AI: [Chunking 2M+ files a day for Code Search using Syntax Trees](https://docs.sweep.dev/blogs/chunking-2m-files)
+
+### RAG 评估
+
+[RAG Evaluation: Detecting Hallucinations with Patronus AI and MongoDB](https://www.mongodb.com/developer/products/atlas/mongodb_patronus_ai/)
+
+为什么使用 MongoDB 用于 RAG 应用程序：
+
+- 实时响应能力： MongoDB 的架构确保了快速的数据交互，对于生成AI系统至关重要。
+- 敏捷数据处理： 它的灵活数据模型支持快速的应用迭代，促进持续改进。
+- 智能数据集成和查询： 支持语义搜索、全文搜索、地理空间查询和向量化查询，确保高效的数据检索。
+- 安全性： 强调强大的安全控制，通过加密、基于角色的访问控制和审计功能保护敏感数据。
+- 集成性： 设计成与任何云提供商、LLM和框架无缝集成，支持生成AI应用程序的动态需求。
