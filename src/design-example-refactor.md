@@ -74,6 +74,24 @@ AI
 
 总之，就是尽可能提供关键有效的上下文信息，以便 AI 能够更好地理解你的意图。
 
+## 基于代码坏味道的重构
+
+### ArchGuard
+
+指标体系
+
+- 体量维度。过大的方法、过大的类、过大的包、过大的模块
+- 耦合维度。枢纽模块、枢纽包、枢纽类、枢纽方法、数据泥团、过深继承、循环依赖
+- 内聚维度。霰弹式修改、数据类
+- 冗余维度。冗余元素、过度泛化
+- 质量维度。包含休眠的测试、被忽略的测试、缺乏校验的测试、包含繁杂判断的测试、包含冗余打印的测试、静态方法
+
+### Code Health
+
+[Code Health – How easy is your code to maintain and evolve?](https://codescene.io/docs/guides/technical/code-health.html)
+
+![Code Health](images/code-health-concept.png)
+
 ## AI 重构功能设计
 
 对于习惯使用重构来改善既有代码可读性的开发人员来说，经常使用的重构手法有：
