@@ -24,6 +24,10 @@ JetBrains Top 5 Features:
 
 ## 架构
 
+### WebIDE
+
+![Replit Arch](images/replit-arch.webp)
+
 ### 跨 IDE 设计
 
 [The Self-Driving IDE is Coming](https://sourcegraph.com/blog/the-self-driving-ide-is-coming)

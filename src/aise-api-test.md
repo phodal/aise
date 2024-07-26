@@ -2,6 +2,12 @@
 
 ## 示例
 
+### 示例：HTTPie AI
+
+https://httpie.io/blog/ai
+
+HTTPie AI 助手使用大模型来提高开发者在测试和与 API 交互时的效率，例如你可以通过简单的自然语言快速地从海量文档中发现并创建相应的请求。
+
 ### Checksum: 模拟行为生成测试
 
 [Why We Built A System of AI Agents to Automate E2E Testing](https://checksum.ai/blog/the-engineering-of-an-llm-agent-system)
