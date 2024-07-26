@@ -50,6 +50,7 @@
     - [编码智能体基础设施](./agent-infrastructure.md)
     - [远程 AI 智能体](./agent-remote.md)
         - [重构 AI 测试生成](./agent-refactoring-test.md)
+        - [场景：新人上手项目](./agent-onboarding.md)
     - [本地 AI 智能体](./agent-in-local-design.md)
         - [理解 RAG 应用](./agent-understand-rag.md)
         - [Copilot Chat 是如何工作的](./agent-github-copilot-chat.md)
