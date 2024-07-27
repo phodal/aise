@@ -22,5 +22,21 @@
 
 ![](images/spl-arch.png)
 
-< spl-expr >是 SPL 指令，支持正则取值、字段分裂、字段投影、数值计算等多种操作，具体参考 SPL 指令介绍。
+`<spl-expr>` 是 SPL 指令，支持正则取值、字段分裂、字段投影、数值计算等多种操作，具体参考 SPL 指令介绍。
+
+示例：
+
+```
+Status:200 | extend urlParam=split_part(Uri, '/', 3)
+Status:200 | extend timeRange = cast(BeginTime as bigint) - cast(EndTime as bigint
+```
+
+示例  2：
+
+```
+Status:200 
+| where UserAgent like '%Chrome%'
+| extend timeRange = cast(BeginTime as bigint) - cast(EndTime as bigint)
+| where timeRange > 86400
+```
 
