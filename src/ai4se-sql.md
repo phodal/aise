@@ -1,5 +1,9 @@
 # SQL 优化生成
 
+## 度量
+
+Text2SQL  榜单：[Spider](https://yale-lily.github.io/spider)
+
 ## 示例
 
 ### RAG2SQL：Vanna
