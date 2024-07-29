@@ -122,7 +122,8 @@ RAG 示例
 
 ### Generation
 
-最后，我们讨论如何提高和控制语言模型 (LLM) 的生成质量。关键在于确保提供给 LLM 的上下文尽可能与提示相关，否则不相关的数据可能会引发幻觉。以下是一些实现更好生成结果的技巧：
+最后，我们讨论如何提高和控制语言模型 (LLM) 的生成质量。关键在于确保提供给 LLM
+的上下文尽可能与提示相关，否则不相关的数据可能会引发幻觉。以下是一些实现更好生成结果的技巧：
 
 #### 1. 自动剪切以移除无关信息
 
@@ -131,7 +132,8 @@ RAG 示例
 - **检索并评分相似性**：当查询被提出时，会检索到多个对象及其相似性分数。
 - **识别并剪切**：使用相似性分数，识别分数显著下降的截断点。超过此点的对象被认为是相关性较低的，自动排除在外。
 
-例如，如果检索到六个对象，相似性分数可能在第四个对象后急剧下降。通过检查相似性分数的变化率，可以确定哪些对象应被排除，从而确保仅将最相关的信息提供给 LLM。
+例如，如果检索到六个对象，相似性分数可能在第四个对象后急剧下降。通过检查相似性分数的变化率，可以确定哪些对象应被排除，从而确保仅将最相关的信息提供给
+LLM。
 
 参考：AutoCut
 
@@ -149,7 +151,8 @@ RAG 示例
 
 #### 3. 微调 LLM
 
-在领域特定数据上微调 LLM 可以显著增强其在该领域的表现。例如，使用类似 Meditron 70B 的模型，这是在医学数据上专门微调的 LLaMA 2 70b 版本，通过以下方式实现：
+在领域特定数据上微调 LLM 可以显著增强其在该领域的表现。例如，使用类似 Meditron 70B 的模型，这是在医学数据上专门微调的 LLaMA
+2 70b 版本，通过以下方式实现：
 
 - **无监督微调**：在大量领域特定文本（如 PubMed 文献）上继续预训练模型。
 - **有监督微调**：使用有监督学习在领域特定任务（如医学多项选择题）上进一步微调模型。
@@ -247,6 +250,10 @@ public static <T> ImmutableList<T> of(T... elements) {
 
 #### 模型选择
 
+[Step-by-Step Guide to Choosing the Best Embedding Model for Your Application](https://weaviate.io/blog/how-to-choose-an-embedding-model)
+
+#### Sentence Transformers
+
 > Sentence Transformers 是一个自然语言处理工具，用于将文本句子嵌入到一个高维向量空间中，以便进行各种文本相关任务，如文本相似度计算、
 > 文本分类、聚类等。它是通过预训练的深度学习模型实现的，通常使用诸如BERT、RoBERTa、DistilBERT等预训练模型作为其基础架构。
 
@@ -298,3 +305,11 @@ Netflix 相关研究：[Is Cosine-Similarity of Embeddings Really About Similari
 - 智能数据集成和查询： 支持语义搜索、全文搜索、地理空间查询和向量化查询，确保高效的数据检索。
 - 安全性： 强调强大的安全控制，通过加密、基于角色的访问控制和审计功能保护敏感数据。
 - 集成性： 设计成与任何云提供商、LLM和框架无缝集成，支持生成AI应用程序的动态需求。
+
+### 框架： Verba
+
+[Verba](https://github.com/weaviate/verba) 金毛寻回犬（Golden
+RAGtriever），是一款开源应用程序。它旨在为用户提供开箱即用的端到端、简化和用户友好的界面，用于检索增强生成（Retrieval-Augmented
+Generation，简称RAG）。用户只需简单几步，即可轻松探索数据集并提取洞见。无论是本地使用HuggingFace和Ollama，还是通过OpenAI、Cohere和Google等大型语言模型（LLM）提供商，操作都十分便捷。
+
+![Verba Architeture](images/verba_architeture_003_overview.png)
