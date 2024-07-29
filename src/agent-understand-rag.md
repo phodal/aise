@@ -120,6 +120,10 @@ RAG 示例
 
 ![Query Rewrite](images/rag-query-rewrite.png)
 
+#### 3. 微调
+
+[Fine-Tuning Cohere's Reranker](https://weaviate.io/blog/fine-tuning-coheres-reranker)
+
 ### Generation
 
 最后，我们讨论如何提高和控制语言模型 (LLM) 的生成质量。关键在于确保提供给 LLM
