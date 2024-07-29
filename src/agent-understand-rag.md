@@ -273,15 +273,11 @@ public static <T> ImmutableList<T> of(T... elements) {
 
 OnnxRuntime
 
-### Searching
-
-存储与搜索
-
-#### 存储介质
-
-#### 搜索算法
-
 ## 相关资源
+
+### 距离算法
+
+[Distance Metrics in Vector Search](https://weaviate.io/blog/distance-metrics-in-vector-search#cosine-similarity)
 
 ### 相似度
 
