@@ -1,10 +1,29 @@
-# SQL 优化生成
+# SQL 生成
 
 ## 度量
 
-Text2SQL  榜单：[Spider](https://yale-lily.github.io/spider)
+Text2SQL 榜单：[Spider](https://yale-lily.github.io/spider)
 
 ## 示例
+
+### Full Rag：Hyperpersonalization 应用
+
+Tecton的方法：
+
+- 基础层（Level 0）： 仅限于基本的检索，没有额外的上下文信息。
+- 批处理上下文（Level 1）： 使用历史数据（例如之前的旅行记录、喜爱的活动）。Tecton通过管理数据管道和历史数据集来简化构建此类上下文的过程。
+- 批处理 + 流数据上下文（Level 2）： 整合实时用户数据（例如最近的搜索、会话交互）。这一阶段提供更及时的推荐，但实施成本较高。
+- 批处理 + 流数据 + 实时上下文（Level 3）： 引入实时数据，如实时搜索查询和应用程序互动。挑战包括整合第三方数据源以及平衡速度与成本。这一层级提供高度相关的实时推荐，还可以包括基于反馈的调整。
+
+Level 
+
+![](images/level0-no-context.png)
+
+![](images/level1-batch-context.png)
+
+![](images/level2-streaming-context.png)
+
+![](images/level3-full-context.png)
 
 ### RAG2SQL：Vanna
 
@@ -14,8 +33,6 @@ framework for SQL generation and related functionality.
 ![](images/rag-to-sql.webp)
 
 [Vanna: The Supercharged Text-to-SQL Tool All Data Scientists Were Looking For](https://blog.dailydoseofds.com/p/vanna-the-trainable-text-to-sql-agent)
-
-
 
 #### Function RAG
 
