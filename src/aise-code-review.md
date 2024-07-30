@@ -20,8 +20,6 @@ PR Agent
 
 ![](images/pr-agent.png)
 
-### PR压缩策略
-
 在处理PR（Pull Request）时，有两种常见情况：
 
 1. PR足够小，可以放入一个提示中（包括系统提示和用户提示）。
@@ -78,6 +76,63 @@ PR Agent
 通过上述策略，我们可以有效地压缩和管理PR内容，使其适合在提示中使用，并确保信息的相关性和完整性。
 
 ![](images/git_patch_logic.png)
+
+### 示例：CodeRabbit
+
+CodeRabbit是一款先进的AI驱动代码审查工具，旨在对拉取请求（PR）和合并请求（MR）提供快速且有上下文意识的反馈。它显著减少了手动代码审查所需的时间和精力，
+提供了一个新的视角，并且经常能发现人眼容易忽略的问题。开发者可以直接在代码中与机器人互动，提供额外的上下文、提出问题或生成代码。系统通过学习用户的反馈不断改进。
+
+AST 解析：[ast-grep](https://ast-grep.github.io/guide/rule-config.html)  is a new AST based tool for managing your code,
+at massive scale.
+
+![](images/coderabbit-flow.png)
+
+#### Code Review 配置示例
+
+CodeRabbit 基于抽象语法树 (AST) 模式提供审查指令。在底层实现上，CodeRabbit 使用 ast-grep 来支持这一功能。ast-grep 是用 Rust
+编写的，并使用 tree-sitter 解析器为多种流行语言生成 AST。
+
+```yaml
+#...
+reviews:
+  #...
+  path_instructions:
+    - path: "**/*.js"
+      instructions: |
+        Review the JavaScript code against the Google JavaScript style guide and point out any mismatches
+    - path: "tests/**.*"
+      instructions: |
+        Review the following unit test code written using the Mocha test library. Ensure that:
+        - The code adheres to best practices associated with Mocha.
+        - Descriptive test names are used to clearly convey the intent of each test.
+  tools:
+    ast-grep:
+      essential_rules: true # option to enable essential security rules
+      rule_dirs:
+        - "custom-name"
+      packages:
+        - "myorg/myawesomepackage" # custom package name following the format organization/repository
+```
+
+AST Grep 规则示例：
+
+```yaml
+rule:
+  # atomic rule
+  pattern: "search.pattern"
+  kind: "tree_sitter_node_kind"
+  regex: "rust|regex"
+  # relational rule
+  inside: { pattern: "sub.rule" }
+  has: { kind: "sub_rule" }
+  follows: { regex: "can|use|any" }
+  precedes: { kind: "multi_keys", pattern: "in.sub" }
+  # composite rule
+  all: [{ pattern: "match.all" }, { kind: "match_all" }]
+  any: [{ pattern: "match.any" }, { kind: "match_any" }]
+  not: { pattern: "not.this" }
+  matches: "utility-rule"
+```
 
 ### Google 示例：DIDACT
 

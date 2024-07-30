@@ -17,7 +17,11 @@ AI 辅助编码的积极作用，需要做到以下几点：
 
 ## 0. 将代码质量设为关键绩效指标（KPI）
 
-## 1. 结合传统工具/SAAS 服务，改善 AI 代码质量
+## 1. 结合经典工具/SAAS 服务，改善 AI 代码质量
+
+经典工具：sonarqube
+
+SaaS 服务：Codacy、CodeScene、Code Climate
 
 ### CodeScene 示例
 
@@ -34,6 +38,14 @@ AI 辅助编码的积极作用，需要做到以下几点：
 如下图所示：
 
 ![](images/AI-Coding-Guard-Rails.png)
+
+### Amazon CodeGuru Reviewer 示例
+
+Amazon CodeGuru Reviewer 是一项使用程序分析和机器学习来检测开发人员难以发现的潜在缺陷，并为改进 Java 和 Python
+代码提供建议的服务。通过主动检测代码缺陷，CodeGuru Reviewer 可以提供解决这些问题的指导方针，并实施最佳实践，以在代码审查阶段提高代码库的整体质量和可维护性。
+
+[How Amazon CodeGuru Reviewer works](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/how-codeguru-reviewer-works.html)
+
 
 ### CodeGeeX：结合 SAAS 服务，静默守护代码质量
 
