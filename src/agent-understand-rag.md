@@ -294,6 +294,25 @@ Netflix 相关研究：[Is Cosine-Similarity of Embeddings Really About Similari
 - Sweep
   AI: [Chunking 2M+ files a day for Code Search using Syntax Trees](https://docs.sweep.dev/blogs/chunking-2m-files)
 
+### 混合搜索
+
+![](images/how_hybrid_search_works.png)
+
+结合：[A Review of Hybrid Search in Milvus](https://zilliz.com/blog/a-review-of-hybrid-search-in-milvus)
+
+如下提 Milvus 的混合搜索过程：
+
+![](images/what_is_the_hybrid_search_process_within_Milvus.png)
+
+对应的 ReRanker 模块：
+
+![](images/how_reranking_works.png)
+
+- 排序检索融合（RRF）。RRF是一种数据融合算法，它基于检索结果的倒数排名进行结果的合并。它平衡了每个向量字段的影响，尤其是在没有明确的重要性优先级时。
+  当你希望对所有向量字段给予同等考虑，或者每个字段相对重要性不确定时，会使用这种策略。
+- 加权排名器（WeightedRanker）。加权排名器策略根据每个向量字段的重要性，为来自每个向量检索路径的结果分配不同的权重。
+  当每个向量字段的重要性不同时，应用这种重新排序策略，允许你通过分配更高的权重来强调某些向量字段。例如，在多模态搜索中，文本描述可能被认为比图像中的颜色分布更重要。
+
 ### RAG 评估
 
 [RAG Evaluation: Detecting Hallucinations with Patronus AI and MongoDB](https://www.mongodb.com/developer/products/atlas/mongodb_patronus_ai/)

@@ -3,3 +3,9 @@
 ## 问题修复
 
 [Safely repairing broken builds with ML](https://research.google/blog/safely-repairing-broken-builds-with-ml/)
+
+
+## 示例
+
+### prompt 示例：AutoDev
+
