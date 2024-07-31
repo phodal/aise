@@ -1,5 +1,47 @@
 # RAG 数据与 AI 安全
 
+## GitHub Secret
+
+![](images/github-secret.png)
+
+```bash
+Current branch main is up to date.
+Enumerating objects: 32, done.
+Counting objects: 100% (32/32), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (16/16), done.
+Writing objects: 100% (19/19), 4.59 KiB | 1.15 MiB/s, done.
+Total 19 (delta 10), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (10/10), completed with 7 local objects.
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: 
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote: 
+remote:     - Push cannot contain secrets
+remote: 
+remote:     
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/pushing-a-branch-blocked-by-push-protection
+remote:     
+remote:     
+remote:       —— OpenAI API Key ————————————————————————————————————
+remote:        locations:
+remote:          - commit: 620252f31718c63dbc6c89d0c0b989187489ef1c
+remote:            path: docs/guarding/pipeline-guarding.md:34
+remote:          - commit: bb7952d77a7c76a4d29c97bb049af3e709d543f0
+remote:            path: docs/guarding/pipeline-guarding.md:34
+remote:          - commit: bb7952d77a7c76a4d29c97bb049af3e709d543f0
+remote:            path: shirelang/src/test/kotlin/com/phodal/shirelang/ShirePatternPipelineTest.kt:116
+remote:     
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/phodal/shire/security/secret-scanning/unblock-secret/xxx
+remote:     
+remote: 
+remote: 
+```
+
 ## 示例
 
 ### Microsoft [Presidio](https://microsoft.github.io/presidio/)
