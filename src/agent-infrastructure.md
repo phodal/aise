@@ -454,7 +454,6 @@ Massive Text Embedding Benchmark (MTEB) Leaderboard. [排名](https://huggingfac
 ### [BAAI/bge-small-zh-v1.5](https://huggingface.co/BAAI/bge-small-zh-v1.5)
 
 
-
 ### 相关库
 
 - [FastEmbed](https://github.com/qdrant/fastembed) is a lightweight, fast, Python library built for embedding generation.

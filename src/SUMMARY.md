@@ -48,6 +48,7 @@
     - [系统迁移](./scenario-legacy-transform.md)
 - [第 4 部分：编程智能体辅助软件工程](./agent-for-aise.md)
     - [编码智能体基础设施](./agent-infrastructure.md)
+        - [Rerank](./agent-rag-rerank.md) 
     - [远程 AI 智能体](./agent-remote.md)
         - [重构 AI 测试生成](./agent-refactoring-test.md)
         - [场景：新人上手项目](./agent-onboarding.md)
