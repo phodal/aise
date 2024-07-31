@@ -56,6 +56,7 @@
         - [Copilot Chat 是如何工作的](./agent-github-copilot-chat.md)
         - [代码问答 Agent 示例](./agent-codebase-example.md)
         - [Copilot Workspace](./agent-copilot-workspace.md)
+    - [数据与 AI 安全](./agent-data-security.md)
 - [第 5 部分：AI 自动化编程](./flow-aise.md)
     - [理解 AI 自动化编程](./flow-in-aise.md)
     - [自动化 CRUD](./flow-example-autocrud.md)
