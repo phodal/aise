@@ -1,10 +1,20 @@
-# 数据与 AI 安全
+# RAG 数据与 AI 安全
 
 ## 示例
 
-### [LLM Guard](https://llm-guard.com/)
+### Microsoft [Presidio](https://microsoft.github.io/presidio/)
+
+Presidio（源自拉丁语praesidium ‘保护、卫戍’）致力于确保敏感数据得到妥善管理和治理。该系统为私人实体提供快速识别和匿名化功能，
+能够处理文本和图像中的信用卡号码、姓名、位置、社会保障号码、比特币钱包、美国电话号码、财务数据等敏感信息。
+
+![](images/presidio-analyze-anonymize.png)
+
+### Protect AI [LLM Guard](https://llm-guard.com/)
 
 Supported scanners
+
+![](images/LLMGuard-features.webp)
+
 Prompt scanners
 
 - Anonymize，acts as your digital guardian, ensuring your user prompts remain confidential and free from sensitive data
