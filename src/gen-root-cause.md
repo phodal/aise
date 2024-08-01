@@ -10,7 +10,6 @@
 
 ## 示例
 
-
 ### New Relic AI: observability assistant
 
 [Meet New Relic AI, your observability assistant](https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/core-concepts/new-relic-ai/#synthetic)
@@ -29,8 +28,6 @@ New Relic AI 旨在通过将大型语言模型 (LLMs) 与 New Relic 的数据平
 7. **仪表板分析：** 从仪表板中获取摘要和见解，以了解和调查遥测数据。
 
 #### [AI Monitoring](https://newrelic.com/platform/ai-monitoring)
-
-
 
 #### NRQL 示例
 
@@ -67,3 +64,40 @@ SELECT uniqueCount(uuid) FROM MobileSession FACET osVersion SINCE 7 days ago
 ```sql
 SELECT apdex(duration, t: 0.4) FROM Transaction WHERE customerName='ReallyImportantCustomer' SINCE 1 day ago
 ```
+
+### Dynatrace: Automatic root-cause analysis
+
+根本原因分析利用所有可用的上下文信息——如拓扑结构、事务和代码级别信息——来识别具有相同根本原因和影响的事件。
+
+仅凭时间相关性不足以确定问题的根本原因。Dynatrace
+采取了一种上下文感知的方法，检测跨越时间、进程、主机、服务、应用程序以及垂直和水平拓扑监控视角的相互依赖事件。这种方法将多个独立异常整合为单一一致的问题，
+大幅降低了警报负载。
+
+下图展示了 Davis
+如何分析问题的所有水平和垂直依赖关系。在此示例中，应用程序表现出异常行为，而底层的垂直堆栈运行正常。分析跟踪应用程序的事务，
+检测到对某个服务（服务1）的依赖，该服务也表现出异常行为。反过来，该服务的所有依赖项也表现出异常，并且都是同一问题的组成部分。
+
+![相关性图表](images/dynatrace-correlation-diagram.png)
+
+#### Cut down your mean time to repair by 90% or more
+
+性能问题很少是孤立的一次性事件，它们通常是更大问题的症状。Dynatrace 的人工智能分析了数十亿次事件，帮助您解决问题的根本原因，而非仅仅应对症状。
+
+- 人工智能能够理解整个 IT 环境中的因果关系。
+- 只有 Dynatrace 能够可靠地发现性能问题的根本原因。
+- 通过深入分析源代码和数据库语句，您可以先行一步进行故障修复。
+
+![](images/dynatrace-apmusecases-problemevolution.webp)
+
+Dynatrace 的根本原因分析提供了即时回放功能，它能直观地展示问题是如何逐步发展的。通过这种方式，用户可以迅速定位并解决问题。
+
+#### 可视化方式
+
+在处理高度复杂的问题时，他巧妙地运用了视觉化的手段。在当今日益复杂且高度动态的环境中，应用程序的依赖关系远超个人能够通过传统监控工具有效分析的范围。
+
+- Dynatrace 的人工智能能够自动且持续地在弹性应用环境中检测因果关系。
+- 利用应用程序问题的即时回放功能，详细观察您的环境中的各个组件随时间如何受到影响。
+- 查看一个互动式信息图表，它会告诉您问题出在哪里以及您可以采取哪些措施。
+
+![](images/dynatract-rootcause-devops-member.webp)
+
