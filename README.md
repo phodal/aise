@@ -26,6 +26,10 @@ AI 辅助软件工程实践经验以及在 Thoughtworks 的开源项目与落地
 在大多数组织中，开发者用于编码的时间不到总工作时间的 40%，因此编码提效对整个软件开发生命周期（SDLC）的效能影响很有限，应尝试将
 AI 应用于软件 全生命周期和整个团队，而不仅仅是个别成员、个别环节的产出。
 
+更多关于我的信息，请访问我的个人网站：[Phodal](https://www.phodal.com)。或者扫描下方二维码：
+
+![](https://articles.phodal.com/qrcode.jpg)
+
 ## 简介
 
 ![Cover](src/images/cover.jpeg)
