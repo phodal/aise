@@ -29,9 +29,7 @@ New Relic AI 旨在通过将大型语言模型 (LLMs) 与 New Relic 的数据平
 
 #### [AI Monitoring](https://newrelic.com/platform/ai-monitoring)
 
-#### NRQL 示例
-
-### 应用数据 NRQL 查询示例
+#### 应用数据 NRQL 查询示例
 
 你可以使用 NRQL 查询从应用程序监控、浏览器监控和移动端监控中收集到的数据。通过这些数据，你可以回答各种问题。以下是一些基本的示例。
 
@@ -65,7 +63,11 @@ SELECT uniqueCount(uuid) FROM MobileSession FACET osVersion SINCE 7 days ago
 SELECT apdex(duration, t: 0.4) FROM Transaction WHERE customerName='ReallyImportantCustomer' SINCE 1 day ago
 ```
 
-### Dynatrace: Automatic root-cause analysis
+### Dynatrace
+
+![](images/dynatrace-davis-copilot.png)
+
+####  Automatic root-cause analysis
 
 根本原因分析利用所有可用的上下文信息——如拓扑结构、事务和代码级别信息——来识别具有相同根本原因和影响的事件。
 
@@ -79,7 +81,24 @@ SELECT apdex(duration, t: 0.4) FROM Transaction WHERE customerName='ReallyImport
 
 ![相关性图表](images/dynatrace-correlation-diagram.png)
 
-#### Cut down your mean time to repair by 90% or more
+#### Problem Lifecyle
+
+当 Dynatrace 接收到首个事件指标，表明出现异常行为时，如服务减慢、节点饱和或工作负载崩溃并重启，它会立即开启一个问题。
+问题会自动遵循一个生命周期，并在仍有受影响的实体处于不健康或异常状态时保持活动状态，这通常由一个活跃事件来表示。
+
+在以下场景中，基础设施层的一个性能事件是问题的根本原因：
+
+![](images/dynatract-problem-life-span.png)
+
+问题生命周期：
+
+1. Dynatrace 检测到基础设施层的性能事件，并创建一个新的问题以进行跟踪。同时，也会发送通知。
+2. 几分钟后，基础设施问题导致应用程序的某个服务出现性能下降问题。
+3. 开始出现更多服务层的性能下降问题。最初仅限于基础设施的问题，现在已经发展成一系列服务层问题，每个问题都源于基础设施层的原始事件。
+4. 最终，服务层问题开始影响通过桌面或移动浏览器与应用程序互动的客户体验。在问题生命周期的这个阶段，您面临的是一个应用程序问题，其根本原因在于基础设施层，同时服务层也有额外的原因。
+5. 由于 Dynatrace 了解您环境中的所有依赖关系，它能够将客户体验的性能下降问题与基础设施层的原始性能问题关联起来，从而促进快速解决问题。
+
+##### Cut down your mean time to repair by 90% or more
 
 性能问题很少是孤立的一次性事件，它们通常是更大问题的症状。Dynatrace 的人工智能分析了数十亿次事件，帮助您解决问题的根本原因，而非仅仅应对症状。
 
@@ -91,7 +110,7 @@ SELECT apdex(duration, t: 0.4) FROM Transaction WHERE customerName='ReallyImport
 
 Dynatrace 的根本原因分析提供了即时回放功能，它能直观地展示问题是如何逐步发展的。通过这种方式，用户可以迅速定位并解决问题。
 
-#### 可视化方式
+##### 可视化方式
 
 在处理高度复杂的问题时，他巧妙地运用了视觉化的手段。在当今日益复杂且高度动态的环境中，应用程序的依赖关系远超个人能够通过传统监控工具有效分析的范围。
 
@@ -101,3 +120,22 @@ Dynatrace 的根本原因分析提供了即时回放功能，它能直观地展�
 
 ![](images/dynatract-rootcause-devops-member.webp)
 
+#### DQL
+
+Total number of open vulnerabilities
+
+```SQL
+fetch events
+| filter dt.system.bucket=="default_security_events"
+     AND event.provider=="Dynatrace"
+     AND event.type=="VULNERABILITY_STATE_REPORT_EVENT"
+     AND event.level=="ENTITY"
+// filter for the latest snapshot per entity
+| dedup {vulnerability.display_id, affected_entity.id}, sort:{timestamp desc}
+// filter for open non-muted vulnerabilities
+| filter vulnerability.resolution.status=="OPEN"
+     AND vulnerability.parent.mute.status!="MUTED"
+     AND vulnerability.mute.status!="MUTED"
+// count unique vulnerabilities
+| summarize {`Open vulnerabilities`=countDistinctExact(vulnerability.display_id)}
+```
