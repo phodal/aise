@@ -51,6 +51,55 @@ Presidio（源自拉丁语praesidium ‘保护、卫戍’）致力于确保敏�
 
 ![](images/presidio-analyze-anonymize.png)
 
+![](images/presidio-ner-flow.png)
+
+Presidio 分析器是一个基于Python的服务，用于检测文本中的 PII（个人身份信息）实体。
+
+在分析过程中，它运行一组不同的 PII 识别器，每个识别器负责使用不同的机制检测一个或多个PII实体。
+
+Presidio 分析器提供了一组预定义的识别器，但也可以轻松扩展为其他类型的自定义识别器。预定义和自定义识别器利用正则表达式、命名实体识别以及其他类型的逻辑来检测非结构化文本中的PII。
+
+```yaml
+nlp_engine_name: transformers
+models:
+  - lang_code: en
+    model_name:
+      spacy: en_core_web_sm
+      transformers: StanfordAIMI/stanford-deidentifier-base
+
+ner_model_configuration:
+  labels_to_ignore:
+    - O
+  aggregation_strategy: simple # "simple", "first", "average", "max"
+  stride: 16
+  alignment_mode: strict # "strict", "contract", "expand"
+  model_to_presidio_entity_mapping:
+    PER: PERSON
+    LOC: LOCATION
+    ORG: ORGANIZATION
+    AGE: AGE
+    ID: ID
+    EMAIL: EMAIL
+    PATIENT: PERSON
+    STAFF: PERSON
+    HOSP: ORGANIZATION
+    PATORG: ORGANIZATION
+    DATE: DATE_TIME
+    PHONE: PHONE_NUMBER
+    HCW: PERSON
+    HOSPITAL: ORGANIZATION
+
+  low_confidence_score_multiplier: 0.4
+  low_score_entity_names:
+    - ID
+```
+
+### SkyFlow
+
+https://www.skyflow.com/product/llm-privacy-vault
+
+![](images/skyflow-llm-privacy-vault.png)
+
 ### Protect AI [LLM Guard](https://llm-guard.com/)
 
 Supported scanners
