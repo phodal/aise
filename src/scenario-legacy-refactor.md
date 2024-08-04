@@ -2,19 +2,15 @@
 
 ## 示例
 
-### IBM Watsonx Code Assistant for Z
+### IBM [Watsonx Code Assistant for Z](https://www.ibm.com/products/watsonx-code-assistant-z)
 
-https://www.ibm.com/products/watsonx-code-assistant-z
+IBM watsonx™ Code Assistant for Z 是一款生成式人工智能辅助产品，旨在以低于当前替代方案的成本和风险，加速大型机应用的现代化进程。
 
 ![](images/ibm-watsonx-code-assistant-for-z.webp)
 
-IBM watsonx™ Code Assistant for Z is a generative AI-assisted product built to accelerate mainframe application
-modernization at lower cost and with less risk than today’s alternatives.
-
-watsonx Code Assistant for Z provides an end-to-end application developer lifecycle that includes application discovery
-and analysis, automated code refactoring, COBOL to Java conversion, automated test generation and code explanation.
-Developers can automatically refactor selected elements of an application and continue modernizing in COBOL, or
-selectively transform code to Java leveraging generative AI using a highly tuned state-of-the-art large language model.
+watsonx Code Assistant for Z 为开发者提供了一个端到端的应用开发生命周期，包括应用发现与分析、自动化代码重构、COBOL 到 Java
+的转换、 自动化测试生成以及代码解释等功能。开发者可以自动重构应用中的选定元素，继续在 COBOL 中进行现代化，或者利用高度优化的先进大型语言模型，
+通过生成式人工智能有选择地将代码转换为 Java。
 
 1. 理解。深入了解您的主机应用程序，并可视化它们之间的关系与依赖。利用生成式人工智能对代码进行解释，自动记录您的COBOL应用程序，帮助新程序员快速上手。
 2. 重构。发现程序及数据，以自动重构您的应用程序，将其转化为更独立业务服务，推动功能增强并提高可维护性，同时为COBOL的选转型至Java做好准备。
@@ -79,23 +75,18 @@ selectively transform code to Java leveraging generative AI using a highly tuned
     - 设置开发环境并运行代码以确保其按预期工作。
     - 使用代码静态检查工具（如ESLint或Pylint）来识别语法错误和潜在问题。
     - 使用依赖关系分析工具和架构可视化工具来了解项目的依赖关系和结构。
-
 2. **文档和注释：**
     - 利用现有的文档和注释来获取代码的原始目的、设计决策和潜在问题的洞察。
     - 对缺乏文档的遗留系统进行文档补充和注释更新。
-
 3. **代码分析工具：**
     - 使用静态分析工具（如SonarQube、PMD、CAST）来识别代码问题、代码异味和安全漏洞。
     - 这些工具还能揭示代码依赖关系和结构，帮助开发人员确定重构的优先级。
-
 4. **版本控制历史：**
     - 利用版本控制系统（如Git）来理解代码库的历史，通过分析提交日志来追踪代码的变更。
     - 使用`git blame`和`git log`命令来了解每行代码的最后修改情况及其原因。
-
 5. **重构和清理：**
     - 在不改变外部行为的前提下对代码进行重构，以提高代码的可维护性和可读性。
     - 采用小规模、可管理的更改，使用特性分支并持续测试代码，以验证重构未影响功能。
-
 6. **测试和验证：**
     - 编写单元测试、集成测试和端到端测试来验证更改，防止回归问题。
     - 在没有测试的遗留代码上编写测试，以确保代码可靠性。

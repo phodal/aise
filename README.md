@@ -1,5 +1,7 @@
 # 《AI 辅助软件工程：实践与案例解析》（草稿）
 
+![Cover](src/images/cover.jpeg)
+
 2024 年 6 月 1 日，我计划利用在 Thoughtworks 的三个月年资假做一些 AI 辅助研究与超前设计。同时结合之前的
 AI 辅助软件工程实践经验以及在 Thoughtworks 的开源项目与落地经验，编写一本关于《AI辅助软件工程》的开源电子书。
 
@@ -31,8 +33,6 @@ AI 应用于软件 全生命周期和整个团队，而不仅仅是个别成员�
 ![](https://articles.phodal.com/qrcode.jpg)
 
 ## 简介
-
-![Cover](src/images/cover.jpeg)
 
 本书是一本关于如何使用 AI 辅助软件工程的开源电子书。我们将介绍：
 
