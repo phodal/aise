@@ -2,10 +2,26 @@
 
 ## 示例
 
-### watsonx Code Assistant for Z
+### IBM Watsonx Code Assistant for Z
 
 https://www.ibm.com/products/watsonx-code-assistant-z
 
+![](images/ibm-watsonx-code-assistant-for-z.webp)
+
+IBM watsonx™ Code Assistant for Z is a generative AI-assisted product built to accelerate mainframe application
+modernization at lower cost and with less risk than today’s alternatives.
+
+watsonx Code Assistant for Z provides an end-to-end application developer lifecycle that includes application discovery
+and analysis, automated code refactoring, COBOL to Java conversion, automated test generation and code explanation.
+Developers can automatically refactor selected elements of an application and continue modernizing in COBOL, or
+selectively transform code to Java leveraging generative AI using a highly tuned state-of-the-art large language model.
+
+1. 理解。深入了解您的主机应用程序，并可视化它们之间的关系与依赖。利用生成式人工智能对代码进行解释，自动记录您的COBOL应用程序，帮助新程序员快速上手。
+2. 重构。发现程序及数据，以自动重构您的应用程序，将其转化为更独立业务服务，推动功能增强并提高可维护性，同时为COBOL的选转型至Java做好准备。
+3. 转换。利用生成式人工智能，在几分钟内而非数月内加速高质量的COBOL至Java转换。
+4. 验证。简化并加速新Java代码的测试过程，确保其与COBOL代码在语义上等效，以提高质量和降低风险。
+5. 推荐。推荐并部署最适合的架构。
+6. 观测。在混合应用/混合云环境中进行观测。
 
 ### Bloop
 
