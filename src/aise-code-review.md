@@ -105,6 +105,8 @@ AI 和人类开发人员之间的持续合作。软件开发的未来光明，AI
 
 [Tackling Complex Tasks with LLMs](https://sourcery.ai/blog/tackling-complex-tasks-with-llms/)
 
+![Sourcery](images/Code_Complexity_Workflow.png)
+
 #### 分解为多个部分以提高效率
 
 帮助 LLM 处理复杂任务的一个常见方法是增加它可用的上下文。但这会带来两个大问题：
