@@ -13,6 +13,10 @@
     - 如掌握更多的技能如后端掌握前端开发，Dev掌握Ops等
     - 如更低的团队经验水平，1个TL能更多Junior团队成员等
 
+## ROI 计算
+
+[Semgrep ROI Caculator](https://semgrep.dev/resources/calculator)
+
 ## 金融行业案例：Ebay
 
 链接：![Cutting Through the Noise: Three Things We've Learned About Generative AI and Developer Productivity](https://innovation.ebayinc.com/tech/features/cutting-through-the-noise-three-things-weve-learned-about-generative-ai-and-developer-productivity/)
