@@ -74,6 +74,90 @@ AI 和人类开发人员之间的持续合作。软件开发的未来光明，AI
 上下文感知代码审查通过其深入的方式，真正提升了软件开发实践。这不仅仅是自动化检查，而是对代码库的深刻理解，确保每行代码都能良好运行并无缝集成到整个系统中。
 与传统代码审查的区别
 
+## How
+
+### 如何识别复杂代码
+
+[Finding the Traps We Set for Ourselves](https://sourcery.ai/blog/reviewing-code-complexity/)
+
+**复杂代码的两种类型——必要复杂性和偶发复杂性**
+
+在深入探讨如何在审查过程中捕捉复杂性之前，我们需要对复杂代码有一个认识。 并非所有复杂代码的复杂性都是相同的。有些代码复杂性是绝对必要的，
+因为我们使用代码来解决复杂的问题。这种是必要复杂性——它是完成任务所需的复杂性。 另一方面，有些复杂性是我们自己引入到代码中的，而实际上并不需要。
+这种复杂性可以从代码中消除，我们仍然可以完成任务——这就是偶发复杂性。 当我们考虑在审查中捕捉复杂代码时，我们只关注偶发复杂性——即为了实现代码目标而不需要存在的复杂性。
+
+**识别复杂代码**
+
+我们可以尝试很多方法来识别引入的过于复杂的代码——但我认为有四个方面是最能捕捉到项目中多余复杂性的关键。
+
+1. **重建现有功能或创建重复代码**  
+   如果新引入的代码重复了代码库中的现有功能，这强烈表明我们可以减少代码的复杂性。我们可以在新代码中重用现有功能，或将其抽象化以便更通用的使用。这也可能表明新代码没有经过充分规划，或者开发者对代码库不够熟悉。
+2. **缺乏解耦**  
+   当代码块试图做过多事情时，会增加未来出现问题的风险。如果我在审查代码时发现函数、类或模块试图一次做太多事情，我会立即标记为需要审查和重构的复杂区域。通过将代码分解成具有明确目的和职责的小部分，我们可以使其更易于理解、更易于维护，并在未来更容易扩展。
+3. **深层嵌套或高认知/圈复杂度**  
+   代码嵌套越深，理解起来就越困难。这是一种视觉上容易标记的复杂性，而增加的认知复杂性直接影响未来开发的速度。如果你发现代码过于嵌套，那么在合并之前明显需要重构代码。
+4. **过度设计**  
+   我描述的前三种复杂性相对简单易于识别。判断代码更改是否过度设计则有点棘手，需要对代码库和代码更改的目标有较好的理解。假设你有这些知识，你需要检查代码更改是否实现了这些目标，并且以尽可能简单的方式实现。一个典型的过度设计的标志是试图不必要地为新功能进行未来预测，或涵盖可能永远不会发生的用例或边界情况。
+
+你可以在审查过程中查找其他类型的复杂性，但如果你能够检查这四个方面，你应该能够开始减少进入项目的不必要复杂性。
+
+### Prompt 设计
+
+[Tackling Complex Tasks with LLMs](https://sourcery.ai/blog/tackling-complex-tasks-with-llms/)
+
+#### 分解为多个部分以提高效率
+
+帮助 LLM 处理复杂任务的一个常见方法是增加它可用的上下文。但这会带来两个大问题：
+
+- 提供给LLM的上下文越多，收益递减，到了某个点后，反而会影响输出的准确性，在代码审查的情况下可能会导致假阳性或幻觉。
+- 扩展上下文是昂贵的！尤其是当我们需要提供大量上下文时。
+
+在审查代码变化的复杂性问题时，我们总是从查看代码变化的diff开始。仅仅diff是不足以让我们检查是否存在重大复杂性问题的。我们需要能够看到代码变化如何与周围代码互动。
+但我们通常不能仅仅发送完整的代码库，甚至是变化前后的完整文件作为上下文。这会产生过多的噪声，并且成本高昂且效率低下。
+
+所以我们在审查过程中的第一步是将代码变化分解成可以单独分析的原子块。通常，对于代码变化，我们会查看相关的变化，比如在同一个函数或类中的变化，并将diff中的所有变化分成多个这样的块。
+
+现在我们从查看包含许多变化的diff，转到查看一系列小变化——但实际上，并非所有这些小变化都与我们的分析相关。
+
+#### “确定性”过滤
+
+典型的拉取请求中的大多数代码变化不太可能增加坏的复杂性。也许变化并没有实际触及代码，也许只是添加了一些新的导入，或者只是一个过小的变化。我们将这些我们知道不太可能影响代码复杂性的潜在变化分组到多个启发式检查中，然后将第一步中的所有小代码变化都放入这些检查中。如果我们能在前期看到它们不会影响复杂性，那么就没有理由让LLM介入。
+
+这对于你可能要求LLM执行的每种复杂任务都不一定相关，但如果有办法在确定性地预筛选掉一些输入数据部分，你可以显著简化后续分析，并使整个过程更流畅、更便宜。
+
+```Bash
+INFO:__main__:Skipping hunk 13-13 in file diff: coding_assistant/query_handler/base.py (limited new code introduced)
+INFO:__main__:Skipping hunk 29-29 in file diff: coding_assistant/query_handler/openai.py (limited new code introduced)
+INFO:__main__:Skipping hunk 121-123 in file diff: coding_assistant/query_handler/openai.py (limited new code introduced)
+```
+
+#### 扩展上下文
+
+现在我们已经筛选出了初步关注的代码变化部分，我们可以考虑增加额外的上下文。为了帮助分析过程，我们保持附加上下文相对简单。我们将需要检查复杂性变化的代码块从
+diff 转变为稍微扩展的代码版本——添加与代码功能相关但在diff中丢失的行。
+
+![](images/codereview-expand-code-chunk.png)
+
+##### 将 Diff 扩展到前后代码
+
+未来还有很多其他方法可以进一步扩展上下文——例如提供函数的使用位置上下文、PR本身的问题上下文等。由于我们减少了需要扩展上下文的地方，我们能够更高效地添加有用的上下文。
+在我们所看的例子中，通过将其分解为多个块并在转向LLM之前进行筛选，我们节省了超过5000个tokens。
+
+#### 将结果转化为有用的评论
+
+我们现在有一组潜在的代码变化需要在代码审查中标记，并有理由担心它们过于复杂。现在我们需要弄清楚如何实际告诉开发者这个潜在问题，并帮助他们决定是否需要修复。
+这可能是我们整个过程最简单的一步——我们可以回到LLM，要求它将推理和建议改进转化为对开发者有用的评论，结合相关的代码变化。
+
+#### 再交给另一个LLM进行过滤
+
+尽管我们已经相当严格地尝试减少可能的复杂性风险，但我们仍然经常看到假阳性和无用的代码审查评论。我们在测试中发现，这些假阳性和无用的评论常常出现在我们早期 LLM 步骤生成的回应过于笼统的情况下。
+
+为了减少这些情况，我们可以依赖另一个LLM请求来检查我们给开发者的反馈是否过于笼统。如果是这样，我们会将其作为潜在的响应丢弃。
+在我们实验和开发复杂性检查过程中，我们发现这减少了 80% 以上的假阳性。
+
+我们处理复杂性检查的过程有很多步骤，涉及到与LLM的来回交流，但我们认为这是值得的。在我们在这篇文章中看到的例子中，它将 LLM 请求使用的 tokens 减少了 77%，
+并且相比于仅使用单个 LLM 请求和扩展上下文，减少了几个潜在的假阳性回应。
+
 ## 示例
 
 ### Codium PR-Agent
@@ -198,6 +282,145 @@ rule:
   not: { pattern: "not.this" }
   matches: "utility-rule"
 ```
+
+### 示例：Sourcery
+
+[Better LLM Prompting using the Panel-of-Experts](https://sourcery.ai/blog/panel-of-experts/)
+
+#### Prompt 技巧：专家小组
+
+这是一种受“思维树”方法启发的提示方式，该方法设想了一种树状的推理过程，模型提出各种解决方案，并通过搜索算法一步步迭代这些方案。
+
+这种思维树后来被发展成为一种提示策略，使用的提示如下：
+
+```shire
+想象有三位不同的专家正在回答这个问题。
+所有专家都将写下他们思考的1个步骤，
+然后与小组分享。
+接着，所有专家将继续下一步，如此循环。
+如果在任何步骤中，有专家意识到自己犯了错误，他们将退出。
+问题是……
+```
+
+这种策略（至少从轶事来看）在推理任务上取得了比“思维链”更好的效果。
+
+“专家小组”是对此的进一步扩展，使用类似的提示，但唤起了小组讨论的想法，并借鉴了大型语言模型（LLM）的训练数据中包含许多此类讨论的观点。
+LLM 的一个大问题是，一旦它们开始了一个错误的推理线路，通常会将错误进行到底，而不是意识到错误。而拥有不同角色的专家小组更有可能引入不同的观点和论据，
+这有望带来更好的推理和结果。
+
+开头 Prompt：
+
+```shire
+You are a panel of three experts on code documentation - Alice, Bob and Charles.
+
+When given a diff containing code changes, your task is to determine any updates required to the docstrings in the code.
+You will do this via a panel discussion, trying to solve it step by step and make sure that the result is correct.
+
+At each stage make sure to critique and check each others work - pointing out any possible errors.
+```
+
+结束 prompt：
+
+```shire
+Where you find a function with a docstring, one person should put forward the argument for updating it,
+then the others should critique it and decide whether the update is necessary.
+
+The existing docstrings must be present in the diff.
+Only include a function if the update to the docstring is significant and is directly related to the changed lines.
+
+Once you have the complete list of updates return them as a json list in the following format.
+You should not add any further points after returning the json.
+<json schema here>
+```
+
+#### LLM 应用程序测试
+
+[Unit Testing Code with a Mind of Its Own](https://sourcery.ai/blog/unit-testing-llm-output/)
+
+> LLM 应用程序测试是针对大型语言模型（LLM）的输出进行验证和评估的测试方法。它旨在确保LLM在应用程序中的表现符合预期，减少错误或不准确的生成，并提升系统的可靠性和用户体验。
+
+我们测试LLM输出的方式与我们进行标准单元测试的方式并没有太大的不同。在结构上它们看起来是一样的——我们使用pytest，有fixtures，设置参数化测试等。
+
+```Python
+def test_find_hardcoded_secret(
+    review_config: ReviewConfig,
+) -> None:
+    diff = Diff(
+        clean_triple_quote_text(
+            """
+                diff --git a/.env b/.env
+                index 99792dd..0000000
+                --- a/.env
+                +++ b/.env
+                @@ -0,0 +1,2 @@
+                 # Created by Vercel CLI
+                +POSTGRES_PASSWORD="REDACTED"
+            """
+        )
+    )
+    comments = review_security_issues.invoke(diff, review_config.to_runnable_config())
+    assert len(comments) == 1
+    [comment] = comments
+    assert comment.location == ".env:2"
+    assert comment.file == ".env"
+    assert comment.comment_type == ReviewCommentType.ISSUE
+    assert comment.importance == ReviewCommentImportance.BLOCKING
+    assert comment.area == CommentRequestReviewCommentArea.SECURITY
+    assert comment.diff_line_for_comment == '+POSTGRES_PASSWORD="REDACTED"'
+    assert (
+        comment.diff_context
+        == ' # Created by Vercel CLI\n+POSTGRES_PASSWORD="REDACTED"'
+    )
+    assert comment.start_line_in_file == 2
+    assert comment.end_line_in_file == 2
+    assert comment.start_line_in_diff == 1
+    assert comment.end_line_in_diff == 1
+```
+
+我们有几种策略来应对这一问题：
+
+- 评论类型验证：我们确认评论的类型，如“问题”或“测试”（这些由LLM生成，但限定在固定的类型集内），是否符合我们根据差异已知特性所期望的结果。
+- 内容相关性检查：我们不寻找确切的短语，而是扫描与预期输出一致的关键词或主题。
+- 排除检查：我们确保不相关的反馈类型（例如类似表扬的评论）不会出现在输出中。
+
+回顾之前的测试示例——你可能注意到我们并没有直接检查评论的具体内容。相反，我们检查是否存在评论，是否是阻止性的安全评论，以及评论是否定位在正确的行上。
+
+我们仍处于使用单元测试来帮助验证LLM响应的早期阶段。这些测试让我们在开发中更加自信，能够更快地推进，但我们仍在思考如何进一步改进这些测试。
+
+- 使用 LLM 审查 LLM：我们的一些更复杂的测试可能会受益于添加一个中间层的LLM来分析响应，以帮助识别某些响应特征或将响应分类到一个我们可以确定地断言的类别中。
+  但这也可能增加测试中的不确定性，所以我们需要看看这种方法的效果如何。
+- 确定 CI 容忍度：由于测试中的固有变异性，我们不希望CI在任何测试失败时都失败。但确实存在一个容忍度，我们正在努力确定这个阈值应该是多少，每次CI运行应该运行多少次测试，
+  以及每个测试的“通过阈值”应该是什么样子。目前我们要求95%的LLM测试通过，这对目前来说是一个不错的水平。
+
+通过在Sourcery中对LLM响应进行单元测试，我们已经看到了早期的好处，无论是在更有信心地进行更改而不担心回归问题，还是在验证新更改是否达到预期效果方面都取得了进展。
+
+#### 其它
+
+这篇文章的标题是 “[Improving LLM Responses After the Fact](https://sourcery.ai/blog/improving-llm-responses/)
+”（改善LLM生成的评论）。文章探讨了如何通过优化和筛选生成的代码审查评论，来提高这些评论的“有用性”。
+
+1. **问题背景**：
+    - 初期的代码审查引擎生成的评论质量不一，有的评论有价值，有的则是无关紧要甚至是错误的。
+    - 文章指出，生成的评论是否**有用**比其是否**准确**更重要，尤其在代码审查的场景下。
+2. **有用性作为衡量标准**：
+    - 作者及其团队将“有用性”定义为评论是否能为PR作者提供有价值的、可操作的反馈，并制定了一个“有用性评分”，即有用评论占所有生成评论的比例。
+    - 虽然有用性是一个主观指标，但通过团队评审和汇总，他们能够跟踪评论质量的变化。
+3. **初步尝试**：
+    - 初期团队尝试通过调整提示词或让LLM解释评论的有用性，来改善生成评论的质量。然而，这些方法效果有限，因为LLM往往对其生成内容的有用性有自信（即使它们可能不是真正有用）。
+4. **不同的优化和筛选方法**：
+    - 团队最终决定采用另一种方法，即为每个生成的评论设置一组验证标准：**事实正确性、与代码的关联性、可操作性、具体性、以及对作者的价值
+      **。
+    - 通过对这些标准进行组合验证，他们发现可以显著提升评论的有用性。
+5. **结果和展望**：
+    - 最终，团队通过将“与代码的关联性、可操作性、具体性和对作者的价值”这四个标准结合，成功将评论的平均有用性从40%提升到60%。
+    - 文章最后提到，团队还在考虑进一步的改进方案，比如增加上下文信息或使用基于评分的验证器来进行更精细的判断。
+
+文章通过不断尝试不同的策略，最终找到了一种有效的方法来改善LLM生成的代码审查评论的有用性。这种方法包括：
+
+- 明确定义有用性标准。
+- 为生成的评论设置多维度的验证条件。
+- 结合多种验证条件来筛选最有用的评论。
+  这些步骤帮助作者团队显著提升了生成评论的实际有用性。
 
 ### Google 示例：DIDACT
 
