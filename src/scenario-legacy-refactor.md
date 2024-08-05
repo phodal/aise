@@ -10,32 +10,19 @@
    理解现有业务是遗留系统重构的第一步。这需要分析现有代码库，以获取系统的业务逻辑和结构。
     - **[Sourcery](https://sourcery.ai/)**: 用于代码分析和重构的工具，能够自动建议代码改进，并提供理解代码的上下文。
     - **[Semgrep](https://semgrep.dev/)**: 基于语义搜索的静态代码分析工具，可以快速查找和理解关键业务逻辑。
-    - **[CodeT5](https://github.com/salesforce/CodeT5)**: 针对代码的预训练模型，可用于代码补全、生成和注释，帮助理解遗留代码。
-    - **[GitHub Copilot](https://github.com/features/copilot)**: AI 编程助手，可以解释代码片段并提供上下文相关的建议和注释。
 2. **设计与拆分模块**  
    在理解现有系统的基础上，设计新的架构并拆分为更小的模块。
-    - **[Microservices Decomposition Tool](https://github.com/holmari/MicroserviceDecompositionTool)**:
-      通过分析代码依赖关系，自动建议模块化拆分方案，将单体架构系统拆分为微服务。
-    - **[Graphviz](https://graphviz.org/)**: 可将代码逻辑转化为图形化表示，方便分析和拆分复杂系统。
 3. **构建测试防护网**  
    构建测试用例和覆盖率，以确保重构过程中的系统功能不被破坏。
-    - **[PITest](https://pitest.org/)**: Java 的变异测试工具，生成大量测试用例并检测代码脆弱点，以增强测试防护网。
-    - **[AI Test Generator](https://github.com/testvagrant/ai-test-generator)**: 利用 AI 自动生成测试用例，适用于复杂遗留系统的验证。
-
 4. **代码重构以迁移**  
    代码重构是将系统从旧平台或语言迁移到新的平台或语言时的重要步骤。
-    - **[Refactoring.Guru](https://refactoring.guru/)**: 提供一系列的重构模式和工具支持自动化重构任务。
-    - **[JavaPoet](https://github.com/square/javapoet)** 和 **[KotlinPoet](https://github.com/square/kotlinpoet)**: 用于生成
-      Java 和 Kotlin 源文件的 API，可用于自动化代码生成和重构。
     - **[sqlc](https://sqlc.dev/)**: 将 SQL 查询生成 Golang 代码的工具，有助于将数据库操作集成到现代代码中。
     - **[Jooq](https://www.jooq.org/)**: Java 库，从 SQL 生成 Java 代码，实现从 SQL 到 Java 的迁移。
-
 5. **验证与测试**  
    迁移后的系统需要经过充分的验证与测试，以确保其行为与原系统一致。
     - **[Testcontainers](https://www.testcontainers.org/)**: 开源 Java 库，支持在 Docker 容器中运行集成测试，以确保系统在不同环境下的一致性。
     - **[Applitools](https://applitools.com/)**: 利用 AI 进行视觉回归测试，确保 UI 在代码变更后的视觉一致性。
     - **[RestQA](https://restqa.io/)**: 开源测试框架，支持记录和复用 API 请求，简化测试数据管理。
-
 
 ## 代码理解与分析
 
