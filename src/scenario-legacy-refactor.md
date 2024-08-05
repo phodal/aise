@@ -65,6 +65,46 @@ Watsonx Code Assistant for Z通过AI生成的解释和文档，帮助开发者�
 
 ### 中间表示：结合 AST 工具的代码重构
 
+https://research.google/blog/accelerating-code-migrations-with-ai/
+
+多年来，谷歌一直使用专门的基础设施来执行复杂的代码迁移。该基础设施使用静态分析和如 [Kythe](https://kythe.io/)
+和 [Code Search](https://abseil.io/resources/swe-book/html/ch17.html)
+等工具来发现需要更改的位置及其依赖关系。然后使用如 [ClangMR](https://clang.llvm.org/docs/RefactoringEngine.html) (Clang’s
+refactoring engine)等工具进行更改。
+
+ClangMR 示例：
+
+```C++
+class LocalRename final : public RefactoringAction {
+public:
+  StringRef getCommand() const override { return "local-rename"; }
+
+  StringRef getDescription() const override {
+    return "Finds and renames symbols in code with no indexer support";
+  }
+
+  RefactoringActionRules createActionRules() const override {
+    ...
+  }
+};
+```
+
+Kythe, 这是一个可插拔的、（几乎）与语言无关的生态系统。它旨在帮助开发者构建与代码协同工作的工具。
+
+```Bash
+print_classes() {
+  kythe ls --uris --files "kythe://kythe?path=$1" \
+    | parallel kythe refs --format "'@target@ @edgeKind@ @nodeKind@ @subkind@'" \
+    | awk '$2 == "/kythe/edge/defines" && $3 == "record" && $4 == "class" { print $1 }' \
+    | xargs kythe edges --targets_only --kinds /kythe/edge/named \
+    | awk '{ print substr($0, index($0, "#")+1) }' \
+    | parallel python -c '"import urllib, sys; print urllib.unquote(sys.argv[1])"'
+}
+
+print_classes kythe/java/com/google/devtools/kythe/analyzers/java/
+print_classes kythe/cxx/tools/fyi/
+```
+
 ### 经典转换工具
 
 JavaPoet, KotlinPoet
