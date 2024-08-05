@@ -2,9 +2,48 @@
 
 ## 安全守护的遗留系统迁移
 
-## 基于 AI 的遗留系统重构
+《[系统重构与迁移指南](https://github.com/phodal/migration)》
+
+从模式上来说，遗留系统重构的过程可以简单分为：
+
+1. **理解现有业务**  
+   理解现有业务是遗留系统重构的第一步。这需要分析现有代码库，以获取系统的业务逻辑和结构。
+    - **[Sourcery](https://sourcery.ai/)**: 用于代码分析和重构的工具，能够自动建议代码改进，并提供理解代码的上下文。
+    - **[Semgrep](https://semgrep.dev/)**: 基于语义搜索的静态代码分析工具，可以快速查找和理解关键业务逻辑。
+    - **[CodeT5](https://github.com/salesforce/CodeT5)**: 针对代码的预训练模型，可用于代码补全、生成和注释，帮助理解遗留代码。
+    - **[GitHub Copilot](https://github.com/features/copilot)**: AI 编程助手，可以解释代码片段并提供上下文相关的建议和注释。
+2. **设计与拆分模块**  
+   在理解现有系统的基础上，设计新的架构并拆分为更小的模块。
+    - **[Microservices Decomposition Tool](https://github.com/holmari/MicroserviceDecompositionTool)**:
+      通过分析代码依赖关系，自动建议模块化拆分方案，将单体架构系统拆分为微服务。
+    - **[Graphviz](https://graphviz.org/)**: 可将代码逻辑转化为图形化表示，方便分析和拆分复杂系统。
+3. **构建测试防护网**  
+   构建测试用例和覆盖率，以确保重构过程中的系统功能不被破坏。
+    - **[PITest](https://pitest.org/)**: Java 的变异测试工具，生成大量测试用例并检测代码脆弱点，以增强测试防护网。
+    - **[AI Test Generator](https://github.com/testvagrant/ai-test-generator)**: 利用 AI 自动生成测试用例，适用于复杂遗留系统的验证。
+
+4. **代码重构以迁移**  
+   代码重构是将系统从旧平台或语言迁移到新的平台或语言时的重要步骤。
+    - **[Refactoring.Guru](https://refactoring.guru/)**: 提供一系列的重构模式和工具支持自动化重构任务。
+    - **[JavaPoet](https://github.com/square/javapoet)** 和 **[KotlinPoet](https://github.com/square/kotlinpoet)**: 用于生成
+      Java 和 Kotlin 源文件的 API，可用于自动化代码生成和重构。
+    - **[sqlc](https://sqlc.dev/)**: 将 SQL 查询生成 Golang 代码的工具，有助于将数据库操作集成到现代代码中。
+    - **[Jooq](https://www.jooq.org/)**: Java 库，从 SQL 生成 Java 代码，实现从 SQL 到 Java 的迁移。
+
+5. **验证与测试**  
+   迁移后的系统需要经过充分的验证与测试，以确保其行为与原系统一致。
+    - **[Testcontainers](https://www.testcontainers.org/)**: 开源 Java 库，支持在 Docker 容器中运行集成测试，以确保系统在不同环境下的一致性。
+    - **[Applitools](https://applitools.com/)**: 利用 AI 进行视觉回归测试，确保 UI 在代码变更后的视觉一致性。
+    - **[RestQA](https://restqa.io/)**: 开源测试框架，支持记录和复用 API 请求，简化测试数据管理。
+
 
 ## 代码理解与分析
+
+遗留系统的一大痛点是没有知道业务知识，所以在生成式 AI 的加持下，问题域可以变为：
+
+- 如何结合从现有的代码中知道业务的实现。即结合语义化搜索与 RAG，将用户的查询转换为代码搜索，最后交由 AI 来总结。
+- 如何可视化业务逻辑。在不同的场景之下，实现功能的要求也是不一样的。从可视化的角度来说，我们可以将代码转换为
+  DSL，再结合可视化工具来展示。
 
 ### 代码理解：基于 AI 的代码解释
 
@@ -13,7 +52,29 @@ Watsonx Code Assistant for Z通过AI生成的解释和文档，帮助开发者�
 
 ### 代码可视化分析：基于活文档
 
+如结合我们以往的工具，我们在 AutoDev 的文档生成功能中添加了活文档（Living Documentation）的功能，你可以结合注解从现有的逻辑中可视化业务。
+
+如下是一个结合 AutoDev 生成活文档的示例：
+
+```Java
+@ScenarioDescription(
+  given = "a file with name $filename and program text $programText",
+  when = "the function tryFitAllFile is called with maxTokenCount $maxTokenCount, language $language, and virtualFile $virtualFile",
+  then = "the function should return an ErrorScope object with the correct values"
+)
+```
+
+随后，就可以清晰地呈现已有的逻辑实现。
+
 ### 代码重构与转换
+
+由于不同语言间存在一些能力等的差异，所以我们需要考虑到不同的语言的场景。诸如于，在 AutoDev 中针对于 PL/SQL 构建了相似的功能：
+
+- 从 SQL 代码生成 entity 代码。
+- 从 SQL 代码生成 Java 测试。
+- 从 SQL 代码生成 Java 代码。
+
+考虑到对于语言的理解，能力还是有待进一步完善的。
 
 ### 中间表示：结合 AST 工具的代码重构
 
@@ -23,7 +84,9 @@ JavaPoet, KotlinPoet
 
 ### 测试生成与验证
 
-AI 生成测试，自动化测试生成
+AI 生成单元测试
+
+传统的 API 记录？工具，记录测试数据，让 AI 自动验证
 
 ## 示例
 
