@@ -47,6 +47,7 @@
 - [第 3 部分：面向场景定制 AI 插件能力](./scenario-aise.md)
     - [遗留系统重构示例](./scenario-legacy-refactor.md)
     - [系统迁移](./scenario-legacy-transform.md)
+    - [团队 AI](./scenario-team-ai.md)
 - [第 4 部分：编程智能体辅助软件工程](./agent-for-aise.md)
     - [编码智能体基础设施](./agent-infrastructure.md)
     - [远程 AI 智能体](./agent-remote.md)
