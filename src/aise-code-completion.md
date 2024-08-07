@@ -109,7 +109,9 @@ Collinsworth 在他的文章中提出了一些值得关注的问题和改进方�
 7. **使用领域自适应继续预训练改进开源LLM**
     - **优点**：
         - 有许多具有开放权重的相当强大的基础模型（如 Llama 2）。
-        - 这里有[Meta 创建 Code Llama](https://arxiv.org/abs/2308.12950) 和 [Nvidia 创建 ChipNeMo](https://research.nvidia.com/publication/2023-10_chipnemo-domain-adapted-llms-chip-design)的方法。
+        - 这里有[Meta 创建 Code Llama](https://arxiv.org/abs/2308.12950)
+          和 [Nvidia 创建 ChipNeMo](https://research.nvidia.com/publication/2023-10_chipnemo-domain-adapted-llms-chip-design)
+          的方法。
     - **缺点**：
         - 可能需要数十亿个相关公司数据的标记和数千个GPU小时。
         - 这是一个具有挑战性、昂贵且耗时的方法。
@@ -125,3 +127,34 @@ Collinsworth 在他的文章中提出了一些值得关注的问题和改进方�
 **结论**：
 为了确保我们的代码助手不会落下任何乘客，我们需要更高的可配置性，比目前大多数AI代码辅助工具提供的更多。若系统中的任何部分不在你的控制之下，
 你会发现建议可能会随时发生变化。我们需要采用以上列出的所有方法，以确保代码助手能够持续改进和适应用户需求。
+
+### 示例：RepoFuse
+
+[蚂蚁 CodeFuse 代码大模型技术解析：基于全仓库上下文的代码补全](https://mp.weixin.qq.com/s/ED26YLvpA-kCIf6lCnTy6w)
+
+本文提出一种仓库级别代码补全框架RepoFuse：通过对实际编程的总结抽象，我们的方法从仓库中抽取了两种关键的跨文件上下文：基于代码相似性分析的相似上下文
+（Similar Context），用于识别功能相近的代码段；以及语义上下文（Semantic Context），提供类别分类和 API 交互的语义理解。然而，
+如此大量的信息可能导致模型的输入过于冗长，影响推理生成的效率。为此，RepoFuse采用了一种基于相关性引导的上下文选择策略（Relevance-Guided
+Context Selection） 指导模型 Prompt 的构建。这种技术有选择地筛选出与当前任务最相关的上下文，将上下文精炼为简洁的
+Prompt，既能适应有限的上下文长度，又能确保高完成度的准确性。
+
+GitHub: [https://github.com/codefuse-ai/RepoFuse](https://github.com/codefuse-ai/RepoFuse)
+
+![](images/repofuse-workflow.png)
+
+RepoFuse 的工作流程如图所示，分为三个阶段：Semantic Context Analysis、Similar Context Retrieval 和 Relevance-Guided Context Selection
+
+以下是每个阶段的总结：
+
+1. Semantic Context Analysis。在代码补全任务中，缺乏跨文件的依赖信息可能导致模型产生幻觉（即生成不准确的代码）。为解决这个问题，框架引入了一个称为
+   **Repo-specific Semantic Graph**
+   的工具。这种图结构扩展了传统的代码依赖图，用于表示代码库中不同实体（如函数、类、模块等）之间的关系。它以节点（表示模块、类、函数和变量）和边（表示这些实体之间的关系，如调用、继承、使用等）构成的多重有向图形式存储这些信息。通过这种方式，系统能够高效查询任何代码元素的依赖关系，从而为代码补全提供理性指导。
+2. Similar Context Retrieval。在开发中，如果要续写代码，通常会参考与当前代码片段相似的代码。通过技术手段（如文本检索、向量检索），系统可以在代码库中找到与当前未完成代码块相似的代码片段（称为
+   **Analogy Context**）。这些相似代码片段可以为代码补全过程提供启发和指导，确保生成的代码更符合预期。
+3. Relevance-Guided Context Selection。 为了优化补全效果和时间性能，该框架提出了 **Relevance-Guided Context Selection (
+   RCS)** 技术。RCS根据相关性评分方法，从候选上下文片段中选择对补全任务最有帮助的片段，形成 **Optimal Dual Context (ODC)**
+   。这样，既可以利用 Semantic Context 和 Similar Context 的优势，又能控制上下文长度，避免模型推理时的时间开销。相关性评分方法包括
+   Oracle（理想化场景）、Semantic Similarity（使用 Embedding 模型计算语义相似度）、Lexical Similarity（使用词汇相似度计算方法），以及作为基线的
+   Random（随机评分）。
+
+这个框架通过整合语义分析、相似代码检索和相关性选择，提升了大模型在代码补全任务中的准确性和效率。
