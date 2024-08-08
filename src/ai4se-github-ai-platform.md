@@ -1,14 +1,22 @@
 # AI 辅助软件工程：GitHub 的 AI 平台工程赋能开发者
 
-## 示例：GitHub
+GitHub 的案例简单来说：围绕代码的开发、协作、构建为核心，以开发者体验作为度量体系
 
-> 围绕代码的开发、协作、构建为核心，以开发者体验作为度量体系
+引自官方的定义 [GitHub AI 驱动的开发者平台](https://github.blog/2023-11-08-universe-2023-copilot-transforms-github-into-the-ai-powered-developer-platform/)
 
-[GitHub AI 驱动的开发者平台](https://github.blog/2023-11-08-universe-2023-copilot-transforms-github-into-the-ai-powered-developer-platform/)
+## 辅助编码：GitHub + GitHub Copilot
 
-### 工具、平台驱动
+顶级发现显示，GitHub Copilot 有助于开发人员更快地编写代码，完成高达 46% 的代码，并使开发人员在工作中感到更加满足。
 
-### [AI 增强的安全左移](https://github.blog/2023-11-08-ai-powered-appsec/)
+- [GitHub Copilot 数据](https://github.blog/news-insights/research/the-economic-impact-of-the-ai-powered-developer-lifecycle-and-lessons-from-github-copilot/)
+  表明：开发人员需要差不多 3 个月才能达到的代码接受率基线水平（30%）
+- 经验少的开发者更能受益
+
+85% 的开发者在使用 GitHub Copilot 和 GitHub Copilot Chat 编写代码时，对代码质量更有信心。
+
+[Research: Quantifying GitHub Copilot’s impact on code quality](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-code-quality/)
+
+## [AI 增强的安全左移](https://github.blog/2023-11-08-ai-powered-appsec/)
 
 ![Images](images/github-security-shift.png)
 
@@ -21,7 +29,11 @@
 - [CodeQL team uses AI to power vulnerability detection in code](https://github.blog/2023-09-12-codeql-team-uses-ai-to-power-vulnerability-detection-in-code/)
 - [Multi-repository variant analysis: a powerful new way to perform security research across GitHub](https://github.blog/2023-03-09-multi-repository-variant-analysis-a-powerful-new-way-to-perform-security-research-across-github/)
 
-### AI 辅助研发决策框架
+### CodeQL 静态代码分析
+
+### Dependabot 自动化依赖更新
+
+## AI 辅助研发决策框架
 
 [A developer’s second brain: Reducing complexity through partnership with AI](https://github.blog/2024-01-17-a-developers-second-brain-reducing-complexity-through-partnership-with-ai/)
 
@@ -40,7 +52,8 @@
 3. **制定决策**。提出应该针对这个任务采取的措施。
 4. **实现任务**。执行按照定义的顺序进行的步骤。
 
-### 度量框架 [Space](https://queue.acm.org/detail.cfm?id=3454124)
+## 度量框架 [Space](https://queue.acm.org/detail.cfm?id=3454124)
+
 |    | 满意度和幸福感                  | 效率             | 活动               | 沟通和协作             | 效率和流程       |
 |----|--------------------------|----------------|------------------|-------------------|-------------|
 | 个体 | - 开发者满意度                 | - 代码检视速度       | - 检视速度完成数量       | - 代码检视评分（质量或思考深度） | - 代码检视时长    |
