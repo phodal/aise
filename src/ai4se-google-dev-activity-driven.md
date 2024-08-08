@@ -1,19 +1,18 @@
 # AI 辅助软件工程：Google 开发者活动驱动的 AI 赋能
 
-## Google DIIDACT 框架：动态集成开发人员活动
+> DIDACT (Dynamic Integrated Developer ACTivity) 是一种用于训练大规模机器学习（ML）模型的软件开发方法。与传统只使用完成代码的方式不同，DIDACT
+> 创新的地方在于，它使用软件开发过程本身作为模型的训练数据来源。这意味着模型不仅能看到开发者在工作时所见的上下文，还能学习他们所采取的行动，
+> 从而更好地理解软件开发的动态过程，并与开发者的实际工作方式对齐。
 
-文章：[AI in software engineering at Google: Progress and the path ahead](https://research.google/blog/ai-in-software-engineering-at-google-progress-and-the-path-ahead/)
+## Google DIIDACT 框架：动态集成开发人员活动
 
 Google
 在内部探索了[LLM for Dev Activity](https://research.google/blog/large-sequence-models-for-software-development-activities/)
 方式， 以提升开发人员效率：
 
-> DIDACT (Dynamic Integrated Developer ACTivity) 是一种用于训练大规模机器学习（ML）模型的软件开发方法。与传统只使用完成代码的方式不同，DIDACT
-> 创新的地方在于，它使用软件开发过程本身作为模型的训练数据来源。这意味着模型不仅能看到开发者在工作时所见的上下文，还能学习他们所采取的行动，从而更好地理解软件开发的动态过程，并与开发者的实际工作方式对齐。
-
 ![DIDACT](images/google-didact.png)
 
-### DIIDACT 框架： [Smart Paste](https://research.google/blog/smart-paste-for-context-aware-adjustments-to-pasted-code/)
+### DIIDACT 框架：[Smart Paste](https://research.google/blog/smart-paste-for-context-aware-adjustments-to-pasted-code/)
 
 **智能粘贴**是谷歌开发的一种内部工具，旨在通过自动调整粘贴代码来优化编码工作流程。这个工具利用生成式人工智能来创建上下文感知的修改，从而提高代码开发的效率。以下是其主要特点和优势的概述：
 
@@ -38,7 +37,8 @@ Google
 
 Paper：[AI-Assisted Assessment of Coding Practices in Modern Code Review](https://arxiv.org/abs/2405.13565)
 
-现代代码审查（Sadowski等人，2018年；Rigby和Bird，2013年）（与整体代码审查（Fagan，1976年）相比）多年来在开源和工业环境中有机地发展壮大。已经形成了一组常见的同行评审标准（Rigby和Bird，2013年；Rigby等，2012年；Bacchelli和Bird，2013年），其中包括编码最佳实践。许多公司、项目甚至编程语言都正式定义了这些标准，以"样式指南"的形式（goo，2024；lin，2024；pyt，2024；rus，2024），通常涵盖以下方面：
+现代代码审查（Sadowski等人，2018年；Rigby和Bird，2013年）（与整体代码审查（Fagan，1976年）相比）多年来在开源和工业环境中有机地发展壮大。已经形成了一组常见的同行评审标准（Rigby和Bird，2013年；Rigby等，2012年；Bacchelli和Bird，2013年），其中包括编码最佳实践。许多公司、项目甚至编程语言都正式定义了这些标准，以"
+样式指南"的形式（goo，2024；lin，2024；pyt，2024；rus，2024），通常涵盖以下方面：
 
 - 格式化：行限制、空格和缩进的使用、括号和大括号的放置等；
 - 命名：大写、简洁、描述性等；
@@ -70,14 +70,12 @@ ML 建议的修复方案。
 
 我们在使用构建修复的变更列表和未使用的变更列表之间监测了这些指标，发现没有可检测的差异。
 
-
 ### DIIDACT 框架：[代码迁移](https://research.google/blog/accelerating-code-migrations-with-ai/)
 
 多年来，谷歌一直使用专门的基础设施来执行复杂的代码迁移。该基础设施使用静态分析和如 [Kythe](https://kythe.io/)
 和 [Code Search](https://abseil.io/resources/swe-book/html/ch17.html)
 等工具来发现需要更改的位置及其依赖关系。然后使用如 [ClangMR](https://clang.llvm.org/docs/RefactoringEngine.html) (Clang’s
 refactoring engine)等工具进行更改。
-
 
 我们将迁移过程概念性地分为三个阶段：
 
@@ -109,3 +107,9 @@ refactoring engine)等工具进行更改。
 我们用自然语言指令以及模型的一般指令对每一行预计需要更改的地方进行标注。在每次模型查询中，输入上下文可以包含一个或多个相关文件。
 
 模型然后预测文件之间的差异（diff），并且可以更改相关部分，以确保最终代码正确。
+
+## 其它
+
+相关文章：
+
+- [AI in software engineering at Google: Progress and the path ahead](https://research.google/blog/ai-in-software-engineering-at-google-progress-and-the-path-ahead/)
