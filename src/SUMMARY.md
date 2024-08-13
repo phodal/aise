@@ -55,6 +55,7 @@
         - [场景：新人上手项目](./agent-onboarding.md)
     - [本地 AI 智能体](./agent-in-local-design.md)
         - [理解 RAG 应用](./agent-understand-rag.md)
+        - [编码任务 Agent](./agent-coding-task.md)
         - [Copilot Chat 是如何工作的](./agent-github-copilot-chat.md)
         - [代码问答 Agent 示例](./agent-codebase-example.md)
         - [Copilot Workspace](./agent-copilot-workspace.md)
