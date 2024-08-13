@@ -56,6 +56,21 @@ GitClear将代码变更分为七个类别（研究中涉及前六种）：
 
 SaaS 服务：Codacy、CodeScene、Code Climate
 
+AutoDev 修复示例：
+
+```Kotlin
+        if (templateText != null) {
+            ActionListener { ignore: ActionEvent? ->
+                invokeAction(
+                    analyzeCurrentFileAction,
+                    dataContext, CurrentFilePanel.SONARLINT_TOOLWINDOW_ID, null, null
+                )
+            }
+        }
+
+// - SonarLint: Use "_" instead of this unused lambda parameter "ignore".
+```
+
 ### CodeScene 示例
 
 [CodeScene](https://codescene.com/blog/use-guardrails-for-ai-assisted-coding) 构建的 AI
