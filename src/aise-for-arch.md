@@ -14,3 +14,4 @@ OpenAI服务支持的GPT模型，确保数据安全性和保密性。这个AI助
 3. **提供企业架构建议**：它能够为用户生成简明的决策列表，帮助企业架构师向高层管理者报告并做出快速决策。
 4. **生成Python API示例**：支持开发人员，通过生成REST API的Python脚本示例，帮助更有效地与LeanIX EAM集成。
 
+![](images/LeanIX-AI-Assistant-Prompts.webp)
