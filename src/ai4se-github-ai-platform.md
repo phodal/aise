@@ -52,6 +52,28 @@ GitHub 的案例简单来说：围绕代码的开发、协作、构建为核心�
 3. **制定决策**。提出应该针对这个任务采取的措施。
 4. **实现任务**。执行按照定义的顺序进行的步骤。
 
+## Copilot AutoFix
+
+[Found means fixed: Secure code more than three times faster with Copilot Autofix](https://github.blog/news-insights/product-news/secure-code-more-than-three-times-faster-with-copilot-autofix/)
+
+Copilot Autofix 是 GitHub Advanced Security (GHAS) 中一项新功能，利用 AI 技术帮助开发者更快地修复代码漏洞。它可以在开发者的拉取请求中自动生成修复方案
+，预防新漏洞进入生产环境，还可以处理现有代码中的漏洞，减轻安全债务。
+
+主要特点包括：
+
+- **自动修复**：在检测到漏洞后，自动生成修复建议，开发者可以选择编辑、提交或忽略这些修复。
+- **提升效率**：根据公开测试数据，使用 Copilot Autofix 修复漏洞的速度显著快于手动修复。
+- **简化安全流程**：它帮助开发者，即使他们不是安全专家，也能轻松理解和修复安全问题。
+- **保护开源项目**：GitHub 计划在 2024 年 9 月向所有开源项目免费提供该功能。
+
+总的来说，Copilot Autofix 通过 AI 技术简化并加速了漏洞修复过程，帮助开发者更轻松地实现安全目标。
+
+根据 2024 年 5 月至 7 月的公开测试版客户数据，Copilot Autofix 已经显著缩短了从漏洞检测到成功修复的时间：
+
+- 3 倍更快。开发者使用 Copilot Autofix 自动提交拉取请求中的修复方案的中位时间为 28 分钟，而手动解决同样的警报需要 1.5 小时。
+- 7 倍更快。跨站脚本漏洞：22 分钟，而手动修复则接近三小时。
+- 12 倍更快。SQL 注入漏洞：18 分钟，而手动修复则需要 3.7 小时。
+
 ## 度量框架 [Space](https://queue.acm.org/detail.cfm?id=3454124)
 
 |    | 满意度和幸福感                  | 效率             | 活动               | 沟通和协作             | 效率和流程       |
