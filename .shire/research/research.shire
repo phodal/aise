@@ -1,0 +1,17 @@
+---
+variables:
+  "crawl": /gen-ai-for-ops\.md/ { capture("src/gen-ai-for-ops.md", "link") | crawl() | thread(".shire/research/summary.shire") }
+  "article": /gen-ai-for-ops\.md/ { cat }
+onStreamingEnd: { saveFile("src/gen-ai-for-ops.md") }
+---
+
+根据如下的草稿和对应的资料，编写一篇对应主题的文章。
+
+文章草稿如下：
+
+$article
+
+相关的资料如下：
+
+$crawl
+
