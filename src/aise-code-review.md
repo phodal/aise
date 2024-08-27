@@ -162,6 +162,35 @@ diff 转变为稍微扩展的代码版本——添加与代码功能相关但在
 
 ## 示例
 
+### Ellipsis
+
+https://docs.ellipsis.dev/features/review#team-style-guide
+
+#### Comment Quality
+
+```yaml
+version: 1.3
+pr_review:
+  confidence_threshold: 0.9
+```
+
+#### Style Guide
+
+```yaml
+version: 1.3
+pr_review:
+  rules:
+    - "Code should be DRY (Dont Repeat Yourself)"
+    - "There should no secrets or credentials in the code"
+    - "Extremely Complicated Code Needs Comments"
+    - "Use Descriptive Variable and Constant Names"
+    - "API routes must have error handling, they shouldn't intentionally return a HTTP 500"
+    - "Use retries when calling external API services"
+    - "Don't log sensitive data"
+    - "Follow the Single Responsibility Principle"
+    - "Function and Method Naming Should Follow Consistent Patterns"
+```
+
 ### Codium PR-Agent
 
 > [CodiumAI](https://github.com/Codium-ai/pr-agent) PR-Agent aims to help efficiently review and handle pull requests,
