@@ -44,6 +44,23 @@ remote:
 
 ## 示例
 
+### Unkey Semantic cache
+
+[Code](https://github.com/unkeyed/unkey/tree/main/apps/semantic-cache)
+
+[https://www.unkey.com/blog/semantic-caching](https://www.unkey.com/blog/semantic-caching)
+
+一个简单的缓存解决方案是使用用户查询作为键，将工作流的结果作为值进行缓存。 这可以实现对相同查询的响应进行重复使用。但这依赖于用户查询的措辞完全相同。
+
+例如，如果两个用户都问“如何取消我的订阅”，那么第二个用户会收到缓存的响应。但如果另一个用户问的是“我需要取消我的订阅 - 怎么做？”，那么我们将遇到缓存未命中的情况。
+虽然这两个问题的意图是相同的，但措辞不同。
+
+这正是语义缓存可以发挥作用的地方：通过基于查询嵌入的缓存，我们可以确保所有提出相同问题的用户都能命中缓存。以下图表概述了这种架构：
+
+![unkey-cachehit.webp](images/unkey-cachehit.webp)
+
+![unkey-cachemiss.webp](images/unkey-cachemiss.webp)
+
 ### Microsoft [Presidio](https://microsoft.github.io/presidio/)
 
 Presidio（源自拉丁语praesidium ‘保护、卫戍’）致力于确保敏感数据得到妥善管理和治理。该系统为私人实体提供快速识别和匿名化功能，
