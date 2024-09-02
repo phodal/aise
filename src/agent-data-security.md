@@ -1,8 +1,13 @@
 # 编码智能体：RAG 数据与 AI 安全
 
-## GitHub Secret
+在当今的数字化时代，数据安全和隐私保护已成为科技发展的重中之重。随着人工智能技术的飞速发展，如何确保数据在智能体处理过程中的安全性，成为了一个亟待解决的问题。
+本文将探讨编码智能体在处理RAG（检索增强生成）数据时，如何保障AI安全，并通过几个具体案例来阐述。
 
-![](images/github-secret.png)
+## 经验示例
+
+### 示例 1：GitHub Secret
+
+在GitHub中，开发者有时会不小心将敏感信息如API密钥等提交到代码仓库中。以下是一个示例，展示了GitHub如何检测并阻止包含敏感信息的push操作：
 
 ```bash
 Current branch main is up to date.
@@ -42,76 +47,31 @@ remote:
 remote: 
 ```
 
+此示例显示了GitHub的push保护机制如何检测到代码中包含的OpenAI API密钥，并阻止了push操作，同时提供了如何解决这一问题的指南。
+
 ## 示例
 
-### Unkey Semantic cache
+### Unkey Semantic Cache
 
-[Code](https://github.com/unkeyed/unkey/tree/main/apps/semantic-cache)
+- [Code](https://github.com/unkeyed/unkey/tree/main/apps/semantic-cache) 
+- [https://www.unkey.com/blog/semantic-caching](https://www.unkey.com/blog/semantic-caching)
 
-[https://www.unkey.com/blog/semantic-caching](https://www.unkey.com/blog/semantic-caching)
+在处理自然语言查询时，一个简单的缓存策略是将用户的查询作为键，将工作流的结果作为值。但这种方法有一个缺点，即它依赖于用户查询的表述完全相同。
+为了解决这个问题，语义缓存应运而生。以下两张图表展示了缓存命中和缓存未命中的情况：
 
-一个简单的缓存解决方案是使用用户查询作为键，将工作流的结果作为值进行缓存。 这可以实现对相同查询的响应进行重复使用。但这依赖于用户查询的措辞完全相同。
+![unkey-cachehit.webp](images/unkey-cachehit.webp) ![unkey-cachemiss.webp](images/unkey-cachemiss.webp)
 
-例如，如果两个用户都问“如何取消我的订阅”，那么第二个用户会收到缓存的响应。但如果另一个用户问的是“我需要取消我的订阅 - 怎么做？”，那么我们将遇到缓存未命中的情况。
-虽然这两个问题的意图是相同的，但措辞不同。
+通过基于查询嵌入的缓存，语义缓存确保即使查询的表述不同，只要意图相同，用户就能命中缓存。
 
-这正是语义缓存可以发挥作用的地方：通过基于查询嵌入的缓存，我们可以确保所有提出相同问题的用户都能命中缓存。以下图表概述了这种架构：
+## Microsoft Presidio
 
-![unkey-cachehit.webp](images/unkey-cachehit.webp)
+Presidio是一个由Microsoft开发的工具，旨在帮助组织快速识别和匿名化敏感数据。它能够处理文本和图像中的各种敏感信息，如信用卡号码、姓名、位置等。
 
-![unkey-cachemiss.webp](images/unkey-cachemiss.webp)
+![presidio-analyze-anonymize.png](images/presidio-analyze-anonymize.png) ![presidio-ner-flow.png](images/presidio-ner-flow.png)
 
-### Microsoft [Presidio](https://microsoft.github.io/presidio/)
+Presidio分析器是一个基于Python的服务，用于检测文本中的PII（个人身份信息）实体。它运行一组不同的PII识别器，每个识别器负责使用不同的机制检测一个或多个PII实体。
 
-Presidio（源自拉丁语praesidium ‘保护、卫戍’）致力于确保敏感数据得到妥善管理和治理。该系统为私人实体提供快速识别和匿名化功能，
-能够处理文本和图像中的信用卡号码、姓名、位置、社会保障号码、比特币钱包、美国电话号码、财务数据等敏感信息。
-
-![](images/presidio-analyze-anonymize.png)
-
-![](images/presidio-ner-flow.png)
-
-Presidio 分析器是一个基于Python的服务，用于检测文本中的 PII（个人身份信息）实体。
-
-在分析过程中，它运行一组不同的 PII 识别器，每个识别器负责使用不同的机制检测一个或多个PII实体。
-
-Presidio 分析器提供了一组预定义的识别器，但也可以轻松扩展为其他类型的自定义识别器。预定义和自定义识别器利用正则表达式、命名实体识别以及其他类型的逻辑来检测非结构化文本中的PII。
-
-```yaml
-nlp_engine_name: transformers
-models:
-  - lang_code: en
-    model_name:
-      spacy: en_core_web_sm
-      transformers: StanfordAIMI/stanford-deidentifier-base
-
-ner_model_configuration:
-  labels_to_ignore:
-    - O
-  aggregation_strategy: simple # "simple", "first", "average", "max"
-  stride: 16
-  alignment_mode: strict # "strict", "contract", "expand"
-  model_to_presidio_entity_mapping:
-    PER: PERSON
-    LOC: LOCATION
-    ORG: ORGANIZATION
-    AGE: AGE
-    ID: ID
-    EMAIL: EMAIL
-    PATIENT: PERSON
-    STAFF: PERSON
-    HOSP: ORGANIZATION
-    PATORG: ORGANIZATION
-    DATE: DATE_TIME
-    PHONE: PHONE_NUMBER
-    HCW: PERSON
-    HOSPITAL: ORGANIZATION
-
-  low_confidence_score_multiplier: 0.4
-  low_score_entity_names:
-    - ID
-```
-
-### SkyFlow
+## SkyFlow
 
 https://www.skyflow.com/product/llm-privacy-vault
 
