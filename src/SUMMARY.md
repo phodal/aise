@@ -35,6 +35,7 @@
         - [测试用例生成](./aise-test-case.md)
         - [单元测试生成](./aise-test-code.md)
         - [API 测试生成](./aise-api-test.md)
+        - [E2E 测试生成](./aise-e2e-test.md)
     - [AI 辅助 CI/CD](./gen-ci-cd.md)
         - [流水线生成](./gen-ai-pipeline.md)
         - [CI/CD 流水线](./gen-cicd.md)
