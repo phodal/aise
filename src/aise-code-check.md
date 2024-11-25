@@ -164,6 +164,42 @@ Aroma在创建代码推荐的过程中分为三个主要阶段：
 
 ## 传统工具
 
+### Code Quality
+
+CodeRabbit Supported Tools: https://docs.coderabbit.ai/tools/
+
+| Technology                  | Tools                                                                                                                        | Category                       |
+|-----------------------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| All                         | [Gitleaks](https://docs.coderabbit.ai/tools/gitleaks)                                                                        | Code Security                  |
+| CircleCi                    | [CircleCi](https://docs.coderabbit.ai/tools/circleci)                                                                        | Configuration Validation       |
+| CloudFormation              | [Checkov](https://docs.coderabbit.ai/tools/checkov)                                                                          | Code Security                  |
+| Cppcheck                    | [Cppcheck](https://docs.coderabbit.ai/tools/cppcheck)                                                                        | Code Quality                   |
+| CSS                         | [Biome](https://docs.coderabbit.ai/tools/biome)                                                                              | Code Quality                   |
+| Docker                      | [Hadolint](https://docs.coderabbit.ai/tools/hadolint), [Checkov](https://docs.coderabbit.ai/tools/checkov)                   | Code Quality, Code Security    |
+| GitHub Actions              | [Actionlint](https://docs.coderabbit.ai/tools/actionlint)                                                                    | Code Quality                   |
+| Go                          | [golangci-lint](https://docs.coderabbit.ai/tools/golangci-lint)                                                              | Code Quality                   |
+| Helm                        | [Checkov](https://docs.coderabbit.ai/tools/checkov)                                                                          | Code Security                  |
+| Javascript                  | [Biome](https://docs.coderabbit.ai/tools/biome)                                                                              | Code Quality                   |
+| JSON, JSONC                 | [Biome](https://docs.coderabbit.ai/tools/biome)                                                                              | Code Quality                   |
+| JSX                         | [Biome](https://docs.coderabbit.ai/tools/biome)                                                                              | Code Quality                   |
+| Kotlin                      | [Detekt](https://docs.coderabbit.ai/tools/detekt)                                                                            | Code Quality                   |
+| Kubernetes                  | [Checkov](https://docs.coderabbit.ai/tools/checkov)                                                                          | Code Security                  |
+| Markdown                    | [Markdownlint](https://docs.coderabbit.ai/tools/markdownlint), [LanguageTool](https://docs.coderabbit.ai/tools/languagetool) | Code Quality, Grammar Checking |
+| PHP                         | [PHPStan](https://docs.coderabbit.ai/tools/phpstan)                                                                          | Code Quality                   |
+| Plaintext                   | [LanguageTool](https://docs.coderabbit.ai/tools/languagetool)                                                                | Grammar and Spell Checking     |
+| Java                        | [PMD](https://docs.coderabbit.ai/tools/pmd)                                                                                  | Code Quality                   |
+| Protobuf                    | [Buf](https://docs.coderabbit.ai/tools/buf)                                                                                  | Code Quality                   |
+| Python                      | [Ruff](https://docs.coderabbit.ai/tools/ruff)                                                                                | Code Quality                   |
+| Regal                       | [Regal](https://docs.coderabbit.ai/tools/regal)                                                                              | Code Quality                   |
+| Ruby                        | [Rubocop](https://docs.coderabbit.ai/tools/rubocop)                                                                          | Code Quality                   |
+| Semgrep                     | [Semgrep](https://docs.coderabbit.ai/tools/semgrep)                                                                          | Code Security                  |
+| Shell (sh, bash, ksh, dash) | [ShellCheck](https://docs.coderabbit.ai/tools/shellcheck)                                                                    | Code Quality                   |
+| Swift                       | [SwiftLint](https://docs.coderabbit.ai/tools/swiftlint)                                                                      | Code Quality                   |
+| Terraform                   | [Checkov](https://docs.coderabbit.ai/tools/checkov)                                                                          | Code Security                  |
+| TSX                         | [Biome](https://docs.coderabbit.ai/tools/biome)                                                                              | Code Quality                   |
+| Typescript                  | [Biome](https://docs.coderabbit.ai/tools/biome)                                                                              | Code Quality                   |
+| YAML                        | [YamlLint](https://docs.coderabbit.ai/tools/yamllint)                                                                        | Code Quality                   |
+
 ### Linter
 
 - [Accessibility Testing Linter](https://ebay.gitbook.io/oatmeal/accessibility
