@@ -128,6 +128,188 @@ Collinsworth 在他的文章中提出了一些值得关注的问题和改进方�
 为了确保我们的代码助手不会落下任何乘客，我们需要更高的可配置性，比目前大多数AI代码辅助工具提供的更多。若系统中的任何部分不在你的控制之下，
 你会发现建议可能会随时发生变化。我们需要采用以上列出的所有方法，以确保代码助手能够持续改进和适应用户需求。
 
+### 示例：AutoDev 静态代码分析补全（非实时）
+
+根据不同场景调用 AutoDev 的静态代码分析补全功能，例如：
+
+```kotlin
+class RelatedCodeCompletionTask(private val request: CodeCompletionRequest) : BaseCompletionTask(request) {
+    override fun keepHistory(): Boolean = false;
+    override fun promptText(): String {
+        val lang = request.element?.language ?: throw Exception("element language is null")
+        val prompter = ContextPrompter.prompter(lang.displayName)
+        prompter
+            .initContext(
+                ChatActionType.CODE_COMPLETE,
+                request.prefixText,
+                runReadAction { request.element.containingFile },
+                project,
+                request.offset,
+                request.element
+            )
+
+        return prompter.requestPrompt()
+    }
+}
+```
+
+此时会根据不同的语言，调用不同的 ContextPrompter，以便生成不同的 Prompt。如下是一个 JavaContextPrompter 的示例：
+
+```kotlin
+open class JavaContextPrompter : ContextPrompter() {
+    private val logger = logger<JavaContextPrompter>()
+    private var additionContext: String = ""
+    protected open val psiElementDataBuilder: PsiElementDataBuilder = JavaPsiElementDataBuilder()
+
+    private val autoDevSettingsState = AutoDevSettingsState.getInstance()
+    private var customPromptConfig: CustomPromptConfig? = null
+    private lateinit var mvcContextService: MvcContextService
+    private var fileName = ""
+    private lateinit var creationContext: ChatCreationContext
+
+    override fun appendAdditionContext(context: String) {
+        additionContext += context
+    }
+
+    override fun initContext(
+        actionType: ChatActionType,
+        selectedText: String,
+        file: PsiFile?,
+        project: Project,
+        offset: Int,
+        element: PsiElement?,
+    ) {
+        super.initContext(actionType, selectedText, file, project, offset, element)
+        mvcContextService = MvcContextService(project)
+
+        lang = file?.language?.displayName ?: ""
+        fileName = file?.name ?: ""
+        creationContext = ChatCreationContext(ChatOrigin.ChatAction, action!!, file, listOf(), element)
+    }
+
+    init {
+        val prompts = autoDevSettingsState.customPrompts
+        customPromptConfig = CustomPromptConfig.tryParse(prompts)
+    }
+
+    override fun displayPrompt(): String {
+        val instruction = createPrompt(selectedText).displayText
+
+        val finalPrompt = if (additionContext.isNotEmpty()) {
+            "```\n$additionContext\n```\n```$lang\n$selectedText\n```\n"
+        } else {
+            "```$lang\n$selectedText\n```"
+        }
+
+        return "$instruction: \n$finalPrompt"
+    }
+
+    override fun requestPrompt(): String {
+        return runBlocking {
+            val instruction = createPrompt(selectedText)
+            val chatContext = collectionContext(creationContext)
+
+            var finalPrompt = instruction.requestText
+
+            if (chatContext.isNotEmpty()) {
+                finalPrompt += "\n$chatContext"
+            }
+
+            if (additionContext.isNotEmpty()) {
+                finalPrompt += "\n$additionContext"
+            }
+
+            finalPrompt += "```$lang\n$selectedText\n```"
+
+            logger.info("final prompt: $finalPrompt")
+            return@runBlocking finalPrompt
+        }
+    }
+
+
+    private fun createPrompt(selectedText: String): TextTemplatePrompt {
+        additionContext = ""
+        val prompt = action!!.instruction(lang, project)
+
+        when (action!!) {
+            ChatActionType.CODE_COMPLETE -> {
+                when {
+                    MvcUtil.isController(fileName, lang) -> {
+                        val spec = CustomPromptConfig.load().spec["controller"]
+                        if (!spec.isNullOrEmpty()) {
+                            additionContext = "requirements: \n$spec"
+                        }
+                        additionContext += mvcContextService.controllerPrompt(file)
+                    }
+
+                    MvcUtil.isService(fileName, lang) -> {
+                        val spec = CustomPromptConfig.load().spec["service"]
+                        if (!spec.isNullOrEmpty()) {
+                            additionContext = "requirements: \n$spec"
+                        }
+                        additionContext += mvcContextService.servicePrompt(file)
+                    }
+
+                    else -> {
+                        additionContext = SimilarChunksWithPaths.createQuery(file!!) ?: ""
+                    }
+                }
+            }
+            ChatActionType.FIX_ISSUE -> addFixIssueContext(selectedText)
+            ChatActionType.GENERATE_TEST_DATA -> prepareDataStructure(creationContext, action!!)
+            else -> {
+                // ignore else
+            }
+        }
+
+        return prompt.renderTemplate()
+    }
+
+    open fun prepareDataStructure(creationContext: ChatCreationContext, action: ChatActionType) {
+        val element = creationContext.element ?: return logger.error("element is null")
+        var baseUri = ""
+        var requestBody = ""
+        var relatedClasses = ""
+
+        psiElementDataBuilder.baseRoute(element).let {
+            baseUri = it
+        }
+
+        psiElementDataBuilder.inboundData(element).forEach { (_, value) ->
+            requestBody = value
+        }
+        psiElementDataBuilder.outboundData(element).forEach { (_, value) ->
+            relatedClasses = value
+        }
+
+        if (action == ChatActionType.GENERATE_TEST_DATA) {
+            (action.context as GenApiTestContext).baseUri = baseUri
+            (action.context as GenApiTestContext).requestBody = requestBody
+            (action.context as GenApiTestContext).relatedClasses = relatedClasses.split(",")
+        }
+    }
+
+    private fun addFixIssueContext(selectedText: String) {
+        val projectPath = project!!.basePath ?: ""
+        runReadAction {
+            val lookupFile = if (selectedText.contains(projectPath)) {
+                val regex = Regex("$projectPath(.*\\.)${lang.lowercase()}")
+                val relativePath = regex.find(selectedText)?.groupValues?.get(1) ?: ""
+                val file = LocalFileSystem.getInstance().findFileByPath(projectPath + relativePath)
+                file?.let { PsiManager.getInstance(project!!).findFile(it) }
+            } else {
+                null
+            }
+
+            if (lookupFile != null) {
+                additionContext = lookupFile.text.toString()
+            }
+        }
+    }
+}
+```
+
+
 ### 示例：RepoFuse
 
 [蚂蚁 CodeFuse 代码大模型技术解析：基于全仓库上下文的代码补全](https://mp.weixin.qq.com/s/ED26YLvpA-kCIf6lCnTy6w)
