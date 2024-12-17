@@ -11,8 +11,7 @@ CR（CodeReview）是代码指标保障中的重要一环，也是研发日常�
 
 ## Why
 
-结合《[How AI is Transforming Traditional Code Review Practices](https://coderabbit.ai/blog/how-ai-is-transforming-traditional-code-review-practices)
-》的总结：
+结合《[How AI is Transforming Traditional Code Review Practices](https://coderabbit.ai/blog/how-ai-is-transforming-traditional-code-review-practices)》的总结：
 
 #### AI 在代码审查中的应用现状
 
@@ -163,6 +162,71 @@ LLM 步骤生成的回应过于笼统的情况下。
 并且相比于仅使用单个 LLM 请求和扩展上下文，减少了几个潜在的假阳性回应。
 
 ## 示例
+
+### CodeAnt.AI
+
+
+https://docs.codeant.ai/introduction
+
+> CodeAnt AI helps detect and auto-fix the most impactful code issues and security vulnerabilities. It integrates directly from IDEs to Pull Requests and CI/CD pipelines.
+
+![](images/codeant_code_review_platform.png)
+
+secrets Detector
+
+| **Detector Name**        | **Description**                                              |
+|--------------------------|--------------------------------------------------------------|
+| ArtifactoryDetector      | Detects secrets related to Artifactory.                      |
+| AWSKeyDetector           | Identifies AWS access keys and secrets.                      |
+| AzureStorageKeyDetector  | Finds Azure storage keys.                                    |
+| BasicAuthDetector        | Detects basic authentication credentials.                    |
+| CloudantDetector         | Identifies Cloudant database credentials.                    |
+| DiscordBotTokenDetector  | Finds Discord bot tokens.                                    |
+| GitHubTokenDetector      | Detects GitHub access tokens.                                |
+| GitLabTokenDetector      | Identifies GitLab tokens.                                    |
+| Base64HighEntropyString  | Detects high entropy Base64 strings that are likely secrets. |
+| HexHighEntropyString     | Identifies high entropy hexadecimal strings.                 |
+| IbmCloudIamDetector      | Detects IBM Cloud IAM credentials.                           |
+| IbmCosHmacDetector       | Finds IBM COS HMAC keys.                                     |
+| IPPublicDetector         | Identifies public IP addresses that may be sensitive.        |
+| JwtTokenDetector         | Detects JSON Web Tokens (JWT).                               |
+| KeywordDetector          | Uses keywords to identify potential secrets.                 |
+| MailchimpDetector        | Finds Mailchimp API keys.                                    |
+| NpmDetector              | Identifies NPM tokens.                                       |
+| OpenAIDetector           | Detects OpenAI API keys.                                     |
+| PrivateKeyDetector       | Identifies private keys.                                     |
+| PypiTokenDetector        | Finds PyPI tokens.                                           |
+| SendGridDetector         | Detects SendGrid API keys.                                   |
+| SlackDetector            | Identifies Slack tokens.                                     |
+| SoftlayerDetector        | Finds SoftLayer credentials.                                 |
+| SquareOAuthDetector      | Detects Square OAuth tokens.                                 |
+| StripeDetector           | Identifies Stripe API keys.                                  |
+| TelegramBotTokenDetector | Finds Telegram bot tokens.                                   |
+| TwilioKeyDetector        | Detects Twilio API keys.                                     |
+
+[Code Search and Replacement Guide](https://docs.codeant.ai/code_governance/search_replace)
+
+#### **代码搜索与替换核心指南**
+
+1. **匹配与重写**
+   - 使用占位符 `:[name]` 捕获动态内容。
+   - **匹配模板**：`print(:[message])`
+   - **重写模板**：`logger.error("Error: %s", :[message])`
+
+2. **高级用法**
+   - 正则嵌入：`:[var~regex]`，如匹配数字 `foo(404)`。
+   - 结构化匹配：识别平衡括号与嵌套代码。
+   - 忽略空格与格式差异。
+
+3. **重写属性**
+   - **字符串转换**：`.lowercase`、`.UPPERCASE`、`.Capitalize`
+   - **位置信息**：`.line`、`.column`、`.file`
+   - 解决冲突：使用 `:[var].value` 处理保留属性名。
+
+**示例**：  
+`print("Error")` → `logger.error("Error: %s", "Error")`
+
+**核心优势**：精确匹配、灵活重写、高效重构。
 
 ### Ellipsis
 
