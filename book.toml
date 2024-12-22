@@ -3,7 +3,7 @@ authors = ["Phodal Huang"]
 language = "en"
 multilingual = false
 src = "src"
-title = "AI 辅助软件工程：实践与案例解析（草稿）"
+title = "AI 辅助软件工程：实践与案例解析"
 
 [output.html]
 git-repository-url = "https://github.com/phodal/aise"

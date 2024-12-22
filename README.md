@@ -1,4 +1,4 @@
-# 《AI 辅助软件工程：实践与案例解析》（草稿）
+# 《AI 辅助软件工程：实践与案例解析》
 
 ![Cover](src/images/cover.jpeg)
 
