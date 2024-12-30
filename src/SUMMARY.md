@@ -2,6 +2,7 @@
 
 - [简介](./README.md)
 - [前言：AI4SE 的 2024 趋势](./ai4se.md)
+- [前言：AI4SE 的 2024 总结](./ai4se-2024-summary.md)
 - [第 1 部分：AI4SE 体系设计](./design-aise.md)
     - [AI4SE 体系设计原则](./ai4se-design-principle.md)
     - [软件生命周期驱动的 AI4SE](./ai4se-lifecycle.md)
