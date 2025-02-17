@@ -66,6 +66,35 @@ Function RAG 适用于终端用户频繁提出类似问题的场景。它允许�
 SaaS 应用程序。然而，对于更多新颖和多样的分析，传统的 SQL 生成功能可能更合适。
 ![](images/functions-browse.png)
 
+### Uber QueryGPT
+
+[QueryGPT – Natural Language to SQL Using Generative AI](https://www.uber.com/en-IN/blog/query-gpt/)
+
+![QueryGPT](https://lh7-rt.googleusercontent.com/docsz/AD_4nXctJlWIn-wn89ptfWpK2OrhH9sVIkP5OqSthEr21ZoybaECaxE5GATRUNJX8ElX1ODGz1N2JHcg0sYjN1QXIi9T-_Ex6VjVUunGJ8s5SW2D5gaEUme4Skh3NrVqjmIazQZPJ17XhJ2JJwo3FfqpLh8JD9j4?key=FDiTashaNIm84IIOQgmW9w)
+
+Uber 开发了 **QueryGPT**，一个可以使用自然语言提示生成 SQL 查询的工具。  
+
+#### **核心目标**  
+该工具旨在通过简化 SQL 查询的编写过程来提高生产力，因为传统的 SQL 查询需要深入了解 SQL 语法和 Uber 的内部数据模型。  
+
+#### **工作原理**  
+QueryGPT 利用 **大语言模型（LLM）**、**向量数据库** 和 **相似性搜索**，将用户的英语问题翻译成复杂的 SQL 查询。  
+据估算，该工具将 SQL 查询的编写时间从 **约 10 分钟缩短到了 3 分钟**。  
+
+#### **开发历程**  
+QueryGPT 最初是在 **2023 年 5 月 Uber 的生成式 AI 黑客马拉松** 上提出的，并经过 **20 多次迭代** 才发展到当前的架构。  
+最初的版本使用 **RAG（检索增强生成）** 系统来获取相关的 SQL 示例和表结构信息。其流程如下：
+1. **用户输入自然语言查询**  
+2. **系统向量化输入**，然后进行相似性搜索以检索相关的 SQL 代码片段和表结构  
+3. **LLM 结合这些信息，生成 SQL 查询**  
+
+#### **开发背景**  
+Uber 的数据平台每月要处理 **约 120 万个交互式查询**，其中 **运营部门贡献了约 36%**。  
+通过自动化 SQL 查询的生成过程，**QueryGPT 使非 SQL 专家也能高效访问和操作数据**，极大地优化了工作流。  
+
+#### **总结**  
+QueryGPT 代表了 Uber 在数据可访问性上的一次重大突破。它能将 **自然语言输入** 转换为 **可执行 SQL 查询**，从而提升整体效率和生产力。
+
 ### Text to SPL
 
 [日志易 Text to SPL 探索](https://mp.weixin.qq.com/s/maEWbNBUhNaO0_WwfmSEPw)
