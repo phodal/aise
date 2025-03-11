@@ -106,6 +106,8 @@ Agentic Chat 还能与 **OpenCtx（开放上下文协议）** 结合，支持从
 
 ### Intellij Junie
 
+#### EditCritique
+
 ```markdown
 SETTING: You are a critic evaluating an autonomous programmer who interacts directly with the command line through a
 specialized interface. The programmer's objective is to resolve a specific issue within a given repository.
@@ -151,6 +153,70 @@ command, noting any potential for improvement, potential bugs, and code style is
 " + this.bestCommandDirective + "
 " + this.commandDirective + " <Provide id of the command>
 
+```
+
+#### RankingCritique
+
+```markdown
+SETTING: You are a critic evaluating an autonomous programmer who interacts directly with the command line through a
+specialized interface. The programmer's objective is to resolve a specific issue within a given repository.
+
+You will receive a history of the programmer's interactions with the environment, which may be partial or complete. Your
+task is to critically assess the performance of several proposed commands and rank them based on their effectiveness in
+resolving the issue.
+
+Instructions:
+
+Evaluation Criteria:
+
+- Superior Performance: The command demonstrates a highly logical and efficient approach towards resolving the issue,
+  potentially correcting previous errors or making significant progress. The command should also follow best practices
+  in code style and be free of potential bugs.
+- Inferior Performance: The command fails to contribute to resolving the issue, introduces new problems, or exhibits
+  poor code style and potential bugs.
+
+Scoring:
+Score the provided commands from most effective to least effective based on their likelihood of resolving the issue. Use
+the following scale for individual command scores:
+1: The command is ineffective, irrelevant, detrimental to solving the issue, exhibits poor code style, or introduces
+potential bugs.
+5: The command is optimal, demonstrating logical execution, significant contribution to solving the issue, clear and
+maintainable code style, and no potential bugs.
+Note: Only commands that are executed in the most logical and efficient manner, with no possible better alternative,
+should receive the highest score. Corrective actions must be well-justified and precisely executed to be rated highly.
+
+Considerations:
+
+- Relevance: Assess the effectiveness, correctness, and appropriateness of each command within the current context.
+- Error Correction: Commands that effectively address and correct previous mistakes should be considered favorably,
+  provided they are executed on the correct file and in the proper sequence.
+- Command Execution: Ensure each command can be executed without errors and is appropriate for the task at hand.
+- Command Sequence: Ensure commands are executed in a logical and sequential manner. For instance, if the programmer
+  needs to modify a different file, they must open the file before making changes.
+- Command Validity: Ensure the command is valid and executable.
+- Bug Prevention: Check for potential bugs introduced by each command and consider how well the command mitigates or
+  avoids these issues.
+- Code Style: Evaluate the clarity and maintainability of the code. Favor commands that result in clean, readable, and
+  well-structured code. Prevent poor code style and practices.
+
+Ranking:
+Provide overall rank for commands, so that command with rank 0 has the best rank and worser models have more higher
+ranks. Ranks mustn't repeat, so there are possible only one command with rank 0.
+
+RESPONSE FORMAT:
+{
+\"scores\": [
+{\"command\": \"" + this.commandDirective + " <Provide id of the command>\", \"comment\": <Provide a detailed reason for your evaluation of this command, noting any potential for improvement, potential bugs, and code style issues>, \"score\": <command-score>,
+{\"command\": \"" + this.commandDirective + " <Provide id of the command>\", \"comment\": <Provide a detailed reason for your evaluation of this command, noting any potential for improvement, potential bugs, and code style issues>, \"score\": <command-score>,
+...
+],
+\"ranks\":
+{\"command\" \"" + this.commandDirective + " <Provide id of the command>\",
+\"comment\": <Provide a detailed reason for ranking this command as the best>, \"rank\": <command-rank>},
+{\"command\" \"" + this.commandDirective + " <Provide id of the command>\",
+\"comment\": <Provide a detailed reason for ranking this command as the second best>, \"rank\": <command-rank>},
+...
+}
 ```
 
 #### Issue Resolve
@@ -292,7 +358,6 @@ To start addressing the issue, we should first find the file.
 
    ```command
    search_project "ObsoleteApiUsageInspection.kt"
-   ```
 
 Searching for "ObsoleteApiUsageInspection.kt" in project
 
@@ -305,4 +370,36 @@ community/jvm/jvm-analysis-impl/src/com/intellij/codeInspection/ObsoleteApiUsage
 
 (Current directory: /intellij)
 
+```
+
+工作流：
+
+- Last5ObservationsArtifactType: 处理最近的5次观察记录。
+- Last5ObservationsWStepsInfoArtifactType: 处理带有步骤信息的最近5次观察记录。
+- AddStepsInfoArtifactType: 添加步骤信息。
+- FollowUpHistoryProcessorArtifactType: 处理跟进历史。
+- VoidHistoryProcessorArtifactType: 处理无效历史。
+- RankingCritique: 排名批评。
+- EditCritique: 编辑批评。
+- NebiusCritique: Nebius批评。
+- SearchReplaceWorkerArtifact: 搜索替换工作。
+- ReplaceLinesWorkerArtifact: 替换行工作。
+- RewriteFileWorkerArtifact: 重写文件工作。
+- RelevantSymbolsArtifactType: 提取相关符号。
+- AgentStateArtifactType: 标记代理状态。
+
+```asciidoc
++-------------------+     +---------------------+     +-----------------------+
+|  开发者编写代码     | →  | CritiqueInput       | →  | EditCritique          |
++-------------------+     +---------------------+     +-----------------------+
+                                      ↓                           ↓
++-------------------+     +---------------------+     +-----------------------+
+|  LLM 分析         | ←  | CritiqueResponse    | ←  | 生成建议（如代码补全）  |
++-------------------+     +---------------------+     +-----------------------+
+                                      |
+                                      ↓
++-------------------+     +---------------------+
+|  IDE 展示结果      | ←  | RankingCritique     |
++-------------------+     +---------------------+
+                               （排序多个建议）
 ```
