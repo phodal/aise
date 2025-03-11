@@ -388,18 +388,27 @@ community/jvm/jvm-analysis-impl/src/com/intellij/codeInspection/ObsoleteApiUsage
 - RelevantSymbolsArtifactType: 提取相关符号。
 - AgentStateArtifactType: 标记代理状态。
 
-```asciidoc
-+-------------------+     +---------------------+     +-----------------------+
-|  开发者编写代码     | →  | CritiqueInput       | →  | EditCritique          |
-+-------------------+     +---------------------+     +-----------------------+
-                                      ↓                           ↓
-+-------------------+     +---------------------+     +-----------------------+
-|  LLM 分析         | ←  | CritiqueResponse    | ←  | 生成建议（如代码补全）  |
-+-------------------+     +---------------------+     +-----------------------+
-                                      |
-                                      ↓
-+-------------------+     +---------------------+
-|  IDE 展示结果      | ←  | RankingCritique     |
-+-------------------+     +---------------------+
-                               （排序多个建议）
-```
+Agent Name
+
+根据 RipGrep 的搜索结果，项目中定义了多个 `agent`，每个 `agent` 都有一个唯一的 `agentName` 属性。以下是这些 `agent` 的简要介绍：
+
+1. **RelevantSymbolsExtractorWorker**:
+    - `agentName`: `"relevant_symbols_extractor"`
+    - 功能：该 `agent` 负责提取相关符号（symbols），可能是用于代码分析或代码补全的场景。
+
+2. **AbstractIssueSingleStepAgentWorker**:
+    - `agentName`: `"primary"`
+    - 功能：这是一个抽象类，可能是用于处理单步任务的基础 `agent`，具体功能由其子类实现。
+    - IdeaIssueSingleStepAgentWorker,PythonIssueSingleStepAgentWorker,PhpStormIssueSingleStepAgentWorker,RiderIssueSingleStepAgentWorker,WebStormIssueSingleStepAgentWorker
+
+3. **RankingCritique**:
+    - `agentName`: `"ranking_critique"`
+    - 功能：该 `agent` 负责对某些内容进行排名（ranking），可能是用于代码评审或建议排序的场景。
+
+4. **EditCritique**:
+    - `agentName`: `"edit_critique"`
+    - 功能：该 `agent` 负责对编辑内容进行评审（critique），可能是用于代码编辑或重构的场景。
+
+5. **NebiusCritique**:
+    - `agentName`: `"nebius_critique"`
+    - 功能：该 `agent` 的功能尚不明确，但从命名来看，可能与某种特定的评审或分析任务相关。
