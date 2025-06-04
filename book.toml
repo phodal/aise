@@ -11,3 +11,4 @@ git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/phodal/aise/edit/master/{path}"
 site-url = "/"
 cname = "aise.phodal.com"
+additional-css = ["theme/custom.css"]
